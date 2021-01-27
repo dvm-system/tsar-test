@@ -1,0 +1,102 @@
+#pts dvm c da_di/shared_1:env::DVMH_
+da_di/shared_1: tsar=1, run=1 2 3
+da_di/shared_1: env::DVMH_NUM_THREADS=1, run=1 2 3
+#da_di/shared_1/run: env::DVMH_NUM_THREADS=1
+
+1) tsar => сравнение выдачи с эталоном + создает параллельную программу(единственным образом) в директории res. »м€ файлов совпадают с оригиналом.
+################
+# required: copy, sample_diff, run
+plugin = TsarPlugin
+sources = main.c
+copy = $sources include/main.h
+sample = $copy output.txt #< сравнить
+options = -clang-dvmh-sm-parallel -finbounds-subscripts
+run = "$tsar $sources $options >output.txt 2>&1" # результат: main.c + output.txt
+#задача плагина
+#- копировать файлы $copy в директорию res
+#- переход в директорию res
+#- выполнить команду $run в директории res
+#- сравнить/скопировать файлы $sample с/в директорией sample
+#############
+>pts da_di/shared_1 # что должен делать этот запуск?
+
+>pts da_di/shared_1/tsar
+
+>pts tsar da_di/shared_1
+>pts da_di/shared_1:tsar=1
+
+2) компил€ци€ программы dvm
+################
+# required: run
+plugin = TsarPlugin
+sources = main.c #< параллельна€ программа
+options = -noH
+sample = compile.txt
+run = "$dvm c $sources $options >compile.txt 2>&1" # результат: main.exe
+#задача плагина
+#- переход в директорию res
+#- выполнить команду $run в директории res
+#- сравнить/скопировать файлы $sample с/в директорией sample
+#############
+>pts c da_di/shared_1
+
+>pts da_di/shared_1/compile
+
+3) запуск .... => сравнение с эталоном
+################
+# args: grid=1 2 3
+# required: run
+plugin = TsarPlugin
+exe = main.exe #< параллельна€ программа
+output = run_nt${env::DVMH_NUM_THREADS}_nc${env::DVMH_NUM_CUDAS}_g${grid}.txt
+sample_map @= $output run.txt  #(одинаковый дл€ всех вариантов запусков)
+#  file2 run.txt
+#  file3 run.txt
+run = "$dvm run $exe $grid >$output 2>&1" # результат: run_nt12_nc1_g1_2_3.txt
+#############
+# dvm
+plugin=SetEnv
+grid=1 2 3
+[env]
+DVMH_NUM_THREADS=12
+DVMH_NUM_CUDAS=1
+#############
+>pts run:grid='1 2 3' da_di/shared_1
+
+>pts da_di/shared_1:run='1 2 3'
+
+>pts da_di/shared_1/run:grid='1 2 3'
+
+
+>pts dvm c da_di/shared_1
+>pts dvm run:grid='1 2 3' da_di/shared_1:grid='1 2 3'
+
+>pts dvm da_di/shared_1/run:grid='1 2 3'
+
+## TASK LIST ##
+seq
+parallel
+da_di/shared_1/tsar
+da_di/shared_1/compile
+da_di/shared_2/tsar
+da_di/shared_2/compile
+seq
+da_di/shared_3/tsar
+da_di/shared_3/compile
+end_seq
+end_parallel
+
+parallel
+da_di/shared_1/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, grid=1 1 1
+da_di/shared_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, grid=1 1 1
+seq
+da_di/shared_1/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=1, grid=1 1 1
+da_di/shared_2/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=1, grid=1 1 1
+da_di/shared_3/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=1, grid=1 1 1
+end_seq
+end_parallel
+end_seq
+#################
+
+
+>pts show da_di/shared_1/tsar
