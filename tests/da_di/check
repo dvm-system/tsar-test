@@ -3,7 +3,7 @@ da_di/shared_1: tsar=1, run=1 2 3
 da_di/shared_1: env::DVMH_NUM_THREADS=1, run=1 2 3
 #da_di/shared_1/run: env::DVMH_NUM_THREADS=1
 
-1) tsar => сравнение выдачи с эталоном + создает параллельную программу(единственным образом) в директории res. »м¤ файлов совпадают с оригиналом.
+1) tsar => сравнение выдачи с эталоном + создает параллельную программу(единственным образом) в директории res. имена файлов совпадают с оригиналом.
 ################
 # required: copy, sample_diff, run
 plugin = TsarPlugin
@@ -25,11 +25,11 @@ run = "$tsar $sources $options >output.txt 2>&1" # результат: main.c + 
 >pts tsar da_di/shared_1
 >pts da_di/shared_1:tsar=1
 
-2) компил¤ци¤ программы dvm
+2) компилиция программы dvm
 ################
 # required: run
 plugin = TsarPlugin
-sources = main.c #< параллельна¤ программа
+sources = main.c #< параллельная программа
 options = -noH
 sample = compile.txt
 run = "$dvm c $sources $options >compile.txt 2>&1" # результат: main.exe
@@ -47,9 +47,9 @@ run = "$dvm c $sources $options >compile.txt 2>&1" # результат: main.ex
 # args: grid=1 2 3
 # required: run
 plugin = TsarPlugin
-exe = main.exe #< параллельна¤ программа
+exe = main.exe #< параллельная программа
 output = run_nt${env::DVMH_NUM_THREADS}_nc${env::DVMH_NUM_CUDAS}_g${grid}.txt
-sample_map @= $output run.txt  #(одинаковый дл¤ всех вариантов запусков)
+sample_map @= $output run.txt  #(одинаковый для всех вариантов запусков)
 #  file2 run.txt
 #  file3 run.txt
 run = "$dvm run $exe $grid >$output 2>&1" # результат: run_nt12_nc1_g1_2_3.txt
