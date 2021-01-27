@@ -3,56 +3,56 @@ da_di/shared_1: tsar=1, run=1 2 3
 da_di/shared_1: env::DVMH_NUM_THREADS=1, run=1 2 3
 #da_di/shared_1/run: env::DVMH_NUM_THREADS=1
 
-1) tsar => сравнение выдачи с эталоном + создает параллельную программу(единственным образом) в директории res. Имя файлов совпадают с оригиналом.
+1) tsar => СЃСЂР°РІРЅРµРЅРёРµ РІС‹РґР°С‡Рё СЃ СЌС‚Р°Р»РѕРЅРѕРј + СЃРѕР·РґР°РµС‚ РїР°СЂР°Р»Р»РµР»СЊРЅСѓСЋ РїСЂРѕРіСЂР°РјРјСѓ(РµРґРёРЅСЃС‚РІРµРЅРЅС‹Рј РѕР±СЂР°Р·РѕРј) РІ РґРёСЂРµРєС‚РѕСЂРёРё res. В»РјВ¤ С„Р°Р№Р»РѕРІ СЃРѕРІРїР°РґР°СЋС‚ СЃ РѕСЂРёРіРёРЅР°Р»РѕРј.
 ################
 # required: copy, sample_diff, run
 plugin = TsarPlugin
 sources = main.c
 copy = $sources include/main.h
-sample = $copy output.txt #< сравнить
+sample = $copy output.txt #< СЃСЂР°РІРЅРёС‚СЊ
 options = -clang-dvmh-sm-parallel -finbounds-subscripts
-run = "$tsar $sources $options >output.txt 2>&1" # результат: main.c + output.txt
-#задача плагина
-#- копировать файлы $copy в директорию res
-#- переход в директорию res
-#- выполнить команду $run в директории res
-#- сравнить/скопировать файлы $sample с/в директорией sample
+run = "$tsar $sources $options >output.txt 2>&1" # СЂРµР·СѓР»СЊС‚Р°С‚: main.c + output.txt
+#Р·Р°РґР°С‡Р° РїР»Р°РіРёРЅР°
+#- РєРѕРїРёСЂРѕРІР°С‚СЊ С„Р°Р№Р»С‹ $copy РІ РґРёСЂРµРєС‚РѕСЂРёСЋ res
+#- РїРµСЂРµС…РѕРґ РІ РґРёСЂРµРєС‚РѕСЂРёСЋ res
+#- РІС‹РїРѕР»РЅРёС‚СЊ РєРѕРјР°РЅРґСѓ $run РІ РґРёСЂРµРєС‚РѕСЂРёРё res
+#- СЃСЂР°РІРЅРёС‚СЊ/СЃРєРѕРїРёСЂРѕРІР°С‚СЊ С„Р°Р№Р»С‹ $sample СЃ/РІ РґРёСЂРµРєС‚РѕСЂРёРµР№ sample
 #############
->pts da_di/shared_1 # что должен делать этот запуск?
+>pts da_di/shared_1 # С‡С‚Рѕ РґРѕР»Р¶РµРЅ РґРµР»Р°С‚СЊ СЌС‚РѕС‚ Р·Р°РїСѓСЃРє?
 
 >pts da_di/shared_1/tsar
 
 >pts tsar da_di/shared_1
 >pts da_di/shared_1:tsar=1
 
-2) компиляция программы dvm
+2) РєРѕРјРїРёР»В¤С†РёВ¤ РїСЂРѕРіСЂР°РјРјС‹ dvm
 ################
 # required: run
 plugin = TsarPlugin
-sources = main.c #< параллельная программа
+sources = main.c #< РїР°СЂР°Р»Р»РµР»СЊРЅР°В¤ РїСЂРѕРіСЂР°РјРјР°
 options = -noH
 sample = compile.txt
-run = "$dvm c $sources $options >compile.txt 2>&1" # результат: main.exe
-#задача плагина
-#- переход в директорию res
-#- выполнить команду $run в директории res
-#- сравнить/скопировать файлы $sample с/в директорией sample
+run = "$dvm c $sources $options >compile.txt 2>&1" # СЂРµР·СѓР»СЊС‚Р°С‚: main.exe
+#Р·Р°РґР°С‡Р° РїР»Р°РіРёРЅР°
+#- РїРµСЂРµС…РѕРґ РІ РґРёСЂРµРєС‚РѕСЂРёСЋ res
+#- РІС‹РїРѕР»РЅРёС‚СЊ РєРѕРјР°РЅРґСѓ $run РІ РґРёСЂРµРєС‚РѕСЂРёРё res
+#- СЃСЂР°РІРЅРёС‚СЊ/СЃРєРѕРїРёСЂРѕРІР°С‚СЊ С„Р°Р№Р»С‹ $sample СЃ/РІ РґРёСЂРµРєС‚РѕСЂРёРµР№ sample
 #############
 >pts c da_di/shared_1
 
 >pts da_di/shared_1/compile
 
-3) запуск .... => сравнение с эталоном
+3) Р·Р°РїСѓСЃРє .... => СЃСЂР°РІРЅРµРЅРёРµ СЃ СЌС‚Р°Р»РѕРЅРѕРј
 ################
 # args: grid=1 2 3
 # required: run
 plugin = TsarPlugin
-exe = main.exe #< параллельная программа
+exe = main.exe #< РїР°СЂР°Р»Р»РµР»СЊРЅР°В¤ РїСЂРѕРіСЂР°РјРјР°
 output = run_nt${env::DVMH_NUM_THREADS}_nc${env::DVMH_NUM_CUDAS}_g${grid}.txt
-sample_map @= $output run.txt  #(одинаковый для всех вариантов запусков)
+sample_map @= $output run.txt  #(РѕРґРёРЅР°РєРѕРІС‹Р№ РґР»В¤ РІСЃРµС… РІР°СЂРёР°РЅС‚РѕРІ Р·Р°РїСѓСЃРєРѕРІ)
 #  file2 run.txt
 #  file3 run.txt
-run = "$dvm run $exe $grid >$output 2>&1" # результат: run_nt12_nc1_g1_2_3.txt
+run = "$dvm run $exe $grid >$output 2>&1" # СЂРµР·СѓР»СЊС‚Р°С‚: run_nt12_nc1_g1_2_3.txt
 #############
 # dvm
 plugin=SetEnv
