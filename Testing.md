@@ -253,8 +253,8 @@ plugin = TsarPlugin
 sources = main.c
 copy = $sources include/main.h
 sample = run.txt
-options = -O3 -o seq.$exe_extension
-run = "$clang $sources $options && ${run_prefix}seq.${exe_extension} >run.txt 2>&1"
+options = -O3 -o seq$exe_extension
+run = "$clang $sources $options && ${run_prefix}seq${exe_extension} >run.txt 2>&1"
 ```
 
 В данном случае используется стандартный компилятор Clang для компиляции и запуска теста. Префикс ${run_prefix} позволяет отличить имя запускаемого файла от имени системной команды и в случае ОС Linux устанавливается `./`. Можно заметить, что эталонным результатом для данного теста является только результат запуска программы (переменная `$sample`).
