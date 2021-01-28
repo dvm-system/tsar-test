@@ -304,13 +304,13 @@ sapfor-test check
 
 ```bash
 parallel
-seq
-  dvmh_sm/dvmh_sm_1/tsar
-  dvmh_sm/dvmh_sm_1/compile
-end_seq_seq
-  dvmh_sm/dvmh_sm_2/tsar
-  dvmh_sm/dvmh_sm_2/compile
-end_seq
+  seq
+    dvmh_sm/dvmh_sm_1/tsar
+    dvmh_sm/dvmh_sm_1/compile
+  end_seq_seq
+    dvmh_sm/dvmh_sm_2/tsar
+    dvmh_sm/dvmh_sm_2/compile
+  end_seq
 end_parallel
 
 parallel
@@ -318,10 +318,10 @@ parallel
   dvmh_sm/dvmh_sm_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0
   dvmh_sm/dvmh_sm_2/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0
   dvmh_sm/dvmh_sm_2/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0
-seq
-  dvmh_sm/dvmh_sm_1/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
-  dvmh_sm/dvmh_sm_2/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
-end_seq
+  seq
+    dvmh_sm/dvmh_sm_1/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
+    dvmh_sm/dvmh_sm_2/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
+  end_seq
 end_parallel
 ```
 
