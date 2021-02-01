@@ -1,0 +1,9 @@
+parallel
+  seq
+    dvmh_sm_1/tsar
+    dvmh_sm_1/seq
+  end_seq_seq
+    dvmh_sm_2/tsar
+    dvmh_sm_2/seq
+  end_seq
+end_parallel
