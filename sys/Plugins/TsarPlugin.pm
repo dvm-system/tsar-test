@@ -1,8 +1,11 @@
 package Plugins::TsarPlugin;
 use Plugins::Base v0.6.1;
+use Plugins::Base::Util;
 use base qw(Plugins::Base);
 use strict;
 
+use ConfigFile;
+use Exceptions;
 use File::chdir;
 use File::Copy qw(copy);
 use File::Path qw(make_path);
@@ -16,6 +19,24 @@ TSAR (Traits Static AnalyzeR) test plugin for PTS (Process Task Set)
 use constant exe_extension => $^O eq 'MSWin32' ? '.exe' : '';
 use constant run_prefix => $^O eq 'MSWin32' ? '' : './';
 
+my %required_vars = (
+  '' => [qw(
+    tsar
+    clang
+    include
+    platform
+    dvm
+  )],
+);
+my $sys_conf;
+my $sys_conf_fname = catfile(get_package_dir(), 'config');
+try {
+  $sys_conf = ConfigFile->new($sys_conf_fname, required => \%required_vars);
+  $sys_conf->load;
+}
+catch {
+  die "TsarPlugin encountered problems with its configuration file '$sys_conf_fname':\n".$@;
+};
 
 sub process
 {
@@ -23,6 +44,10 @@ sub process
 
   $task->set_predefined_var('', 'exe_extension', exe_extension);
   $task->set_predefined_var('', 'run_prefix', run_prefix);
+  $task->set_predefined_var(@$_, $sys_conf->get_arr(@$_)) for (
+    (map {my $g=$_; map [$g => $_], @{$required_vars{$_}}} keys %required_vars),
+    #['' => 'var'],
+  );
   $task->reload_config;
 
   my $action = $task->get_var('', 'action', 'check');
