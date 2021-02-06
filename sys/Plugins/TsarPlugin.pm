@@ -71,7 +71,7 @@ sub process
   dbg1 and dprint("tsar=", $task->get_var('', 'tsar', ''));
 
   ## check variables ##
-  if (my @a = grep file_name_is_absolute($_), @clean) {
+  if (my @a = grep file_name_is_absolute($_), @copy) {
     die "Variable 'copy' should contain only relative paths. These are absolute:\n"
       .join("\n", map "  $_", @a);
   }
