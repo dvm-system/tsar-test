@@ -51,8 +51,9 @@ sub process
   $task->reload_config;
 
   my $action = $task->get_var('', 'action', 'check');
-  grep $action eq $_, qw(check init) or error("action=$action is not supported.");
-  my $init = $action eq 'init';
+  my $init  = $action eq 'init'  or
+  my $check = $action eq 'check' or
+  die "action=$action is not supported.\n";
 
   my $run = $task->get_var('', 'run');
   my $work_dir = $task->get_var('', 'work_dir', 'res');
