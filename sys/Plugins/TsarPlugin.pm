@@ -34,8 +34,10 @@ try {
   $sys_conf = ConfigFile->new($sys_conf_fname, required => \%required_vars);
   $sys_conf->load;
 }
+make_exlist
 catch {
-  die "TsarPlugin encountered problems with its configuration file '$sys_conf_fname':\n".$@;
+  die "TsarPlugin encountered problems with its configuration file '$sys_conf_fname':\n"
+    .(join '', map "  $_", @{$@});
 };
 
 sub process
