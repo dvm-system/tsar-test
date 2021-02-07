@@ -128,7 +128,7 @@ sub process
     for my $fname (@sample) {
       m_copy(catfile($work_dir, $fname), catfile($sample_dir, $fname));
     }
-    while (my ($fname, $fname_ref) = %sample_map) {
+    while (my ($fname, $fname_ref) = each %sample_map) {
       $fname_ref = catfile($sample_dir, $fname_ref) if !file_name_is_absolute($fname_ref);
       m_copy(catfile($work_dir, $fname), $fname_ref);
     }
@@ -137,7 +137,7 @@ sub process
     for my $fname (@sample) {
       m_compare(catfile($work_dir, $fname), catfile($sample_dir, $fname)) or ++$errors;
     }
-    while (my ($fname, $fname_ref) = %sample_map) {
+    while (my ($fname, $fname_ref) = each %sample_map) {
       $fname_ref = catfile($sample_dir, $fname_ref) if !file_name_is_absolute($fname_ref);
       m_compare(catfile($work_dir, $fname), $fname_ref) or ++$errors;
     }
