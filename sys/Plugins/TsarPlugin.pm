@@ -113,6 +113,10 @@ sub process
     m_copy($fname, catfile($work_dir, $fname));
   }
 
+  ## set environment ##
+  local %ENV = %ENV;
+  $ENV{$_} = $task->get_var('env', $_) for $task->var_names('env');
+
   ## run the command ##
   m_chdir($work_dir);
   m_system($run);
