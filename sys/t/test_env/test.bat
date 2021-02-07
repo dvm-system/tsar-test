@@ -1,0 +1,1 @@
+@echo ## %DVMH_NUM_THREADS% ##
