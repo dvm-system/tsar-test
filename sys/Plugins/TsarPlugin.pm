@@ -8,7 +8,7 @@ use ConfigFile;
 use Exceptions;
 use File::chdir;
 use File::Copy qw(copy);
-use File::Path qw(make_path);
+use File::Path qw(make_path remove_tree);
 use File::Spec::Functions qw(catfile rel2abs splitpath catpath file_name_is_absolute);
 use Text::Diff;
 
@@ -55,6 +55,7 @@ sub process
   my $action = $task->get_var('', 'action', 'check');
   my $init  = $action eq 'init'  or
   my $check = $action eq 'check' or
+  my $clean = $action eq 'clean' or
   die "action=$action is not supported.\n";
 
   my $run = $task->get_var('', 'run');
@@ -85,8 +86,21 @@ sub process
   }
   $work_dir eq '' and die "Variable work_dir is set to an empty string.\n";
 
-  ## make work directory ##
+  ## cd task_dir ##
   m_chdir($tdir_abs);
+
+  if ($clean) {
+    -d $work_dir or return 1;
+    ## remove specified files ##
+    m_chdir($work_dir);
+    clean(@clean);
+    ## try to remove empty work_dir ##
+    m_chdir($tdir_abs);
+    m_rm_empty_dir_recursive($work_dir);
+    return 1
+  }
+
+  ## make work directory ##
   if (-e $work_dir) {
     -d $work_dir or die "work_dir='$work_dir' is not a directory.\n";
   }
@@ -126,6 +140,49 @@ sub process
   }
 
   !$errors
+}
+
+sub clean
+{
+  my @files = @_;
+  for (@files) {
+    file_name_is_absolute($_) and die "Action 'clean' encountered an absolute filename '$_'.\n";
+    -e or next;
+    my $err;
+    dbg1 and dprint("rm '$_'");
+    remove_tree($_, {safe => 1, error => \$err});
+    if ($err && @$err) {
+      my @errors = map {
+        my ($f, $msg) = %$_;
+        Exceptions::Exception->new($f eq '' ? "rm '$f' failed: $msg" : $msg);
+      } @$err;
+      throw List => @errors;
+    }
+  }
+  1
+}
+
+sub m_rm_empty_dir_recursive
+{
+  my $dir = shift;
+  my $d;
+  if (!opendir $d, $dir) {
+    print_out("cannot read directory '$dir' content\n");
+    return 0;
+  }
+  my @fnames = grep {$_ ne '.' && $_ ne '..'} readdir $d;
+  closedir $d;
+  my $del = 1;
+  for (@fnames) {
+    my $fname = catfile($dir, $_);
+    next if -d $fname && m_rm_empty_dir_recursive($fname);
+    $del = 0;
+  }
+  if ($del) {
+    dbg1 and dprint("rm empty directory '$dir'");
+    $del = rmdir $dir or print_out("cannot remove empty directory '$dir': $!\n");
+  }
+  $del
 }
 
 sub m_system
