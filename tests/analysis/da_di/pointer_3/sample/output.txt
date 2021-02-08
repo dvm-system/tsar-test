@@ -1,0 +1,34 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:5:3
+   output:
+    <*Buffer:{6:9|4:8}, ?> <*V[0]:{4:17|3}, ?> bar():6:5
+   anti:
+    <*Buffer:{6:9|4:8}, ?> <*V[0]:{4:17|3}, ?> bar():6:5
+   flow:
+    <*Buffer:{6:9|4:8}, ?> <*V[0]:{4:17|3}, ?> bar():6:5
+   induction:
+    <I:5[5:3], 4>:[Int,0,,1]
+   read only:
+    <Buffer:4, 8> | <N:3, 4>
+   redundant:
+    <*Buffer:{6:9|4:8}, ?> <*V[0]:{4:17|3}, ?> bar():6:5
+   lock:
+    <I:5[5:3], 4> | <N:3, 4>
+   header access:
+    <I:5[5:3], 4> | <N:3, 4>
+   explicit access:
+    <*Buffer:{6:9|4:8}, ?> <*V[0]:{4:17|3}, ?> bar():6:5 | <Buffer:4, 8> | <I:5[5:3], 4> | <N:3, 4>
+   address access:
+    <*Buffer:{6:9|4:8}, ?> <*V[0]:{4:17|3}, ?> bar():6:5
+   explicit access (separate):
+    <*Buffer:{6:9|4:8}, ?> <*V[0]:{4:17|3}, ?> <Buffer:4, 8> <I:5[5:3], 4> <N:3, 4> bar():6:5
+   redundant (separate):
+    <*Buffer:{6:9|4:8}, ?>
+   lock (separate):
+    <I:5[5:3], 4> <N:3, 4>
+   address access (separate):
+    bar():6:5
+   direct access (separate):
+    <*Buffer:{6:9|4:8}, ?> <Buffer:4, 8> <I:5[5:3], 4> <N:3, 4> bar():6:5
+   indirect access (separate):
+    <*V[0]:{4:17|3}, ?>

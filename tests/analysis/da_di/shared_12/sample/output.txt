@@ -1,0 +1,47 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:7:3
+   private:
+    <J:6, 4>
+   output:
+    <JStart, 4> bar():11:5 | <U:5:10, 800>
+   anti:
+    <JStart, 4> bar():11:5 | <U:5:10, 800>
+   flow:
+    <JStart, 4> bar():11:5 | <U:5:10, 800>
+   induction:
+    <I:7[7:3], 4>:[Int,0,100,10]
+   lock:
+    <I:7[7:3], 4>
+   header access:
+    <I:7[7:3], 4>
+   explicit access:
+    <I:7[7:3], 4> | <J:6, 4> | <JStart, 4> bar():11:5
+   address access:
+    <JStart, 4> bar():11:5
+   explicit access (separate):
+    <I:7[7:3], 4> <J:6, 4> <JStart, 4> bar():11:5
+   lock (separate):
+    <I:7[7:3], 4>
+   address access (separate):
+    bar():11:5
+   direct access (separate):
+    <I:7[7:3], 4> <J:6, 4> <JStart, 4> <U:5:10, 800> bar():11:5
+  loop at depth 2 main.c:12:5
+    shared:
+     <U:5:10, 800>
+    induction:
+     <J:6, 4>:[Int,,,1]
+    read only:
+     <I:7[7:3], 4>
+    lock:
+     <J:6, 4>
+    header access:
+     <J:6, 4>
+    explicit access:
+     <I:7[7:3], 4> | <J:6, 4>
+    explicit access (separate):
+     <I:7[7:3], 4> <J:6, 4>
+    lock (separate):
+     <J:6, 4>
+    direct access (separate):
+     <I:7[7:3], 4> <J:6, 4> <U:5:10, 800>

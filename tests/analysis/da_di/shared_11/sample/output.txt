@@ -1,0 +1,83 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:6:3
+   shared:
+    <U, 40000000>
+   private:
+    <J:5, 4> | <K:5, 4> | <M:5, 4>
+   induction:
+    <I:5, 4>:[Int,,,1]
+   read only:
+    <IEnd, 4> | <JEnd, 4> | <JStart, 4> | <KEnd, 4> | <KStart, 4>
+   lock:
+    <I:5, 4> | <IEnd, 4>
+   header access:
+    <I:5, 4> | <IEnd, 4>
+   explicit access:
+    <I:5, 4> | <IEnd, 4> | <J:5, 4> | <JEnd, 4> | <JStart, 4> | <K:5, 4> | <KEnd, 4> | <KStart, 4> | <M:5, 4>
+   explicit access (separate):
+    <I:5, 4> <IEnd, 4> <J:5, 4> <JEnd, 4> <JStart, 4> <K:5, 4> <KEnd, 4> <KStart, 4> <M:5, 4>
+   lock (separate):
+    <I:5, 4> <IEnd, 4>
+   direct access (separate):
+    <I:5, 4> <IEnd, 4> <J:5, 4> <JEnd, 4> <JStart, 4> <K:5, 4> <KEnd, 4> <KStart, 4> <M:5, 4> <U, 40000000>
+  loop at depth 2 main.c:7:5
+    shared:
+     <U, 40000000>
+    private:
+     <K:5, 4> | <M:5, 4>
+    induction:
+     <J:5, 4>:[Int,,,1]
+    read only:
+     <I:5, 4> | <JEnd, 4> | <KEnd, 4> | <KStart, 4>
+    lock:
+     <J:5, 4> | <JEnd, 4>
+    header access:
+     <J:5, 4> | <JEnd, 4>
+    explicit access:
+     <I:5, 4> | <J:5, 4> | <JEnd, 4> | <K:5, 4> | <KEnd, 4> | <KStart, 4> | <M:5, 4>
+    explicit access (separate):
+     <I:5, 4> <J:5, 4> <JEnd, 4> <K:5, 4> <KEnd, 4> <KStart, 4> <M:5, 4>
+    lock (separate):
+     <J:5, 4> <JEnd, 4>
+    direct access (separate):
+     <I:5, 4> <J:5, 4> <JEnd, 4> <K:5, 4> <KEnd, 4> <KStart, 4> <M:5, 4> <U, 40000000>
+   loop at depth 3 main.c:8:7
+     shared:
+      <U, 40000000>
+     private:
+      <M:5, 4>
+     induction:
+      <K:5, 4>:[Int,,,1]
+     read only:
+      <I:5, 4> | <J:5, 4> | <KEnd, 4>
+     lock:
+      <K:5, 4> | <KEnd, 4>
+     header access:
+      <K:5, 4> | <KEnd, 4>
+     explicit access:
+      <I:5, 4> | <J:5, 4> | <K:5, 4> | <KEnd, 4> | <M:5, 4>
+     explicit access (separate):
+      <I:5, 4> <J:5, 4> <K:5, 4> <KEnd, 4> <M:5, 4>
+     lock (separate):
+      <K:5, 4> <KEnd, 4>
+     direct access (separate):
+      <I:5, 4> <J:5, 4> <K:5, 4> <KEnd, 4> <M:5, 4> <U, 40000000>
+    loop at depth 4 main.c:9:9
+      shared:
+       <U, 40000000>
+      induction:
+       <M:5, 4>:[Int,0,5,1]
+      read only:
+       <I:5, 4> | <J:5, 4> | <K:5, 4>
+      lock:
+       <M:5, 4>
+      header access:
+       <M:5, 4>
+      explicit access:
+       <I:5, 4> | <J:5, 4> | <K:5, 4> | <M:5, 4>
+      explicit access (separate):
+       <I:5, 4> <J:5, 4> <K:5, 4> <M:5, 4>
+      lock (separate):
+       <M:5, 4>
+      direct access (separate):
+       <I:5, 4> <J:5, 4> <K:5, 4> <M:5, 4> <U, 40000000>

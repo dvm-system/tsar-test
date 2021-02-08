@@ -1,0 +1,20 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:4:3
+   shared:
+    <U, 80000>
+   induction:
+    <J:4[4:3], 4>:[Int,0,100,1]
+   read only:
+    <I:3, 4>
+   lock:
+    <J:4[4:3], 4>
+   header access:
+    <J:4[4:3], 4>
+   explicit access:
+    <I:3, 4> | <J:4[4:3], 4>
+   explicit access (separate):
+    <I:3, 4> <J:4[4:3], 4>
+   lock (separate):
+    <J:4[4:3], 4>
+   direct access (separate):
+    <I:3, 4> <J:4[4:3], 4> <U, 80000>

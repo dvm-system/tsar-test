@@ -1,0 +1,27 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
+ loop at depth 1 main.c:11:3
+   first private:
+    <P:5, 8> | <X, 4>
+   second to last private:
+    <P:5, 8> | <X, 4>
+   induction:
+    <I:11[11:3], 4>:[Int,0,10,1]
+   reduction:
+    <S:6, 4>:add
+   redundant:
+    foo():14:9
+   lock:
+    <I:11[11:3], 4>
+   header access:
+    <I:11[11:3], 4>
+   explicit access:
+    <I:11[11:3], 4> | <P:5, 8> | <S:6, 4> | <X, 4>
+   explicit access (separate):
+    <I:11[11:3], 4> <P:5, 8> <S:6, 4> <X, 4>
+   redundant (separate):
+    foo():14:9
+   lock (separate):
+    <I:11[11:3], 4>
+   direct access (separate):
+    <I:11[11:3], 4> <P:5, 8> <S:6, 4> <X, 4>

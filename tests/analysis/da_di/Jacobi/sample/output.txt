@@ -1,0 +1,184 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
+ loop at depth 1 main.c:21:3
+   shared:
+    <A, 512> | <B, 512>
+   first private:
+    <A, 512> | <B, 512>
+   dynamic private:
+    <A, 512> | <B, 512>
+   private:
+    <J:22[22:5], 4> | <sapfor.var, 4>
+   induction:
+    <I:21[21:3], 4>:[Int,0,8,1]
+   redundant:
+    <sapfor.var, 4>
+   lock:
+    <I:21[21:3], 4>
+   header access:
+    <I:21[21:3], 4>
+   explicit access:
+    <I:21[21:3], 4> | <J:22[22:5], 4> | <sapfor.var, 4>
+   explicit access (separate):
+    <I:21[21:3], 4> <J:22[22:5], 4> <sapfor.var, 4>
+   redundant (separate):
+    <sapfor.var, 4>
+   lock (separate):
+    <I:21[21:3], 4>
+   direct access (separate):
+    <A, 512> <B, 512> <I:21[21:3], 4> <J:22[22:5], 4> <sapfor.var, 4>
+  loop at depth 2 main.c:22:5
+    shared:
+     <A, 512> | <B, 512>
+    first private:
+     <A, 512> | <B, 512>
+    dynamic private:
+     <A, 512> | <B, 512>
+    induction:
+     <J:22[22:5], 4>:[Int,0,8,1]
+    read only:
+     <I:21[21:3], 4>
+    lock:
+     <J:22[22:5], 4>
+    header access:
+     <J:22[22:5], 4>
+    explicit access:
+     <I:21[21:3], 4> | <J:22[22:5], 4>
+    explicit access (separate):
+     <I:21[21:3], 4> <J:22[22:5], 4>
+    lock (separate):
+     <J:22[22:5], 4>
+    direct access (separate):
+     <A, 512> <B, 512> <I:21[21:3], 4> <J:22[22:5], 4>
+ loop at depth 1 main.c:29:3
+   private:
+    <Eps:30[29:39], 8> | <I:31[31:5], 4> | <I:37[37:5], 4> | <J:32[32:7], 4> | <J:38[38:7], 4> | <Tmp:33[32:39], 8> | <sapfor.var, 4>
+   output:
+    <A, 512> <B, 512> printf():40:5
+   anti:
+    <A, 512> <B, 512> printf():40:5
+   flow:
+    <A, 512> <B, 512> printf():40:5
+   induction:
+    <It:29[29:3], 4>:[Int,1,,1]
+   redundant:
+    <sapfor.var, 4>
+   lock:
+    <It:29[29:3], 4>
+   header access:
+    <It:29[29:3], 4>
+   explicit access:
+    <A, 512> <B, 512> printf():40:5 | <Eps:30[29:39], 8> | <I:31[31:5], 4> | <I:37[37:5], 4> | <It:29[29:3], 4> | <J:32[32:7], 4> | <J:38[38:7], 4> | <Tmp:33[32:39], 8> | <sapfor.var, 4>
+   address access:
+    <A, 512> <B, 512> printf():40:5
+   explicit access (separate):
+    <Eps:30[29:39], 8> <I:31[31:5], 4> <I:37[37:5], 4> <It:29[29:3], 4> <J:32[32:7], 4> <J:38[38:7], 4> <Tmp:33[32:39], 8> <sapfor.var, 4> printf():40:5
+   redundant (separate):
+    <sapfor.var, 4>
+   lock (separate):
+    <It:29[29:3], 4>
+   address access (separate):
+    printf():40:5
+   direct access (separate):
+    <A, 512> <B, 512> <Eps:30[29:39], 8> <I:31[31:5], 4> <I:37[37:5], 4> <It:29[29:3], 4> <J:32[32:7], 4> <J:38[38:7], 4> <Tmp:33[32:39], 8> <sapfor.var, 4> printf():40:5
+  loop at depth 2 main.c:37:5
+    shared:
+     <B, 512>
+    first private:
+     <B, 512>
+    dynamic private:
+     <B, 512>
+    private:
+     <J:38[38:7], 4> | <sapfor.var, 4>
+    induction:
+     <I:37[37:5], 4>:[Int,1,7,1]
+    read only:
+     <A, 512>
+    redundant:
+     <sapfor.var, 4>
+    lock:
+     <I:37[37:5], 4>
+    header access:
+     <I:37[37:5], 4>
+    explicit access:
+     <I:37[37:5], 4> | <J:38[38:7], 4> | <sapfor.var, 4>
+    explicit access (separate):
+     <I:37[37:5], 4> <J:38[38:7], 4> <sapfor.var, 4>
+    redundant (separate):
+     <sapfor.var, 4>
+    lock (separate):
+     <I:37[37:5], 4>
+    direct access (separate):
+     <A, 512> <B, 512> <I:37[37:5], 4> <J:38[38:7], 4> <sapfor.var, 4>
+   loop at depth 3 main.c:38:7
+     shared:
+      <B, 512>
+     first private:
+      <B, 512>
+     dynamic private:
+      <B, 512>
+     induction:
+      <J:38[38:7], 4>:[Int,1,7,1]
+     read only:
+      <A, 512> | <I:37[37:5], 4>
+     lock:
+      <J:38[38:7], 4>
+     header access:
+      <J:38[38:7], 4>
+     explicit access:
+      <I:37[37:5], 4> | <J:38[38:7], 4>
+     explicit access (separate):
+      <I:37[37:5], 4> <J:38[38:7], 4>
+     lock (separate):
+      <J:38[38:7], 4>
+     direct access (separate):
+      <A, 512> <B, 512> <I:37[37:5], 4> <J:38[38:7], 4>
+  loop at depth 2 main.c:31:5
+    shared:
+     <A, 512>
+    private:
+     <J:32[32:7], 4> | <Tmp:33[32:39], 8> | <sapfor.var, 4>
+    induction:
+     <I:31[31:5], 4>:[Int,1,7,1]
+    reduction:
+     <Eps:30[29:39], 8>:max
+    read only:
+     <B, 512>
+    redundant:
+     <sapfor.var, 4>
+    lock:
+     <I:31[31:5], 4>
+    header access:
+     <I:31[31:5], 4>
+    explicit access:
+     <Eps:30[29:39], 8> | <I:31[31:5], 4> | <J:32[32:7], 4> | <Tmp:33[32:39], 8> | <sapfor.var, 4>
+    explicit access (separate):
+     <Eps:30[29:39], 8> <I:31[31:5], 4> <J:32[32:7], 4> <Tmp:33[32:39], 8> <sapfor.var, 4>
+    redundant (separate):
+     <sapfor.var, 4>
+    lock (separate):
+     <I:31[31:5], 4>
+    direct access (separate):
+     <A, 512> <B, 512> <Eps:30[29:39], 8> <I:31[31:5], 4> <J:32[32:7], 4> <Tmp:33[32:39], 8> <sapfor.var, 4>
+   loop at depth 3 main.c:32:7
+     shared:
+      <A, 512>
+     private:
+      <Tmp:33[32:39], 8>
+     induction:
+      <J:32[32:7], 4>:[Int,1,7,1]
+     reduction:
+      <Eps:30[29:39], 8>:max
+     read only:
+      <B, 512> | <I:31[31:5], 4>
+     lock:
+      <J:32[32:7], 4>
+     header access:
+      <J:32[32:7], 4>
+     explicit access:
+      <Eps:30[29:39], 8> | <I:31[31:5], 4> | <J:32[32:7], 4> | <Tmp:33[32:39], 8>
+     explicit access (separate):
+      <Eps:30[29:39], 8> <I:31[31:5], 4> <J:32[32:7], 4> <Tmp:33[32:39], 8>
+     lock (separate):
+      <J:32[32:7], 4>
+     direct access (separate):
+      <A, 512> <B, 512> <Eps:30[29:39], 8> <I:31[31:5], 4> <J:32[32:7], 4> <Tmp:33[32:39], 8>

@@ -1,0 +1,59 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:7:3
+   shared:
+    <*P:{6:22|6}, ?> <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   first private:
+    <*P:{6:22|6}, ?> <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   dynamic private:
+    <*P:{6:22|6}, ?> <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   induction:
+    <I:7[7:3], 4>:[Int,0,100,1]
+   read only:
+    <P:6, 8>
+   redundant:
+    <*P:{6:22|6}, ?> <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   lock:
+    <I:7[7:3], 4>
+   header access:
+    <I:7[7:3], 4>
+   explicit access:
+    <I:7[7:3], 4> | <P:6, 8>
+   explicit access (separate):
+    <I:7[7:3], 4> <P:6, 8>
+   redundant (separate):
+    <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   lock (separate):
+    <I:7[7:3], 4>
+   direct access (separate):
+    <*P:{8:5|9:7|12:5|13:7|6:9}, ?> <I:7[7:3], 4> <P:6, 8>
+   indirect access (separate):
+    <*P:{6:22|6}, ?>
+ loop at depth 1 main.c:11:3
+   shared:
+    <*P:{10:16|6}, ?> <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   first private:
+    <*P:{10:16|6}, ?> <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   dynamic private:
+    <*P:{10:16|6}, ?> <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   induction:
+    <I:11[11:3], 4>:[Int,0,10,1]
+   read only:
+    <P:6, 8>
+   redundant:
+    <*P:{10:16|6}, ?> <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   lock:
+    <I:11[11:3], 4>
+   header access:
+    <I:11[11:3], 4>
+   explicit access:
+    <I:11[11:3], 4> | <P:6, 8>
+   explicit access (separate):
+    <I:11[11:3], 4> <P:6, 8>
+   redundant (separate):
+    <*P:{8:5|9:7|12:5|13:7|6:9}, ?>
+   lock (separate):
+    <I:11[11:3], 4>
+   direct access (separate):
+    <*P:{8:5|9:7|12:5|13:7|6:9}, ?> <I:11[11:3], 4> <P:6, 8>
+   indirect access (separate):
+    <*P:{10:16|6}, ?>

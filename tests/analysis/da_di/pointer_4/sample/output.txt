@@ -1,0 +1,22 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:9:3
+   induction:
+    <k:9[9:3], 4>:[Int,0,,1]
+   reduction:
+    <lexp:8, 4>:add
+   read only:
+    <*fctlist:7, ?> <*fctlist[?]:{9:22|9:22|7}, 24> <*fctlist[?][?].exp:{10:30|7}, ?> <?,?> <?:10:30,?> | <fctlist:7, 8> | <genexp:7, 4>
+   lock:
+    <*fctlist:7, ?> <*fctlist[?]:{9:22|9:22|7}, 24> <*fctlist[?][?].exp:{10:30|7}, ?> <?,?> <?:10:30,?> | <fctlist:7, 8> | <genexp:7, 4> | <k:9[9:3], 4>
+   header access:
+    <*fctlist:7, ?> <*fctlist[?]:{9:22|9:22|7}, 24> <*fctlist[?][?].exp:{10:30|7}, ?> <?,?> <?:10:30,?> | <fctlist:7, 8> | <genexp:7, 4> | <k:9[9:3], 4>
+   explicit access:
+    <fctlist:7, 8> | <genexp:7, 4> | <k:9[9:3], 4> | <lexp:8, 4>
+   explicit access (separate):
+    <fctlist:7, 8> <genexp:7, 4> <k:9[9:3], 4> <lexp:8, 4>
+   lock (separate):
+    <*fctlist:7, ?> <*fctlist[?]:{9:22|9:22|7}, 24> <fctlist:7, 8> <genexp:7, 4> <k:9[9:3], 4>
+   direct access (separate):
+    <*fctlist:7, ?> <*fctlist[?]:{9:22|9:22|7}, 24> <*fctlist[?][?].exp:{10:30|7}, ?> <fctlist:7, 8> <genexp:7, 4> <k:9[9:3], 4> <lexp:8, 4>
+   indirect access (separate):
+    <?:10:30,?>

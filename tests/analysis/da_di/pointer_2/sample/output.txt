@@ -1,0 +1,40 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:8:3
+   shared:
+    <*A:5, ?>
+   first private:
+    <*A:5, ?>
+   dynamic private:
+    <*A:5, ?>
+   private:
+    <P:6, 8>
+   output:
+    <P[0]:{12:17|6:14}, 4> <X:6:7, ?> <Y:6:10, ?>
+   anti:
+    <P[0]:{12:17|6:14}, 4> <X:6:7, ?> <Y:6:10, ?>
+   flow:
+    <P[0]:{12:17|6:14}, 4> <X:6:7, ?> <Y:6:10, ?>
+   induction:
+    <I:8[8:3], 4>:[Int,1,,1]
+   read only:
+    <A:5, 8> | <N, 4>
+   no promoted scalar:
+    <P[0]:{12:17|6:14}, 4> <X:6:7, ?> <Y:6:10, ?>
+   lock:
+    <I:8[8:3], 4> | <N, 4>
+   header access:
+    <I:8[8:3], 4> | <N, 4>
+   explicit access:
+    <A:5, 8> | <I:8[8:3], 4> | <N, 4> | <P:6, 8> | <P[0]:{12:17|6:14}, 4> <X:6:7, ?> <Y:6:10, ?>
+   address access:
+    <P[0]:{12:17|6:14}, 4> <X:6:7, ?> <Y:6:10, ?>
+   explicit access (separate):
+    <A:5, 8> <I:8[8:3], 4> <N, 4> <P:6, 8> <P[0]:{12:17|6:14}, 4>
+   lock (separate):
+    <I:8[8:3], 4> <N, 4>
+   address access (separate):
+    <X:6:7, ?> <Y:6:10, ?>
+   no promoted scalar (separate):
+    <P[0]:{12:17|6:14}, 4> <X:6:7, ?> <Y:6:10, ?>
+   direct access (separate):
+    <*A:5, ?> <A:5, 8> <I:8[8:3], 4> <N, 4> <P:6, 8> <P[0]:{12:17|6:14}, 4> <X:6:7, ?> <Y:6:10, ?>

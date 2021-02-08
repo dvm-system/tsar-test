@@ -1,0 +1,56 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:2:3
+   private:
+    <I:3[3:5], 4> | <I:5[5:5], 4>
+   induction:
+    <J:2[2:3], 4>:[Int,0,10,1]
+   reduction:
+    <S:1, 8>:mult
+   lock:
+    <J:2[2:3], 4>
+   header access:
+    <J:2[2:3], 4>
+   explicit access:
+    <I:3[3:5], 4> | <I:5[5:5], 4> | <J:2[2:3], 4> | <S:1, 8>
+   explicit access (separate):
+    <I:3[3:5], 4> <I:5[5:5], 4> <J:2[2:3], 4> <S:1, 8>
+   lock (separate):
+    <J:2[2:3], 4>
+   direct access (separate):
+    <I:3[3:5], 4> <I:5[5:5], 4> <J:2[2:3], 4> <S:1, 8>
+  loop at depth 2 main.c:5:5
+    induction:
+     <I:5[5:5], 4>:[Int,0,10,1]
+    reduction:
+     <S:1, 8>:mult
+    lock:
+     <I:5[5:5], 4>
+    header access:
+     <I:5[5:5], 4>
+    explicit access:
+     <I:5[5:5], 4> | <S:1, 8>
+    explicit access (separate):
+     <I:5[5:5], 4> <S:1, 8>
+    lock (separate):
+     <I:5[5:5], 4>
+    direct access (separate):
+     <I:5[5:5], 4> <S:1, 8>
+  loop at depth 2 main.c:3:5
+    induction:
+     <I:3[3:5], 4>:[Int,0,10,1]
+    reduction:
+     <S:1, 8>:mult
+    read only:
+     <J:2[2:3], 4>
+    lock:
+     <I:3[3:5], 4>
+    header access:
+     <I:3[3:5], 4>
+    explicit access:
+     <I:3[3:5], 4> | <J:2[2:3], 4> | <S:1, 8>
+    explicit access (separate):
+     <I:3[3:5], 4> <J:2[2:3], 4> <S:1, 8>
+    lock (separate):
+     <I:3[3:5], 4>
+    direct access (separate):
+     <I:3[3:5], 4> <J:2[2:3], 4> <S:1, 8>

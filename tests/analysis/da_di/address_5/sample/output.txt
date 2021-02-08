@@ -1,0 +1,28 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'bar':
+ loop at depth 1 main.c:7:3
+   output:
+    <*P:{9:10|5:8}, ?> <P:5:8, 8> exec():9:5 init():8:5
+   anti:
+    <*P:{9:10|5:8}, ?> <P:5:8, 8> exec():9:5 init():8:5
+   flow:
+    <*P:{9:10|5:8}, ?> <P:5:8, 8> exec():9:5 init():8:5
+   induction:
+    <I:7[7:3], 4>:[Int,0,10,1]
+   lock:
+    <*P:{9:10|5:8}, ?> <P:5:8, 8> exec():9:5 init():8:5 | <I:7[7:3], 4>
+   header access:
+    <I:7[7:3], 4>
+   explicit access:
+    <*P:{9:10|5:8}, ?> <P:5:8, 8> exec():9:5 init():8:5 | <I:7[7:3], 4>
+   address access:
+    <*P:{9:10|5:8}, ?> <P:5:8, 8> exec():9:5 init():8:5
+   explicit access (separate):
+    <*P:{9:10|5:8}, ?> <I:7[7:3], 4> <P:5:8, 8> exec():9:5 init():8:5
+   lock (separate):
+    <*P:{9:10|5:8}, ?> <I:7[7:3], 4> <P:5:8, 8>
+   address access (separate):
+    <P:5:8, 8> exec():9:5 init():8:5
+   no promoted scalar (separate):
+    <*P:{9:10|5:8}, ?> <P:5:8, 8>
+   direct access (separate):
+    <*P:{9:10|5:8}, ?> <I:7[7:3], 4> <P:5:8, 8> exec():9:5 init():8:5

@@ -1,0 +1,26 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'test':
+ loop at depth 1 main.c:2:5
+   private:
+    <b:3:13, 12>
+   output:
+    <a[0]:1, 4> <sapfor.var, 12>
+   anti:
+    <a[0]:1, 4> <sapfor.var, 12>
+   flow:
+    <a[0]:1, 4> <sapfor.var, 12>
+   induction:
+    <j:2[2:5], 4>:[Int,0,2,1]
+   read only:
+    <a:1, 8>
+   lock:
+    <j:2[2:5], 4>
+   header access:
+    <j:2[2:5], 4>
+   explicit access:
+    <a:1, 8> | <a[0]:1, 4> <sapfor.var, 12> | <b:3:13, 12> | <j:2[2:5], 4>
+   explicit access (separate):
+    <a:1, 8> <a[0]:1, 4> <b:3:13, 12> <j:2[2:5], 4> <sapfor.var, 12>
+   lock (separate):
+    <j:2[2:5], 4>
+   direct access (separate):
+    <a:1, 8> <a[0]:1, 4> <b:3:13, 12> <j:2[2:5], 4> <sapfor.var, 12>

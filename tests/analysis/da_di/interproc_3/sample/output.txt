@@ -1,0 +1,33 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+Printing analysis 'Dependency Analysis (Metadata)' for function 'bar':
+ loop at depth 1 main.c:11:3
+   first private:
+    <X[0].Y[0]:{6:15|9}, 4>
+   second to last private:
+    <X[0].Y[0]:{6:15|9}, 4>
+   output:
+    <*A:9, ?> <*X:9, ?> <*X:{6:15|9}, 8> foo():14:12
+   anti:
+    <*A:9, ?> <*X:9, ?> <*X:{6:15|9}, 8> foo():14:12
+   flow:
+    <*A:9, ?> <*X:9, ?> <*X:{6:15|9}, 8> foo():14:12
+   induction:
+    <I:11[11:3], 4>:[Int,0,,1]
+   read only:
+    <A:9, 8> | <N:9, 4> | <X:9, 8>
+   redundant:
+    <*A:9, ?> <*X:9, ?> <*X:{6:15|9}, 8> foo():14:12
+   lock:
+    <I:11[11:3], 4> | <N:9, 4>
+   header access:
+    <I:11[11:3], 4> | <N:9, 4>
+   explicit access:
+    <*A:9, ?> <*X:9, ?> <*X:{6:15|9}, 8> foo():14:12 | <A:9, 8> | <I:11[11:3], 4> | <N:9, 4> | <X:9, 8> | <X[0].Y[0]:{6:15|9}, 4>
+   explicit access (separate):
+    <*X:9, ?> <*X:{6:15|9}, 8> <A:9, 8> <I:11[11:3], 4> <N:9, 4> <X:9, 8> <X[0].Y[0]:{6:15|9}, 4> foo():14:12
+   redundant (separate):
+    <*X:9, ?> foo():14:12
+   lock (separate):
+    <I:11[11:3], 4> <N:9, 4>
+   direct access (separate):
+    <*A:9, ?> <*X:9, ?> <A:9, 8> <I:11[11:3], 4> <N:9, 4> <X:9, 8> foo():14:12

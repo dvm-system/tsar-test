@@ -1,0 +1,30 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:5:3
+   output:
+    <A, 40> <B, 44> bar():7:7
+   anti:
+    <A, 40> <B, 44> bar():7:7
+   flow:
+    <A, 40> <B, 44>:[1:1] bar():7:7
+   induction:
+    <I:5[5:3], 4>:[Int,0,10,1]
+   redundant:
+    <A, 40> <B, 44> bar():7:7
+   lock:
+    <I:5[5:3], 4>
+   header access:
+    <I:5[5:3], 4>
+   explicit access:
+    <A, 40> <B, 44> bar():7:7 | <I:5[5:3], 4>
+   address access:
+    <A, 40> <B, 44> bar():7:7
+   explicit access (separate):
+    <I:5[5:3], 4> bar():7:7
+   redundant (separate):
+    bar():7:7
+   lock (separate):
+    <I:5[5:3], 4>
+   address access (separate):
+    bar():7:7
+   direct access (separate):
+    <A, 40> <B, 44> <I:5[5:3], 4> bar():7:7

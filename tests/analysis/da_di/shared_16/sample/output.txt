@@ -1,0 +1,45 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:5:3
+   private:
+    <J:4, 4>
+   output:
+    <*U:3, ?> <IEnd, 4> <JEnd, 4> <JStart, 4>
+   anti:
+    <*U:3, ?> <IEnd, 4> <JEnd, 4> <JStart, 4>
+   flow:
+    <*U:3, ?> <IEnd, 4> <JEnd, 4> <JStart, 4>
+   induction:
+    <I:5[5:3], 4>:[Int,,,1]
+   read only:
+    <U:3, 8>
+   lock:
+    <*U:3, ?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:5[5:3], 4>
+   header access:
+    <*U:3, ?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:5[5:3], 4>
+   explicit access:
+    <*U:3, ?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:5[5:3], 4> | <J:4, 4> | <U:3, 8>
+   explicit access (separate):
+    <I:5[5:3], 4> <IEnd, 4> <J:4, 4> <JEnd, 4> <JStart, 4> <U:3, 8>
+   lock (separate):
+    <I:5[5:3], 4> <IEnd, 4>
+   direct access (separate):
+    <*U:3, ?> <I:5[5:3], 4> <IEnd, 4> <J:4, 4> <JEnd, 4> <JStart, 4> <U:3, 8>
+  loop at depth 2 main.c:7:5
+    shared:
+     <*U:3, ?> <JEnd, 4>
+    induction:
+     <J:4, 4>:[Int,,,1]
+    read only:
+     <I:5[5:3], 4> | <U:3, 8>
+    lock:
+     <*U:3, ?> <JEnd, 4> | <J:4, 4>
+    header access:
+     <*U:3, ?> <JEnd, 4> | <J:4, 4>
+    explicit access:
+     <*U:3, ?> <JEnd, 4> | <I:5[5:3], 4> | <J:4, 4> | <U:3, 8>
+    explicit access (separate):
+     <I:5[5:3], 4> <J:4, 4> <JEnd, 4> <U:3, 8>
+    lock (separate):
+     <J:4, 4> <JEnd, 4>
+    direct access (separate):
+     <*U:3, ?> <I:5[5:3], 4> <J:4, 4> <JEnd, 4> <U:3, 8>

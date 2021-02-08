@@ -1,0 +1,39 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:4:3
+   private:
+    <J:5[5:5], 4>
+   flow:
+    <U, 80000>:[1:1,0:0]
+   induction:
+    <I:4[4:3], 4>:[Int,1,100,1]
+   lock:
+    <I:4[4:3], 4>
+   header access:
+    <I:4[4:3], 4>
+   explicit access:
+    <I:4[4:3], 4> | <J:5[5:5], 4>
+   explicit access (separate):
+    <I:4[4:3], 4> <J:5[5:5], 4>
+   lock (separate):
+    <I:4[4:3], 4>
+   direct access (separate):
+    <I:4[4:3], 4> <J:5[5:5], 4> <U, 80000>
+  loop at depth 2 main.c:5:5
+    shared:
+     <U, 80000>
+    induction:
+     <J:5[5:5], 4>:[Int,0,99,1]
+    read only:
+     <I:4[4:3], 4>
+    lock:
+     <J:5[5:5], 4>
+    header access:
+     <J:5[5:5], 4>
+    explicit access:
+     <I:4[4:3], 4> | <J:5[5:5], 4>
+    explicit access (separate):
+     <I:4[4:3], 4> <J:5[5:5], 4>
+    lock (separate):
+     <J:5[5:5], 4>
+    direct access (separate):
+     <I:4[4:3], 4> <J:5[5:5], 4> <U, 80000>

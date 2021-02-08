@@ -1,0 +1,80 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'bar':
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:14:3
+   shared:
+    <A, 400000>
+   private:
+    <J:15[15:5], 4> | <J:17[17:5], 4> | <M:18[18:7], 4>
+   induction:
+    <I:14[14:3], 4>:[Int,0,100,1]
+   lock:
+    <I:14[14:3], 4>
+   header access:
+    <I:14[14:3], 4>
+   explicit access:
+    <I:14[14:3], 4> | <J:15[15:5], 4> | <J:17[17:5], 4> | <M:18[18:7], 4>
+   explicit access (separate):
+    <I:14[14:3], 4> <J:15[15:5], 4> <J:17[17:5], 4> <M:18[18:7], 4>
+   lock (separate):
+    <I:14[14:3], 4>
+   direct access (separate):
+    <A, 400000> <I:14[14:3], 4> <J:15[15:5], 4> <J:17[17:5], 4> <M:18[18:7], 4>
+  loop at depth 2 main.c:17:5
+    private:
+     <M:18[18:7], 4>
+    anti:
+     <A, 400000>:[1:1,0:0]
+    induction:
+     <J:17[17:5], 4>:[Int,0,99,1]
+    read only:
+     <I:14[14:3], 4>
+    lock:
+     <J:17[17:5], 4>
+    header access:
+     <J:17[17:5], 4>
+    explicit access:
+     <I:14[14:3], 4> | <J:17[17:5], 4> | <M:18[18:7], 4>
+    explicit access (separate):
+     <I:14[14:3], 4> <J:17[17:5], 4> <M:18[18:7], 4>
+    lock (separate):
+     <J:17[17:5], 4>
+    direct access (separate):
+     <A, 400000> <I:14[14:3], 4> <J:17[17:5], 4> <M:18[18:7], 4>
+   loop at depth 3 main.c:18:7
+     shared:
+      <A, 400000>
+     induction:
+      <M:18[18:7], 4>:[Int,0,5,1]
+     read only:
+      <I:14[14:3], 4> | <J:17[17:5], 4>
+     lock:
+      <M:18[18:7], 4>
+     header access:
+      <M:18[18:7], 4>
+     explicit access:
+      <I:14[14:3], 4> | <J:17[17:5], 4> | <M:18[18:7], 4>
+     explicit access (separate):
+      <I:14[14:3], 4> <J:17[17:5], 4> <M:18[18:7], 4>
+     lock (separate):
+      <M:18[18:7], 4>
+     direct access (separate):
+      <A, 400000> <I:14[14:3], 4> <J:17[17:5], 4> <M:18[18:7], 4>
+  loop at depth 2 main.c:15:5
+    flow:
+     <A, 400000>:[1:1]
+    induction:
+     <J:15[15:5], 4>:[Int,1,100,1]
+    read only:
+     <I:14[14:3], 4>
+    lock:
+     <J:15[15:5], 4>
+    header access:
+     <J:15[15:5], 4>
+    explicit access:
+     <I:14[14:3], 4> | <J:15[15:5], 4>
+    explicit access (separate):
+     <I:14[14:3], 4> <J:15[15:5], 4>
+    lock (separate):
+     <J:15[15:5], 4>
+    direct access (separate):
+     <A, 400000> <I:14[14:3], 4> <J:15[15:5], 4>

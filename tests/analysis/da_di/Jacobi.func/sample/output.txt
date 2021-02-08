@@ -1,0 +1,180 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'init':
+ loop at depth 1 main.c:17:3
+   shared:
+    <*A:16, ?> | <*B:16, ?>
+   first private:
+    <*A:16, ?> | <*B:16, ?>
+   dynamic private:
+    <*A:16, ?> | <*B:16, ?>
+   private:
+    <J:18[18:5], 4>
+   induction:
+    <I:17[17:3], 4>:[Int,0,,1]
+   read only:
+    <A:16, 8> | <B:16, 8> | <L:16, 4>
+   lock:
+    <I:17[17:3], 4> | <L:16, 4>
+   header access:
+    <I:17[17:3], 4> | <L:16, 4>
+   explicit access:
+    <A:16, 8> | <B:16, 8> | <I:17[17:3], 4> | <J:18[18:5], 4> | <L:16, 4>
+   explicit access (separate):
+    <A:16, 8> <B:16, 8> <I:17[17:3], 4> <J:18[18:5], 4> <L:16, 4>
+   lock (separate):
+    <I:17[17:3], 4> <L:16, 4>
+   direct access (separate):
+    <*A:16, ?> <*B:16, ?> <A:16, 8> <B:16, 8> <I:17[17:3], 4> <J:18[18:5], 4> <L:16, 4>
+  loop at depth 2 main.c:18:5
+    shared:
+     <*A:16, ?> | <*B:16, ?>
+    first private:
+     <*A:16, ?> | <*B:16, ?>
+    dynamic private:
+     <*A:16, ?> | <*B:16, ?>
+    induction:
+     <J:18[18:5], 4>:[Int,0,,1]
+    read only:
+     <A:16, 8> | <B:16, 8> | <I:17[17:3], 4> | <L:16, 4>
+    lock:
+     <J:18[18:5], 4> | <L:16, 4>
+    header access:
+     <J:18[18:5], 4> | <L:16, 4>
+    explicit access:
+     <A:16, 8> | <B:16, 8> | <I:17[17:3], 4> | <J:18[18:5], 4> | <L:16, 4>
+    explicit access (separate):
+     <A:16, 8> <B:16, 8> <I:17[17:3], 4> <J:18[18:5], 4> <L:16, 4>
+    lock (separate):
+     <J:18[18:5], 4> <L:16, 4>
+    direct access (separate):
+     <*A:16, ?> <*B:16, ?> <A:16, 8> <B:16, 8> <I:17[17:3], 4> <J:18[18:5], 4> <L:16, 4>
+Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
+ loop at depth 1 main.c:29:3
+   shared:
+    <*A:27, ?>
+   private:
+    <J:30[30:5], 4> | <Tmp:31[30:37], 8>
+   induction:
+    <I:29[29:3], 4>:[Int,1,,1]
+   reduction:
+    <Eps:28, 8>:max
+   read only:
+    <*B:27, ?> | <A:27, 8> | <B:27, 8> | <L:27, 4>
+   lock:
+    <I:29[29:3], 4> | <L:27, 4>
+   header access:
+    <I:29[29:3], 4> | <L:27, 4>
+   explicit access:
+    <A:27, 8> | <B:27, 8> | <Eps:28, 8> | <I:29[29:3], 4> | <J:30[30:5], 4> | <L:27, 4> | <Tmp:31[30:37], 8>
+   explicit access (separate):
+    <A:27, 8> <B:27, 8> <Eps:28, 8> <I:29[29:3], 4> <J:30[30:5], 4> <L:27, 4> <Tmp:31[30:37], 8>
+   lock (separate):
+    <I:29[29:3], 4> <L:27, 4>
+   direct access (separate):
+    <*A:27, ?> <*B:27, ?> <A:27, 8> <B:27, 8> <Eps:28, 8> <I:29[29:3], 4> <J:30[30:5], 4> <L:27, 4> <Tmp:31[30:37], 8>
+  loop at depth 2 main.c:30:5
+    shared:
+     <*A:27, ?>
+    private:
+     <Tmp:31[30:37], 8>
+    induction:
+     <J:30[30:5], 4>:[Int,1,,1]
+    reduction:
+     <Eps:28, 8>:max
+    read only:
+     <*B:27, ?> | <A:27, 8> | <B:27, 8> | <I:29[29:3], 4> | <L:27, 4>
+    lock:
+     <J:30[30:5], 4> | <L:27, 4>
+    header access:
+     <J:30[30:5], 4> | <L:27, 4>
+    explicit access:
+     <A:27, 8> | <B:27, 8> | <Eps:28, 8> | <I:29[29:3], 4> | <J:30[30:5], 4> | <L:27, 4> | <Tmp:31[30:37], 8>
+    explicit access (separate):
+     <A:27, 8> <B:27, 8> <Eps:28, 8> <I:29[29:3], 4> <J:30[30:5], 4> <L:27, 4> <Tmp:31[30:37], 8>
+    lock (separate):
+     <J:30[30:5], 4> <L:27, 4>
+    direct access (separate):
+     <*A:27, ?> <*B:27, ?> <A:27, 8> <B:27, 8> <Eps:28, 8> <I:29[29:3], 4> <J:30[30:5], 4> <L:27, 4> <Tmp:31[30:37], 8>
+ loop at depth 1 main.c:35:3
+   shared:
+    <*B:27, ?>
+   first private:
+    <*B:27, ?>
+   dynamic private:
+    <*B:27, ?>
+   private:
+    <J:36[36:5], 4>
+   induction:
+    <I:35[35:3], 4>:[Int,1,,1]
+   read only:
+    <*A:27, ?> | <A:27, 8> | <B:27, 8> | <L:27, 4>
+   lock:
+    <I:35[35:3], 4> | <L:27, 4>
+   header access:
+    <I:35[35:3], 4> | <L:27, 4>
+   explicit access:
+    <A:27, 8> | <B:27, 8> | <I:35[35:3], 4> | <J:36[36:5], 4> | <L:27, 4>
+   explicit access (separate):
+    <A:27, 8> <B:27, 8> <I:35[35:3], 4> <J:36[36:5], 4> <L:27, 4>
+   lock (separate):
+    <I:35[35:3], 4> <L:27, 4>
+   direct access (separate):
+    <*A:27, ?> <*B:27, ?> <A:27, 8> <B:27, 8> <I:35[35:3], 4> <J:36[36:5], 4> <L:27, 4>
+  loop at depth 2 main.c:36:5
+    shared:
+     <*B:27, ?>
+    first private:
+     <*B:27, ?>
+    dynamic private:
+     <*B:27, ?>
+    induction:
+     <J:36[36:5], 4>:[Int,1,,1]
+    read only:
+     <*A:27, ?> | <A:27, 8> | <B:27, 8> | <I:35[35:3], 4> | <L:27, 4>
+    lock:
+     <J:36[36:5], 4> | <L:27, 4>
+    header access:
+     <J:36[36:5], 4> | <L:27, 4>
+    explicit access:
+     <A:27, 8> | <B:27, 8> | <I:35[35:3], 4> | <J:36[36:5], 4> | <L:27, 4>
+    explicit access (separate):
+     <A:27, 8> <B:27, 8> <I:35[35:3], 4> <J:36[36:5], 4> <L:27, 4>
+    lock (separate):
+     <J:36[36:5], 4> <L:27, 4>
+    direct access (separate):
+     <*A:27, ?> <*B:27, ?> <A:27, 8> <B:27, 8> <I:35[35:3], 4> <J:36[36:5], 4> <L:27, 4>
+Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
+ loop at depth 1 main.c:47:3
+   private:
+    <Eps:48[47:39], 8> | <sapfor.var, 4>
+   output:
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> printf():49:5
+   anti:
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> printf():49:5
+   flow:
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> printf():49:5
+   induction:
+    <It:47[47:3], 4>:[Int,1,,1]
+   read only:
+    <A:44, 8> | <B:45, 8> | <ITMAX:43, 4> | <L:42, 4>
+   redundant:
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> iter():48:18 printf():49:5 | <sapfor.var, 4>
+   lock:
+    <ITMAX:43, 4> | <It:47[47:3], 4>
+   header access:
+    <ITMAX:43, 4> | <It:47[47:3], 4>
+   explicit access:
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> printf():49:5 | <A:44, 8> | <B:45, 8> | <Eps:48[47:39], 8> | <ITMAX:43, 4> | <It:47[47:3], 4> | <L:42, 4> | <sapfor.var, 4>
+   address access:
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> iter():48:18 printf():49:5
+   explicit access (separate):
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <A:44, 8> <B:45, 8> <Eps:48[47:39], 8> <ITMAX:43, 4> <It:47[47:3], 4> <L:42, 4> <sapfor.var, 4> printf():49:5
+   redundant (separate):
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <sapfor.var, 4>
+   lock (separate):
+    <ITMAX:43, 4> <It:47[47:3], 4>
+   address access (separate):
+    iter():48:18 printf():49:5
+   direct access (separate):
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <A:44, 8> <B:45, 8> <Eps:48[47:39], 8> <ITMAX:43, 4> <It:47[47:3], 4> <L:42, 4> <sapfor.var, 4> iter():48:18 printf():49:5
+   indirect access (separate):
+    <malloc():44:20,?> <malloc():45:20,?>

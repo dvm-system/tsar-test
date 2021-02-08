@@ -1,4 +1,0 @@
-parallel
-simple_1/tsar:action=init
-simple_2/tsar:action=init
-end_parallel
