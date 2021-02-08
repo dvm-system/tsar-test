@@ -1,0 +1,1 @@
+Printing analysis 'Canonical Form Loop Analysis' for function 'foo':

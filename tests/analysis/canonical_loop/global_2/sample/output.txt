@@ -1,0 +1,3 @@
+Printing analysis 'Canonical Form Loop Analysis' for function 'conj_grad':
+loop at main.c:7:5 is semantically canonical
+loop at main.c:9:7 is semantically canonical

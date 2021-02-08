@@ -1,0 +1,2 @@
+Printing analysis 'Canonical Form Loop Analysis' for function 'foo':
+loop at main.c:3:3 is syntactically canonical
