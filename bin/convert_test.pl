@@ -23,54 +23,138 @@ sub make_test
 {
   my $conf = shift;
   (my $name = $conf) =~ s/\.conf$// or die "$conf is not a task.conf\n";
-  my $tdir = catfile($res_dir, $name);
-  my $src = $name.'.c';
-  -e $src or die "$src does not exit\n";
-  my $dst_src = catfile($tdir, 'main.c');
-  my $dst_tsar = catfile($tdir, 'tsar.conf');
-  make_path($tdir);
-  copy($src, $dst_src) or die "cannot copy file '$src' to '$dst_src'\n";
-  gen_task($conf, $tdir);
+
+  ## read config file ##
+  open my $f, '<', $conf;
+  my @lines = <$f>;
+  close $f;
+
+  mk_task($name, \@lines, $res_dir);
 }
 
-sub gen_task
+sub mk_task
 {
-  my $conf = shift;
-  my $tdir = shift;
+  my ($name, $lines, $res_dir) = @_;
+
   my @required_vars = qw(options);
   my @uniq_vars = (@required_vars, qw(name));
 
   ## parse current task configuration file ##
-  open my $f, '<', $conf;
-  my @lines = <$f>;
-  close $f;
   my %vars;
   my $qr_vars = join '|', @uniq_vars;
-  for (@lines) {
+  for (@$lines) {
     chomp;
     next if /^\s*$/;
     if (/^($qr_vars)/) { $vars{$1} = $_ }
-    elsif ($_ eq q(plugin = TsarPlugin)) {  }
+    elsif ($_ eq q(plugin = TsarPlugin)) {}
     elsif ($_ eq q(sample = $name.c)) {}
     elsif ($_ eq q(run = "$tsar $sample $options")) {}
+    elsif ($_ eq q(run = "$tsar $sample $options | -check-prefix=SAFE")) { goto \&mk_task_safe }
+    elsif ($_ eq q(      "$tsar $sample $options -fignore-redundant-memory=strict | -check-prefix=REDUNDANT")){ goto \&mk_task_redundant }
     else {
-      die "unexpected content in '$conf':\n$_\n"
+      die "unexpected content in '$name.conf':\n$_\n"
     }
   }
-  exists $vars{$_} or die "$conf: '$_' is not set\n" for @required_vars;
+  exists $vars{$_} or die "$name.conf: '$_' is not set\n" for @required_vars;
+
+  my $tdir = catfile($res_dir, $name);
+  copy_src($tdir, {"$name.c" => 'main.c'});
+  gen_task(catfile($tdir, 'tsar.conf'), @vars{qw(name options)});
+}
+
+sub mk_task_safe
+{
+  my ($name, $lines, $res_dir) = @_;
+
+  my @required_vars = qw(options);
+  my @uniq_vars = (@required_vars, qw(name));
+
+  ## parse current task configuration file ##
+  my %vars;
+  my $qr_vars = join '|', @uniq_vars;
+  for (@$lines) {
+    chomp;
+    next if /^\s*$/;
+    if (/^($qr_vars)/) { $vars{$1} = $_ }
+    elsif ($_ eq q(plugin = TsarPlugin)) {}
+    elsif ($_ eq q(sample = $name.c)) {}
+    elsif ($_ eq q(run = "$tsar $sample $options | -check-prefix=SAFE")) {}
+    else {
+      die "unexpected content in '$name.conf':\n$_\n"
+    }
+  }
+  exists $vars{$_} or die "$name.conf: '$_' is not set\n" for @required_vars;
+
+  my $tdir = catfile($res_dir, $name);
+  (my $src_name = $name) =~ s/\.safe$// or die "unexpeced name '$name' for the SAFE test";
+  copy_src($tdir, {"$src_name.c" => 'main.c'});
+  gen_task(catfile($tdir, 'tsar.conf'), @vars{qw(name options)});
+}
+
+sub mk_task_redundant
+{
+  my ($name, $lines, $res_dir) = @_;
+
+  my @required_vars = qw(options);
+  my @uniq_vars = (@required_vars, qw(name));
+
+  ## parse current task configuration file ##
+  my %vars;
+  my $qr_vars = join '|', @uniq_vars;
+  my @run;
+  for (@$lines) {
+    chomp;
+    next if /^\s*$/;
+    if (/^($qr_vars)/) { $vars{$1} = $_ }
+    elsif ($_ eq q(plugin = TsarPlugin)) {}
+    elsif ($_ eq q(sample = $name.c)) {}
+    elsif ($_ eq q(run = "$tsar $sample $options")) {push @run, {name_suffix => '', run => $_, add_opts => ''}}
+    elsif ($_ eq q(      "$tsar $sample $options -fignore-redundant-memory=strict | -check-prefix=REDUNDANT")) {
+      push @run, {
+        name_suffix => '-REDUNDANT',
+        run => q(run = "$tsar $sample $options"),
+        add_opts => ' -fignore-redundant-memory=strict',
+      }
+    }
+    else {
+      die "unexpected content in '$name.conf':\n$_\n"
+    }
+  }
+  exists $vars{$_} or die "$name.conf: '$_' is not set\n" for @required_vars;
+
+  for (@run) {
+    my $tdir = catfile($res_dir, $name.$_->{name_suffix});
+    copy_src($tdir, {"$name.c" => 'main.c'});
+    gen_task(catfile($tdir, 'tsar.conf'), $vars{name}, $vars{options}.$_->{add_opts});
+  }
+}
+
+# copy_src($tdir, {'test_name.c' => 'main.c'})
+sub copy_src
+{
+  my ($dir, $src_map) = @_;
+  -e or die "$_ does not exist" for keys %$src_map;
+  make_path($dir);
+  while (my ($src, $dst) = each %$src_map) {
+    $dst = catfile($dir, $dst);
+    copy($src, $dst) or die "cannot copy file '$src' to '$dst'\n";
+  }
+}
+
+sub gen_task
+{
+  my ($conf, $name, $options) = @_;
 
   ## generate new config files ##
-  undef $f;
-  my $new_conf = catfile($tdir, 'tsar.conf');
-  open $f, '>', $new_conf;
+  open my $f, '>', $conf;
   print $f
 'plugin = TsarPlugin
-'.(exists $vars{name} ? $vars{name} : '').'
+'.($name ? $name : '').'
 sources = main.c
 copy = $sources
 sample = $copy output.txt
 clean = $sample
-'.$vars{options}.'
+'.$options.'
 run = "$tsar $sources $options >output.txt 2>&1"
 ';
   close $f;
