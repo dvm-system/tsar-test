@@ -60,6 +60,7 @@ sub mk_task
   my $tdir = catfile($res_dir, $name);
   copy_src($tdir, {"$name.c" => 'main.c'});
   gen_task(catfile($tdir, 'tsar.conf'), @vars{qw(name options)});
+  mk_sample("$name.c", catfile($tdir, 'sample'), 'CHECK');
 }
 
 sub mk_task_safe
@@ -82,6 +83,7 @@ sub mk_task_safe
     elsif (/^(?:\s*run\s*=)?\s*\"\$tsar \$sample \$options( [^|]*?)\s*\| -check-prefix=(\S+)\s*"$/) {
       push @run, {
         name_suffix => "-$2",
+        check_prefix => $2,
         run => q(run = "$tsar $sample $options"),
         add_opts => $1 ? " $1" : '',
       }
@@ -97,6 +99,7 @@ sub mk_task_safe
     my $tdir = catfile($res_dir, $name.$_->{name_suffix});
     copy_src($tdir, {"$src_name.c" => 'main.c'});
     gen_task(catfile($tdir, 'tsar.conf'), $vars{name}, $vars{options}.$_->{add_opts});
+    mk_sample("$src_name.c", catfile($tdir, 'sample'), $_->{check_prefix}||'CHECK');
   }
 }
 
@@ -121,6 +124,7 @@ sub mk_task_redundant
     elsif (/^\s*\"\$tsar \$sample \$options( [^|]*?)\s*\| -check-prefix=(\S+)\s*"$/) {
       push @run, {
         name_suffix => "-$2",
+        check_prefix => $2,
         run => q(run = "$tsar $sample $options"),
         add_opts => $1,
       }
@@ -135,6 +139,7 @@ sub mk_task_redundant
     my $tdir = catfile($res_dir, $name.$_->{name_suffix});
     copy_src($tdir, {"$name.c" => 'main.c'});
     gen_task(catfile($tdir, 'tsar.conf'), $vars{name}, $vars{options}.$_->{add_opts});
+    mk_sample("$name.c", catfile($tdir, 'sample'), $_->{check_prefix}||'CHECK');
   }
 }
 
@@ -148,6 +153,21 @@ sub copy_src
     $dst = catfile($dir, $dst);
     copy($src, $dst) or die "cannot copy file '$src' to '$dst'\n";
   }
+}
+
+sub mk_sample
+{
+  my ($src, $dst_dir, $check_prefix) = @_;
+  copy_src($dst_dir, {$src => 'main.c'});
+  open my $f, '<', $src;
+  my @lines = map {s/$src/main.c/g; $_} map {s~^(?://|!|C)$check_prefix: ~~ ? $_ : ()} <$f>;
+  close $f;
+
+  my $fname = catfile($dst_dir, 'output.txt');
+  undef $f;
+  open $f, '>', $fname;
+  print $f @lines;
+  close $f;
 }
 
 sub gen_task
