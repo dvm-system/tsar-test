@@ -72,23 +72,32 @@ sub mk_task_safe
   ## parse current task configuration file ##
   my %vars;
   my $qr_vars = join '|', @uniq_vars;
+  my @run;
   for (@$lines) {
     chomp;
     next if /^\s*$/;
     if (/^($qr_vars)/) { $vars{$1} = $_ }
     elsif ($_ eq q(plugin = TsarPlugin)) {}
     elsif ($_ eq q(sample = $name.c)) {}
-    elsif ($_ eq q(run = "$tsar $sample $options | -check-prefix=SAFE")) {}
+    elsif (/^(?:\s*run\s*=)?\s*\"\$tsar \$sample \$options( [^|]*?)\s*\| -check-prefix=(\S+)\s*"$/) {
+      push @run, {
+        name_suffix => "-$2",
+        run => q(run = "$tsar $sample $options"),
+        add_opts => $1 ? " $1" : '',
+      }
+    }
     else {
       die "unexpected content in '$name.conf':\n$_\n"
     }
   }
   exists $vars{$_} or die "$name.conf: '$_' is not set\n" for @required_vars;
 
-  my $tdir = catfile($res_dir, $name);
   (my $src_name = $name) =~ s/\.safe$// or die "unexpeced name '$name' for the SAFE test";
-  copy_src($tdir, {"$src_name.c" => 'main.c'});
-  gen_task(catfile($tdir, 'tsar.conf'), @vars{qw(name options)});
+  for (@run) {
+    my $tdir = catfile($res_dir, $name.$_->{name_suffix});
+    copy_src($tdir, {"$src_name.c" => 'main.c'});
+    gen_task(catfile($tdir, 'tsar.conf'), $vars{name}, $vars{options}.$_->{add_opts});
+  }
 }
 
 sub mk_task_redundant
@@ -109,11 +118,11 @@ sub mk_task_redundant
     elsif ($_ eq q(plugin = TsarPlugin)) {}
     elsif ($_ eq q(sample = $name.c)) {}
     elsif ($_ eq q(run = "$tsar $sample $options")) {push @run, {name_suffix => '', run => $_, add_opts => ''}}
-    elsif ($_ eq q(      "$tsar $sample $options -fignore-redundant-memory=strict | -check-prefix=REDUNDANT")) {
+    elsif (/^\s*\"\$tsar \$sample \$options( [^|]*?)\s*\| -check-prefix=(\S+)\s*"$/) {
       push @run, {
-        name_suffix => '-REDUNDANT',
+        name_suffix => "-$2",
         run => q(run = "$tsar $sample $options"),
-        add_opts => ' -fignore-redundant-memory=strict',
+        add_opts => $1,
       }
     }
     else {
