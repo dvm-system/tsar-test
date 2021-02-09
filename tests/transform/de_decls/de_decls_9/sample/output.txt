@@ -1,0 +1,19 @@
+main.c:6:16: warning: disable dead code elimination
+        int a = 0, b, c = foo_9();
+                      ^
+main.c:6:20: warning: side effect prevent dead code elimination
+        int a = 0, b, c = foo_9();
+                          ^
+main.c:6:6: warning: disable dead code elimination
+        int a = 0, b, c = foo_9();
+            ^
+main.c:6:16: warning: live declaration prevent dead code elimination
+        int a = 0, b, c = foo_9();
+                      ^
+main.c:6:13: warning: disable dead code elimination
+        int a = 0, b, c = foo_9();
+                   ^
+main.c:6:16: warning: live declaration prevent dead code elimination
+        int a = 0, b, c = foo_9();
+                      ^
+6 warnings generated.

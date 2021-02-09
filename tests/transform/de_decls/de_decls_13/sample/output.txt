@@ -1,0 +1,7 @@
+main.c:4:16: warning: disable dead code elimination
+        for(int I = 0,j = 0; I < n; ++I) {
+                      ^
+main.c:4:10: warning: live declaration prevent dead code elimination
+        for(int I = 0,j = 0; I < n; ++I) {
+                ^
+2 warnings generated.

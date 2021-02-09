@@ -1,0 +1,28 @@
+main.c:4:6: warning: disable dead code elimination
+        int a, b, c = macro_26;
+            ^
+main.c:4:16: warning: macro prevent dead code elimination
+        int a, b, c = macro_26;
+                      ^
+main.c:1:18: note: expanded from macro 'macro_26'
+#define macro_26 45
+                 ^
+main.c:4:9: warning: disable dead code elimination
+        int a, b, c = macro_26;
+               ^
+main.c:4:16: warning: macro prevent dead code elimination
+        int a, b, c = macro_26;
+                      ^
+main.c:1:18: note: expanded from macro 'macro_26'
+#define macro_26 45
+                 ^
+main.c:4:12: warning: disable dead code elimination
+        int a, b, c = macro_26;
+                  ^
+main.c:4:16: warning: macro prevent dead code elimination
+        int a, b, c = macro_26;
+                      ^
+main.c:1:18: note: expanded from macro 'macro_26'
+#define macro_26 45
+                 ^
+6 warnings generated.

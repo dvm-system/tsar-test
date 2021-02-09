@@ -1,0 +1,7 @@
+main.c:6:6: warning: disable dead code elimination
+        int a = (1 + 4 + (78 * (9 / (foo_21()))));
+            ^
+main.c:6:31: warning: side effect prevent dead code elimination
+        int a = (1 + 4 + (78 * (9 / (foo_21()))));
+                                     ^
+2 warnings generated.

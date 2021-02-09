@@ -1,0 +1,7 @@
+main.c:3:7: warning: disable dead code elimination
+  int Y = (X = 5);
+      ^
+main.c:3:12: warning: side effect prevent dead code elimination
+  int Y = (X = 5);
+           ^
+2 warnings generated.

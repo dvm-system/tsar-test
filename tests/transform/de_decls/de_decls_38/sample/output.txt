@@ -1,0 +1,13 @@
+main.c:4:7: warning: disable dead code elimination
+                int a = 9;
+                    ^
+main.c:10:5: warning: macro prevent dead code elimination
+                                #endif
+                                ^
+main.c:6:8: warning: disable dead code elimination
+                        int b;
+                            ^
+main.c:10:5: warning: macro prevent dead code elimination
+                                #endif
+                                ^
+4 warnings generated.

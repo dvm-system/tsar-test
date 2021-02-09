@@ -1,0 +1,7 @@
+main.c:3:9: warning: disable dead code elimination
+        int a, b, c;
+               ^
+main.c:3:12: warning: live declaration prevent dead code elimination
+        int a, b, c;
+                  ^
+2 warnings generated.

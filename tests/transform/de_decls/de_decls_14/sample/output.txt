@@ -1,0 +1,13 @@
+main.c:7:17: warning: disable dead code elimination
+        for(int I = 0, p = foo_14(); I < n; ++I) {
+                       ^
+main.c:7:21: warning: side effect prevent dead code elimination
+        for(int I = 0, p = foo_14(); I < n; ++I) {
+                           ^
+main.c:9:12: warning: disable dead code elimination
+                for (int j = foo_14(), J = 0; J < n; ++J) {
+                         ^
+main.c:9:16: warning: side effect prevent dead code elimination
+                for (int j = foo_14(), J = 0; J < n; ++J) {
+                             ^
+4 warnings generated.

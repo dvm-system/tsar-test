@@ -1,0 +1,28 @@
+main.c:5:7: warning: disable dead code elimination
+                int i = 0;
+                    ^
+main.c:13:8: warning: macro prevent dead code elimination
+                        o = macro_35;
+                            ^
+main.c:1:18: note: expanded from macro 'macro_35'
+#define macro_35 153
+                 ^
+main.c:7:8: warning: disable dead code elimination
+                        int k;
+                            ^
+main.c:8:8: warning: macro prevent dead code elimination
+                        i = macro_35;
+                            ^
+main.c:1:18: note: expanded from macro 'macro_35'
+#define macro_35 153
+                 ^
+main.c:12:8: warning: disable dead code elimination
+                        int o;
+                            ^
+main.c:13:8: warning: macro prevent dead code elimination
+                        o = macro_35;
+                            ^
+main.c:1:18: note: expanded from macro 'macro_35'
+#define macro_35 153
+                 ^
+6 warnings generated.
