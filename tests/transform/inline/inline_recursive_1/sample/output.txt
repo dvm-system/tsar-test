@@ -1,0 +1,7 @@
+main.c:3:5: warning: disable inline expansion of recursive function
+int f2() {
+    ^
+main.c:8:5: warning: disable inline expansion of recursive function
+int f1() {
+    ^
+2 warnings generated.

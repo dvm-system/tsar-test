@@ -1,0 +1,4 @@
+main.c:14:24: warning: unexpected directive ignored
+        #pragma spf transform inline
+                              ^
+1 warning generated.

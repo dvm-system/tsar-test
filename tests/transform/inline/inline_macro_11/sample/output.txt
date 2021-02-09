@@ -1,0 +1,10 @@
+main.c:12:10: warning: disable inline expansion
+  return f() + M;
+         ^
+main.c:12:16: note: macro prevent inlining
+  return f() + M;
+               ^
+main.c:1:9: note: expanded from here
+#define M 5
+        ^
+1 warning generated.

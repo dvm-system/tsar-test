@@ -1,0 +1,4 @@
+main.c:11:10: warning: disable inline expansion for function without definition
+  return f(&X) + g(&X);
+         ^
+1 warning generated.

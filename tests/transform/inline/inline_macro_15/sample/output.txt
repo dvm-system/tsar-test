@@ -1,0 +1,10 @@
+main.c:3:6: warning: disable inline expansion
+void f() {
+     ^
+main.c:4:7: note: macro prevent inlining
+  int ARRAY[10];
+      ^
+main.c:1:15: note: expanded from macro 'ARRAY'
+#define ARRAY A
+              ^
+1 warning generated.

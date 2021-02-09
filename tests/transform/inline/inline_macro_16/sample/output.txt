@@ -1,0 +1,10 @@
+main.c:3:6: warning: disable inline expansion
+void f() {
+     ^
+main.c:4:7: note: macro prevent inlining
+  int C * A;
+      ^
+main.c:1:9: note: expanded from here
+#define C const
+        ^
+1 warning generated.

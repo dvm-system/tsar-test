@@ -1,0 +1,4 @@
+main.c:7:18: warning: disable inline expansion in comma operator
+  return *x = 1, f(x), *x;
+                 ^
+1 warning generated.

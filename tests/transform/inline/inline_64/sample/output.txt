@@ -1,0 +1,4 @@
+main.c:9:8: warning: disable inline expansion in conditional expression of loop
+        while(foo(x) >0){
+              ^
+1 warning generated.

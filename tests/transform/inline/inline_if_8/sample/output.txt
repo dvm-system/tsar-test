@@ -1,0 +1,6 @@
+main.c:9:3: remark: inline expansion of function call
+  f();
+  ^
+main.c:4:3: remark: remove unreachable code
+  return;
+  ^

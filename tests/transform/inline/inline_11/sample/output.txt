@@ -1,0 +1,10 @@
+main.c:7:3: warning: unable to remove directive in macro
+  INLINE
+  ^
+main.c:3:16: note: expanded from macro 'INLINE'
+#define INLINE _Pragma("spf transform inline")
+               ^
+<scratch space>:2:16: note: expanded from here
+ spf transform inline
+               ^
+1 warning generated.

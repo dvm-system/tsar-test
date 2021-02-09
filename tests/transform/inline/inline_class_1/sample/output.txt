@@ -1,0 +1,2 @@
+warning: inline expansion in C++ sources is not fully supported
+1 warning generated.

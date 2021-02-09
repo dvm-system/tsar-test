@@ -1,0 +1,4 @@
+main.c:11:7: warning: disable inline expansion of unreachable call
+                i = foo();
+                    ^
+1 warning generated.

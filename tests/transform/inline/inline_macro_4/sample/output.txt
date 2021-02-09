@@ -1,0 +1,5 @@
+main.c:8:9: warning: disable inline expansion
+  MACRO(f)
+        ^
+main.c:8:9: note: macro prevent inlining
+1 warning generated.

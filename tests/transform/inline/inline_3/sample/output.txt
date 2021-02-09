@@ -1,0 +1,10 @@
+main.c:9:3: warning: disable inline expansion
+  f();
+  ^
+main.c:1:5: note: hidden external dependence prevents inlining
+int X;
+    ^
+main.c:13:7: note: declaration hides other declaration
+  int X = 5;
+      ^
+1 warning generated.

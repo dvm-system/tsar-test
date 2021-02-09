@@ -1,0 +1,10 @@
+main.c:7:23: warning: unexpected directive ignored
+#pragma spf transform inline
+                      ^
+main.c:8:3: note: no call suitable for inline is found
+  MACRO f();
+  ^
+main.c:3:15: note: expanded from macro 'MACRO'
+#define MACRO x+x;
+              ^
+1 warning generated.

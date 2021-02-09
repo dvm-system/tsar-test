@@ -1,0 +1,7 @@
+main.c:1:6: warning: disable inline expansion
+void f() {
+     ^
+main.c:2:11: note: macro prevent inlining
+  #define M 10
+          ^
+1 warning generated.

@@ -1,0 +1,7 @@
+main.c:5:3: warning: disable inline expansion
+  f();
+  ^
+main.c:11:1: note: number of formal parameters differs from a number of call arguments
+int f(int A) {
+^
+1 warning generated.

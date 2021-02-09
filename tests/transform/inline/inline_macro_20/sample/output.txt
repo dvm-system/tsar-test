@@ -1,0 +1,19 @@
+main.c:14:5: warning: disable inline expansion
+int f() {
+    ^
+main.c:15:12: note: macro prevent inlining
+return Q(E(C));
+           ^
+main.c:5:15: note: expanded from macro 'C'
+#define C B + B
+              ^
+main.c:4:15: note: expanded from macro 'B'
+#define B A + A
+              ^
+main.c:3:11: note: expanded from macro 'A'
+#define A X
+          ^
+inline_macro_20.h:1:16: note: expanded from macro 'X'
+   #  define X 10
+               ^
+1 warning generated.

@@ -1,0 +1,7 @@
+main.c:9:23: warning: unexpected directive ignored
+#pragma spf transform inline
+                      ^
+main.c:10:2: note: no call suitable for inline is found
+        for(i = 0; i < 32; i++){
+        ^
+1 warning generated.

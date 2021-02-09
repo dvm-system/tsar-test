@@ -1,0 +1,4 @@
+main.c:5:12: warning: disable inline expansion in right hand side of logical operator
+  if (X && f())
+           ^
+1 warning generated.

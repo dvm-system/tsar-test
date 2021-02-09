@@ -1,0 +1,7 @@
+main.c:1:5: warning: disable inline expansion
+int f() {
+    ^
+main.c:2:1: note: macro prevent inlining
+#include "inline_macro_25.h"
+^
+1 warning generated.

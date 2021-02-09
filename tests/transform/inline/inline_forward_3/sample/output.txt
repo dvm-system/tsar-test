@@ -1,0 +1,7 @@
+main.c:6:3: warning: disable inline expansion
+  f();
+  ^
+main.c:12:8: note: unresolvable external dependence prevents inlining
+enum { SIZE = 10 };
+       ^
+1 warning generated.

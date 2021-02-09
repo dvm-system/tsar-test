@@ -1,0 +1,11 @@
+main.c:7:3: warning: disable inline expansion
+  CALL;
+  ^
+main.c:1:14: note: expanded from macro 'CALL'
+#define CALL f()
+             ^
+main.c:7:3: note: macro prevent inlining
+main.c:1:14: note: expanded from macro 'CALL'
+#define CALL f()
+             ^
+1 warning generated.

@@ -1,0 +1,4 @@
+main.c:1:5: warning: disable inline expansion of recursive function
+int foo(int a){
+    ^
+1 warning generated.

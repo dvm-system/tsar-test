@@ -1,0 +1,8 @@
+In file included from main.c:4:
+inline_macro_28.h:1:23: warning: unable to remove directive in include
+#pragma spf transform inline
+                      ^
+inline_macro_28.h:2:1: warning: disable inline expansion in header file
+bar();
+^
+2 warnings generated.

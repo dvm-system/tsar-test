@@ -1,0 +1,10 @@
+main.c:3:3: warning: disable inline expansion
+F(f1) 
+  ^
+main.c:3:1: note: macro prevent inlining
+F(f1) 
+^
+main.c:1:26: note: expanded from macro 'F'
+#define F(f_) void f_() {}
+                         ^
+1 warning generated.

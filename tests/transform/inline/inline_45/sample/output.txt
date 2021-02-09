@@ -1,0 +1,7 @@
+main.c:10:23: warning: unexpected directive ignored
+#pragma spf transform inline
+                      ^
+main.c:11:2: note: no call suitable for inline is found
+        if(x > 100)
+        ^
+1 warning generated.

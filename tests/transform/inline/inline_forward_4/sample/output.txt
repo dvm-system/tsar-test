@@ -1,0 +1,7 @@
+main.c:5:10: warning: disable inline expansion
+  return f1();
+         ^
+main.c:8:8: note: unresolvable external dependence prevents inlining
+struct S { int X; };
+       ^
+1 warning generated.

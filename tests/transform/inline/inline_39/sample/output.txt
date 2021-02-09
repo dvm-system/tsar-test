@@ -1,0 +1,4 @@
+main.c:9:26: warning: disable inline expansion in the third section of for-loop
+        for(i = 100; i > 0; i = foo(i)){
+                                ^
+1 warning generated.

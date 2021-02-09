@@ -1,0 +1,7 @@
+main.c:12:35: warning: disable inline expansion in the third section of for-loop
+  for (int I = 0; I < 10; I = I + f());
+                                  ^
+main.c:17:23: warning: disable inline expansion in conditional expression of loop
+  for (int I = 0; I < f(); ++I);
+                      ^
+2 warnings generated.

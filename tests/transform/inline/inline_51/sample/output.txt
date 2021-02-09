@@ -1,0 +1,4 @@
+main.c:18:17: warning: disable inline expansion in conditional operator
+                        y = (i != 0)?foo():0;
+                                     ^
+1 warning generated.

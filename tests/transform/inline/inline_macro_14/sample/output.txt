@@ -1,0 +1,10 @@
+main.c:3:8: warning: disable inline expansion
+char * f() {
+       ^
+main.c:4:14: note: macro prevent inlining
+  return "a" M
+             ^
+main.c:1:11: note: expanded from macro 'M'
+#define M "b"
+          ^
+1 warning generated.

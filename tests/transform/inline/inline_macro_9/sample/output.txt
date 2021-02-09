@@ -1,0 +1,20 @@
+main.c:10:6: warning: disable inline expansion
+  f2(MACRO);
+     ^
+main.c:1:15: note: expanded from macro 'MACRO'
+#define MACRO f(), 5
+              ^
+main.c:10:6: note: macro prevent inlining
+main.c:1:15: note: expanded from macro 'MACRO'
+#define MACRO f(), 5
+              ^
+main.c:10:3: warning: disable inline expansion
+  f2(MACRO);
+  ^
+main.c:10:6: note: macro prevent inlining
+  f2(MACRO);
+     ^
+main.c:1:15: note: expanded from macro 'MACRO'
+#define MACRO f(), 5
+              ^
+2 warnings generated.

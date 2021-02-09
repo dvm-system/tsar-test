@@ -1,0 +1,7 @@
+main.c:2:5: warning: disable inline expansion
+int foo(){
+    ^
+main.c:7:2: note: macro prevent inlining
+        #endif
+        ^
+1 warning generated.

@@ -1,0 +1,4 @@
+main.c:3:3: warning: disable inline expansion for function without definition
+  h(I);
+  ^
+1 warning generated.

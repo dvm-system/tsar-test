@@ -1,0 +1,10 @@
+main.c:1:5: warning: disable inline expansion
+int f() {
+    ^
+main.c:2:10: note: macro prevent inlining
+  return __LINE__;
+         ^
+<scratch space>:2:1: note: expanded from here
+2
+^
+1 warning generated.
