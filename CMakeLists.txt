@@ -2,14 +2,13 @@ cmake_minimum_required(VERSION 3.4.3)
 
 project(TSAR_TEST VERSION 0.0.1 LANGUAGES C CXX)
 
-set(TSAR_TEST_DESCRIPTION "Test set for TSAR")
-set(TSAR_TEST_HOMEPAGE_URL "https://github.com/dvm-system/tsar-test")
+set(TSAR_TEST_DESCRIPTION "Main test set for TSAR")
+set(TSAR_TEST_HOMEPAGE_URL "hTSps://github.com/dvm-system/tsar-test")
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sys/cmake)
 
-set (TSAR_TEST_FOLDER "Tsar testing" CACHE STRING "Specify IDE folder for TSAR tests.")
-set (TSAR_TEST_TOOLS_FOLDER "Tools" CACHE STRING "Specify IDE folder for testing utils.")
-if (TSAR_TEST_FOLDER)
+set(TS_TEST_FOLDER "Testing" CACHE STRING "Specify IDE folder for tests.")
+if (TS_TEST_FOLDER)
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 endif()
 
@@ -20,54 +19,114 @@ else()
   message(STATUS "Perl version: ${PERL_VERSION_STRING}")
 endif()
 
+set(TS_PERL_PATH ${PERL_EXECUTABLE})
+
 set(PTS_EXECUTABLE "" CACHE FILEPATH  "Path to PTS which runs tests.")
 if (NOT EXISTS "${PTS_EXECUTABLE}")
-  message(SEND_ERROR "Could NOT find PTS which is required to run tests. ")
+  message(SEND_ERROR "Could NOT find PTS which is required to run tests."
+                     " Set PTS_EXECUTABLE variable.")
+endif()
+get_filename_component(TS_PTS_PATH "${PTS_EXECUTABLE}" ABSOLUTE)
+
+find_package(TSAR 3.0.0)
+if (TSAR_FOUND)
+  message(STATUS "TSAR version: ${TSAR_VERSION}")
+  message(STATUS "TSAR based on LLVM version: ${TSAR_LLVM_VERSION}")
+  if (TSAR_CONFIGURATION)
+    message(STATUS "TSAR configuration: ${TSAR_CONFIGURATION}")
+  endif()
+  if (TSAR_LLVM_TOOLS)
+    set(TS_CLANG_TOOL)
+    if ("clang" IN_LIST TSAR_LLVM_TOOLS)
+      set(TS_CLANG_TOOL clang)
+    endif()
+    if (TS_CLANG_TOOL)
+      message(STATUS "Use Clang from TSAR package.")
+    endif()
+  endif()
+  if (TSAR_EXECUTABLE)
+    set(TS_TSAR_PATH "${TSAR_EXECUTABLE}")
+    set(TS_INCLUDE_PATH "${TSAR_INCLUDE_PATH}")
+    if (TS_CLANG_TOOL)
+      set(TS_CLANG_PATH "${TSAR_BINARY_DIR}/${TS_CLANG_TOOL}${CMAKE_EXECUTABLE_SUFFIX}")
+    endif()
+  else()
+    # This test project is inside TSAR build tree.
+    set(TS_TSAR_PATH)
+    set(TS_INCLUDE_PATH)
+    set(TS_CLANG_PATH)
+    foreach(C ${TSAR_CONFIGURATIONS})
+      set(TS_TSAR_PATH "${TS_TSAR_PATH}$<$<CONFIG:${C}>:${TSAR_EXECUTABLE_${C}}>")
+      if (TSAR_INCLUDE_PATH_${C})
+        set(TS_INCLUDE_PATH "${TS_INCLUDE_PATH}$<$<CONFIG:${C}>:${TSAR_INCLUDE_PATH_${C}}>")
+      endif()
+      if (TS_CLANG_TOOL)
+        set(TS_CLANG_PATH "${TS_CLANG_PATH}$<$<CONFIG:${C}>:${TSAR_BINARY_DIR_${C}}/${TS_CLANG_TOOL}${CMAKE_EXECUTABLE_SUFFIX}>")
+      endif()
+    endforeach()
+  endif()
+  set(TS_TSAR_PATH "$<SHELL_PATH:${TS_TSAR_PATH}>")
+  if (TS_INCLUDE_PATH)
+    set(TS_INCLUDE_PATH "$<SHELL_PATH:${TS_INCLUDE_PATH}>")
+  endif()
+  if (TS_CLANG_TOOL)
+    set(TS_CLANG_PATH "$<SHELL_PATH:${TS_CLANG_PATH}>")
+  endif()
 endif()
 
-set(DVM_PATH "" CACH PATH "Path to DVM System")
+if (NOT TS_CLANG_PATH)
+  find_package(LLVM ${TSAR_LLVM_VERSION})
+  if (LLVM_FOUND)
+    message(STATUS "LLVM version: ${LLVM_VERSION}")
+    message(STATUS "Lookup for Clang in ${LLVM_BINARY_DIR}/lib/cmake/clang")
+    find_package(Clang HINTS "${LLVM_BINARY_DIR}/lib/cmake/clang" NO_DEFAULT_PATH)
+    if (TARGET clang)
+      get_property(CLANG_CONFIGURATIONS TARGET clang PROPERTY IMPORTED_CONFIGURATIONS)
+      if (CLANG_CONFIGURATIONS)
+        list(GET CLANG_CONFIGURATIONS 0 CLANG_CONFIG)
+	get_property(TS_CLANG_PATH TARGET clang PROPERTY IMPORTED_LOCATION_${CLANG_CONFIG})
+	message(STATUS "Find Clang configuration: ${CLANG_CONFIG}")
+      else()
+	get_property(TS_CLANG_PATH TARGET clang PROPERTY IMPORTED_LOCATION)
+      endif()
+      if (TSAR_LLVM_VERSION)
+        set(TS_INCLUDE_PATH ${TS_INCLUDE_PATH} "$<SHELL_PATH:${LLVM_BINARY_DIR}/lib/clang/${TSAR_LLVM_VERSION}/include>")
+      endif()
+    endif()
+    if (NOT TS_CLANG_PATH)
+      message(WARNING "Could NOT find suitable Clang executable, be sure it is installed.")
+    else()
+      message(STATUS "Clang executable: ${TS_CLANG_PATH}")
+    endif()
+  endif()
+endif()
+
+set(DVM_PATH "" CACHE PATH "Path to DVM System")
 if (EXISTS "${DVM_PATH}")
-  get_filename_component(DVM_SCRIPT_PATH "${DVM_PATH}/user/dvm" ABSOLUTE)
+  get_filename_component(DVM_EXECUTABLE "${DVM_PATH}/user/dvm" ABSOLUTE)
 endif()
 
-if (NOT EXISTS "${DVM_SCRIPT_PATH}")
-  message(WARNING "Could NOT find DVM executable which is required to run tests. "
-                  "Set DVM_PATH option to run DVMH-based tests.")
+if (NOT EXISTS "${DVM_EXECUTABLE}")
+  message(WARNING "Could NOT find DVM executable."
+                  " Set DVM_PATH to run DVMH-based tests.")
+else()
+  set(TS_DVM_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sys/dvm)
 endif()
 
-set(OPTION_LIST "--total-time --failed f -s" CACHE STRING "Default PTS options.")
+set(TS_PTS_OPTIONS "--total-time --failed f -s" CACHE STRING "Default PTS options.")
 get_filename_component(PTS_PLUGIN_PATH sys ABSOLUTE)
 get_filename_component(PTS_TASK_PATH sys ABSOLUTE)
 
-set(EXECUTABLE_NAME "sapfor-test")
-
-if (WIN32)
-  set(EXECUTABLE_FILE "${EXECUTABLE_NAME}.bat")
-  set(EXECUTABLE_TEMPLATE_NAME "${EXECUTABLE_NAME}.win.in")
-else()
-  set(EXECUTABLE_FILE "${EXECUTABLE_NAME}")
-  set(EXECUTABLE_TEMPLATE_NAME "${EXECUTABLE_NAME}.uni.in")
-endif()
-
-# Substitute all @VAR@ variables except generator expressions.
-# Change permissions to allow execute the configured file.
-configure_file(bin/${EXECUTABLE_TEMPLATE_NAME} tmp/${EXECUTABLE_TEMPLATE_NAME} @ONLY)
-file(COPY ${CMAKE_CURRENT_BINARY_DIR}/tmp/${EXECUTABLE_TEMPLATE_NAME}
-  DESTINATION bin FILE_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ)
-file(REMOVE_RECURSE ${CMAKE_CURRENT_BINARY_DIR}/tmp)
-
-# Substitute generator expressions.
-file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/${EXECUTABLE_FILE}"
-              INPUT "${CMAKE_CURRENT_BINARY_DIR}/bin/${EXECUTABLE_TEMPLATE_NAME}")
-
-# Add target to copy main script to the original 'bin' directory according to current configuration.
-add_custom_target(${EXECUTABLE_NAME} ALL
-  COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/${EXECUTABLE_FILE}"
-                                   "${CMAKE_CURRENT_SOURCE_DIR}/bin/${EXECUTABLE_FILE}"
-  COMMENT "Build ${CMAKE_CURRENT_SOURCE_DIR}/bin/${EXECUTABLE_FILE}...")
-set_target_properties(${EXECUTABLE_NAME} PROPERTIES FOLDER "${TSAR_TEST_TOOLS_FOLDER}")
-
-install(PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/${EXECUTABLE_FILE}" DESTINATION bin)
+configure_file(sys/config.in sys/config.gen @ONLY)
+file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/sys/config"
+              INPUT  "${CMAKE_CURRENT_BINARY_DIR}/sys/config.gen")
+add_custom_target(tsar-test-resources ALL
+  COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/sys/config"
+                                   "${CMAKE_CURRENT_SOURCE_DIR}/sys/config"
+  COMMAND ${CMAKE_COMMAND} -E copy "${DVM_EXECUTABLE}"
+                                   "${TS_DVM_PATH}"
+  COMMENT "Configure ${CMAKE_CURRENT_SOURCE_DIR}/sys directory...")
+set_target_properties(tsar-test-resources PROPERTIES FOLDER Misc)
 
 enable_testing()
 

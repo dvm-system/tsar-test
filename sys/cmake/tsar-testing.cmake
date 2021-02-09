@@ -1,78 +1,72 @@
+set(TS_TASKS check init fail)
+
 function(tsar_test)
   # Syntax:
-  # tsar_test TARGET cmake-target-name
+  # tsar_test TARGET cmake-target-name TASKS task-set-list [TEST task] [PASSNAME pass-name]
+  #
+  # Example:
+  # tsar_test(TARGET example TASKS "check;init;fail" TEST check)
   #
   # Generates custom commands for invoking pts.pl.
-  # Corresponding targets Test${TARGET}, Init${TARGET}, Fail${TARGET}, Clean${TARGET} are generated.
+  # Corresponding targets to run each task from TASKS (${TARGET_PREFXI}${TARGET}) are generated.
+  # Each task implies some target prefix.
+  # Target to clean the lasts execution results are also generated.
   #
-  # If ${PTS_EXECUTABLE} PTS executable does not exist do nothing.
+  # Use CTest to generate test for TEST task, which must be presented in TASKS list.
+  #
+  # If ${TS_PTS_PATH} PTS executable does not exist do nothing.
 
-  cmake_parse_arguments(TT "" "TARGET;PLUGIN;PASSNAME" "" ${ARGN})
+  cmake_parse_arguments(TS "" "TARGET;TEST;PASSNAME" "TASKS" ${ARGN})
 
-  if(NOT TT_TARGET)
+  if(NOT TS_TARGET)
     message(FATAL_ERROR "TARGET name required by tsar_testing")
   endif()
-  set(TT_TEST_TARGET Test${TT_TARGET})
-  set(TT_INIT_TARGET Init${TT_TARGET})
-  set(TT_FAIL_TARGET Fail${TT_TARGET})
-  set(TT_CLEAN_TARGET Clean${TT_TARGET})
+  if(NOT TS_TASKS)
+    message(FATAL_ERROR "TASKS set required by tsar_testing")
+  endif()
 
-  if(NOT PERL_FOUND OR NOT EXISTS "${PTS_EXECUTABLE}")
+  if(NOT PERL_FOUND OR NOT EXISTS "${TS_PTS_PATH}")
     return()
   endif()
 
-  if(NOT TT_PASSNAME)
-    set(TT_MESSAGE "Testing...")
-    set(TT_INIT_MESSAGE "Initialization of tests...")
-    set(TT_FAIL_MESSAGE "Running of skipped tests...")
-    set(TT_CLEAN_MESSAGE "Cleaning of test results...")
-  else()
-    set(TT_MESSAGE "Testing '${TT_PASSNAME}' pass...")
-    set(TT_INIT_MESSAGE "Initialization of tests for '${TT_PASSNAME}' pass...")
-    set(TT_FAIL_MESSAGE "Running of skipped tests for ${TT_PASSNAME}' pass...")
-    set(TT_CLEAN_MESSAGE "Cleaning of test results for ${TT_PASSNAME}' pass...")
-  endif()
-
-  add_custom_target(${TT_TEST_TARGET}
-    COMMAND ${PROJECT_BINARY_DIR}/$<CONFIG>/${EXECUTABLE_FILE} ./check
-    COMMENT ${TT_MESSAGE}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  )
-  set_target_properties(${TT_TEST_TARGET} PROPERTIES FOLDER "${TSAR_TEST_FOLDER}")
-  set_target_properties(${TT_TEST_TARGET} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
-  set_property(GLOBAL APPEND PROPERTY TSAR_TEST_TARGETS ${TT_TEST_TARGET})
-
-  add_custom_target(${TT_INIT_TARGET}
-    COMMAND ${PROJECT_BINARY_DIR}/$<CONFIG>/${EXECUTABLE_FILE} ./init
-    COMMENT ${TT_INIT_MESSAGE}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  )
-  set_target_properties(${TT_INIT_TARGET} PROPERTIES FOLDER "${TSAR_TEST_FOLDER}")
-  set_target_properties(${TT_INIT_TARGET} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
-  set_property(GLOBAL APPEND PROPERTY TSAR_TEST_INIT_TARGETS ${TT_INIT_TARGET})
-
-  add_custom_target(${TT_FAIL_TARGET}
-    COMMAND ${PROJECT_BINARY_DIR}/$<CONFIG>/${EXECUTABLE_FILE} ./fail
-    COMMENT ${TT_FAIL_MESSAGE}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  )
-  set_target_properties(${TT_FAIL_TARGET} PROPERTIES FOLDER "${TSAR_TEST_FOLDER}")
-  set_target_properties(${TT_FAIL_TARGET} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
-  set_property(GLOBAL APPEND PROPERTY TSAR_TEST_FAIL_TARGETS ${TT_FAIL_TARGET})
-
-  add_custom_target(${TT_CLEAN_TARGET}
-    COMMAND ${PROJECT_BINARY_DIR}/$<CONFIG>/${EXECUTABLE_FILE} clean ./init ./check ./fail
-    COMMENT ${TT_CLEAN_MESSAGE}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  )
-  set_target_properties(${TT_CLEAN_TARGET} PROPERTIES FOLDER "${TSAR_TEST_FOLDER}")
-  set_target_properties(${TT_CLEAN_TARGET} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
-  set_property(GLOBAL APPEND PROPERTY TSAR_TEST_CLEAN_TARGETS ${TT_CLEAN_TARGET})
+  set(PLUGIN_LIST -I ${PROJECT_SOURCE_DIR}/sys)
+  set(TASK_CONFIG -T ${PROJECT_SOURCE_DIR}/sys/tasks)
+  set(TASK_TO_CLEAN)
 
   include(CTest)
 
-  add_test(NAME ${TT_TARGET}
-    COMMAND ${PROJECT_BINARY_DIR}/$<CONFIG>/${EXECUTABLE_FILE} ./check
+  foreach(T ${TS_TASKS})
+    string(SUBSTRING ${T} 0 1 FIRST_LETSER)
+    string(TOUPPER ${FIRST_LETSER} FIRST_LETSER)
+    string(REGEX REPLACE "^.(.*)" "${FIRST_LETSER}\\1" TARGET_PREFIX ${T})
+
+    set(TARGET_NAME ${TARGET_PREFIX}${TS_TARGET})
+
+    add_custom_target(${TARGET_NAME}
+      COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} "./${T}"
+      COMMENT "Run task set '${T}' for '${TS_PASSNAME}' pass..."
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+    set_target_properties(${TARGET_NAME} PROPERTIES FOLDER "${TS_TEST_FOLDER}")
+    set_target_properties(${TARGET_NAME} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
+    set_property(GLOBAL APPEND PROPERTY TS_TARGETS ${TARGET_NAME})
+
+    if (TS_TEST AND ${T} STREQUAL "${TS_TEST}")
+      add_test(NAME ${TARGET_NAME}
+        COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} "./${T}"
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+      )
+    endif()
+
+    set(TASK_TO_CLEAN "${TASK_TO_CLEAN} \"./${T}\"")
+  endforeach()
+
+  add_custom_target(Clean${TS_TARGET}
+    COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} clean ${TASK_TO_CLEAN}
+    COMMENT "Clean task sets '${TS_TASKS}' for '${TS_PASSNAME}' pass..."
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
+  set_target_properties(Clean${TS_TARGET} PROPERTIES FOLDER "${TS_TEST_FOLDER}")
+  set_target_properties(Clean${TS_TARGET} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
+  set_property(GLOBAL APPEND PROPERTY TS_TARGETS Clean${TS_TARGET})
 endfunction(tsar_test)
