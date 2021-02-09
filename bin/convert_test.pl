@@ -6,6 +6,7 @@ use File::Path qw(make_path);
 use File::Copy;
 
 my $res_dir='converted_tests';
+our $src_ext = 'c';
 
 @ARGV or die "usage: convert_test.pl *.conf\n";
 my @confs = map glob, @ARGV;
@@ -47,7 +48,7 @@ sub mk_task
     next if /^\s*$/;
     if (/^($qr_vars)/) { $vars{$1} = $_ }
     elsif ($_ eq q(plugin = TsarPlugin)) {}
-    elsif ($_ eq q(sample = $name.c)) {}
+    elsif (/^sample = \$name\.(c|cpp)$/) { $src_ext = $1 }
     elsif ($_ eq q(run = "$tsar $sample $options")) {}
     elsif ($_ eq q(run = "$tsar $sample $options | -check-prefix=SAFE")) { goto \&mk_task_safe }
     elsif ($_ eq q(      "$tsar $sample $options -fignore-redundant-memory=strict | -check-prefix=REDUNDANT")){ goto \&mk_task_redundant }
@@ -59,9 +60,9 @@ sub mk_task
   exists $vars{$_} or die "$name.conf: '$_' is not set\n" for @required_vars;
 
   my $tdir = catfile($res_dir, $name);
-  copy_src($tdir, {"$name.c" => 'main.c'});
+  copy_src($tdir, {"$name.$src_ext" => "main.$src_ext"});
   gen_task(catfile($tdir, 'tsar.conf'), @vars{qw(name options)});
-  mk_sample("$name.c", catfile($tdir, 'sample'), 'CHECK');
+  mk_sample("$name.$src_ext", catfile($tdir, 'sample'), 'CHECK');
 }
 
 sub mk_task_safe
@@ -160,10 +161,10 @@ sub mk_task_transform
     next if /^\s*$/;
     if (/^($qr_vars)/) { $vars{$1} = $_ }
     elsif ($_ eq q(plugin = TsarPlugin)) {}
-    elsif ($_ eq q(sample = $name.c)) {}
+    elsif (/^sample = \$name\.(c|cpp)$/) { $src_ext = $1 }
     elsif ($_ eq q(run = "$tsar $sample $options")) {}
     elsif (/^suffix =\s*(\S+)/) { $suffix = $1 }
-    elsif ($_ eq q(sample_diff = $name.$suffix.c)) {}
+    elsif ($_ eq qq(sample_diff = \$name.\$suffix.$src_ext)) {}
     else {
       die "unexpected content in '$name.conf':\n$_\n"
     }
@@ -173,11 +174,11 @@ sub mk_task_transform
   #$vars{options} =~ s/(\s*-output-suffix=)\$suffix/$1/;
 
   my $tdir = catfile($res_dir, $name);
-  copy_src_transform($tdir, {"$name.c" => 'main.c'}, 'CHECK');
-  my $src_tfm = "$name.$suffix.c";
+  copy_src_transform($tdir, {"$name.$src_ext" => "main.$src_ext"}, 'CHECK');
+  my $src_tfm = "$name.$suffix.$src_ext";
   undef $src_tfm if !-e $src_tfm;
   gen_task_transform(catfile($tdir, 'tsar.conf'), @vars{qw(name options)}, $src_tfm);
-  mk_sample_transform("$name.c", catfile($tdir, 'sample'), 'CHECK', $src_tfm);
+  mk_sample_transform("$name.$src_ext", catfile($tdir, 'sample'), 'CHECK', $src_tfm);
 }
 
 # copy_src($tdir, {'test_name.c' => 'main.c'})
@@ -226,9 +227,9 @@ sub mk_sample
 sub mk_sample_transform
 {
   my ($src, $dst_dir, $check_prefix, $src_tfm) = @_;
-  copy_src_transform($dst_dir, {$src => 'main.c', defined $src_tfm ? ($src_tfm => 'main.tfm.c') : ()}, $check_prefix);
+  copy_src_transform($dst_dir, {$src => "main.$src_ext", defined $src_tfm ? ($src_tfm => "main.tfm.$src_ext") : ()}, $check_prefix);
   open my $f, '<', $src;
-  my @lines = map {s/$src/main.c/g; $_} map {s~^(?://|!|C)$check_prefix: ~~ ? $_ : ()} <$f>;
+  my @lines = map {s/$src/main.$src_ext/g; $_} map {s~^(?://|!|C)$check_prefix: ~~ ? $_ : ()} <$f>;
   chomp $lines[-1] if @lines == 1;
   close $f;
 
@@ -268,9 +269,9 @@ sub gen_task_transform
 'plugin = TsarPlugin
 '.($name ? $name : '').'
 suffix = tfm
-sources = main.c
+sources = main.'.$src_ext.'
 copy = $sources
-sample = $copy '.(defined $src_tfm ? 'main.$suffix.c ' : '').'output.txt
+sample = $copy '.(defined $src_tfm ? "main.\$suffix.$src_ext " : '').'output.txt
 clean = $sample
 '.$options.'
 run = "$tsar $sources $options 2>&1 | perl -p ../output_filter.pl >output.txt"
