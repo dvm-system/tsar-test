@@ -1,0 +1,15 @@
+main.c:70:3: remark: parallel execution of loop is possible
+  for (I = 1; I < NX - 1; I++)
+  ^
+main.c:66:3: remark: parallel execution of loop is possible
+  for (I = 1; I < NX - 1; I++)
+  ^
+main.c:62:3: remark: parallel execution of loop is possible
+  for (I = 1; I < NX - 1; I++)
+  ^
+main.c:63:5: remark: parallel execution of loop is possible
+    for (J = 1; J < NY - 1; J++)
+    ^
+main.c:48:3: remark: parallel execution of loop is possible
+  for (I = 0; I < NX; I++)
+  ^

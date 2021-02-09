@@ -1,0 +1,9 @@
+main.c:31:5: remark: parallel execution of loop is possible
+    for (int I = 1; I < L - 1; ++I)
+    ^
+main.c:37:5: remark: parallel execution of loop is possible
+    for (int I = 1; I < L - 1; ++I)
+    ^
+main.c:21:3: remark: parallel execution of loop is possible
+  for (int I = 0; I < L; ++I)
+  ^

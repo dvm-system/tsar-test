@@ -1,0 +1,3 @@
+main.c:3:3: remark: parallel execution of loop is possible
+  for (int I = 0; I < N; ++I) {
+  ^

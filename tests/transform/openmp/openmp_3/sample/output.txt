@@ -1,0 +1,11 @@
+main.c:3:3: remark: parallel execution of loop is possible
+  for (int I = 0; I < N; ++I) {
+  ^
+main.c:3:3: warning: unable to create parallel directive
+main.c:3:12: note: loop has multiple inducition variables
+  for (int I = 0; I < N; ++I) {
+           ^
+main.c:2:7: note: loop has multiple inducition variables
+  int J = N;
+      ^
+1 warning generated.
