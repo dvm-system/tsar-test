@@ -1,0 +1,7 @@
+main.c:6:12: warning: disable expression propagation
+    return X;
+           ^
+main.c:1:13: note: hidden dependence prevents propagation
+int foo(int Z) {
+            ^
+1 warning generated.

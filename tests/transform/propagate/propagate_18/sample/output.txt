@@ -1,0 +1,10 @@
+main.c:6:25: warning: disable expression propagation
+  return (C = bar()) && C;
+                        ^
+main.c:6:15: note: expression is not available at propagation point
+  return (C = bar()) && C;
+              ^
+main.c:1:6: note: value may differs in definition and propagation points or may produce side effect
+char bar();
+     ^
+1 warning generated.

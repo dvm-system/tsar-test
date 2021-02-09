@@ -1,0 +1,7 @@
+main.c:13:30: warning: disable expression propagation
+  return ((X = X + 1) > 0) ? X : Z;
+                             ^
+main.c:13:18: note: recurrence prevents propagation
+  return ((X = X + 1) > 0) ? X : Z;
+                 ^
+1 warning generated.

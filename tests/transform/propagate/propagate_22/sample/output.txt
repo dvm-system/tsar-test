@@ -1,0 +1,10 @@
+main.c:5:14: warning: disable expression propagation
+  return X + Y + Z;
+             ^
+main.c:4:11: note: expression is not available at propagation point
+  X = Y = A[Q = A[1] + 1, Z];
+          ^
+main.c:3:13: note: value may differs in definition and propagation points or may produce side effect
+  int X, Y, Q;
+            ^
+1 warning generated.

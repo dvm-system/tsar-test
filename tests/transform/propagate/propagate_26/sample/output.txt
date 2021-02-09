@@ -1,0 +1,19 @@
+main.c:4:23: warning: disable expression propagation
+  for (int Z = 5; Z < X; ++Z) {
+                      ^
+main.c:1:13: note: hidden dependence prevents propagation
+int foo(int Z) {
+            ^
+main.c:5:14: warning: disable expression propagation
+    if (Z == X - 1)
+             ^
+main.c:1:13: note: hidden dependence prevents propagation
+int foo(int Z) {
+            ^
+main.c:6:23: warning: disable expression propagation
+      return X;
+             ^
+main.c:1:13: note: hidden dependence prevents propagation
+int foo(int Z) {
+            ^
+3 warnings generated.

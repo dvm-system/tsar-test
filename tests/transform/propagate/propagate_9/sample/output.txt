@@ -1,0 +1,7 @@
+main.c:6:16: warning: disable expression propagation
+  A[X = X + 1, X + 1] = I;
+               ^
+main.c:6:11: note: recurrence prevents propagation
+  A[X = X + 1, X + 1] = I;
+          ^
+1 warning generated.
