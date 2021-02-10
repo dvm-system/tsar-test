@@ -101,6 +101,9 @@ if (NOT TS_CLANG_PATH)
   endif()
 endif()
 
+add_custom_target(tsar-test-resources ALL)
+set_target_properties(tsar-test-resources PROPERTIES FOLDER Misc)
+
 set(DVM_PATH "" CACHE PATH "Path to DVM System")
 if (EXISTS "${DVM_PATH}")
   get_filename_component(DVM_EXECUTABLE "${DVM_PATH}/user/dvm" ABSOLUTE)
@@ -111,6 +114,11 @@ if (NOT EXISTS "${DVM_EXECUTABLE}")
                   " Set DVM_PATH to run DVMH-based tests.")
 else()
   set(TS_DVM_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sys/dvm)
+  add_custom_command(TARGET tsar-test-resources POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy "${DVM_EXECUTABLE}"
+                                     "${TS_DVM_PATH}"
+    COMMENT "Copy DVM executable to ${TS_DVM_PATH}"
+  )
 endif()
 
 set(TS_PTS_OPTIONS "--total-time --failed f -s" CACHE STRING "Default PTS options.")
@@ -120,13 +128,11 @@ get_filename_component(PTS_TASK_PATH sys ABSOLUTE)
 configure_file(sys/config.in sys/config.gen @ONLY)
 file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/sys/config"
               INPUT  "${CMAKE_CURRENT_BINARY_DIR}/sys/config.gen")
-add_custom_target(tsar-test-resources ALL
+add_custom_command(TARGET tsar-test-resources POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/sys/config"
                                    "${CMAKE_CURRENT_SOURCE_DIR}/sys/config"
-  COMMAND ${CMAKE_COMMAND} -E copy "${DVM_EXECUTABLE}"
-                                   "${TS_DVM_PATH}"
-  COMMENT "Configure ${CMAKE_CURRENT_SOURCE_DIR}/sys directory...")
-set_target_properties(tsar-test-resources PROPERTIES FOLDER Misc)
+  COMMENT "Configure ${CMAKE_CURRENT_SOURCE_DIR}/sys/config"
+)
 
 enable_testing()
 
