@@ -29,7 +29,8 @@ my %required_vars = (
   )],
 );
 my $sys_conf;
-my $sys_conf_fname = catfile(get_package_dir(), 'config');
+my $sys_dir = get_package_dir();
+my $sys_conf_fname = catfile($sys_dir, 'config');
 try {
   $sys_conf = ConfigFile->new($sys_conf_fname, required => \%required_vars);
   $sys_conf->load;
@@ -46,6 +47,9 @@ sub process
 
   $task->set_predefined_var('', 'exe_extension', exe_extension);
   $task->set_predefined_var('', 'run_prefix', run_prefix);
+  $task->set_predefined_var('', 'platform', ($^O eq 'MSWin32' ? 'win' : 'uni'));
+  $task->set_predefined_var('', 'sys_dir', $sys_dir);
+  $task->set_predefined_var('', 'perl', $^X);
   $task->set_predefined_var(@$_, $sys_conf->get_arr(@$_)) for (
     (map {my $g=$_; map [$g => $_], @{$required_vars{$_}}} keys %required_vars),
     #['' => 'var'],
@@ -149,7 +153,7 @@ sub process
 sub clean
 {
   my @files = @_;
-  for (@files) {
+  for (map glob, @files) {
     file_name_is_absolute($_) and die "Action 'clean' encountered an absolute filename '$_'.\n";
     -e or next;
     my $err;
