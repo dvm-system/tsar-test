@@ -3,9 +3,12 @@
 int bar();
 
 int foo(int Z) {
-#pragma spf transform propagate
-  int X;
-  int (*f)() = bar;
-  X = abs(Z);
-  return X;
+#pragma spf assert nomacro
+  {
+
+    int X;
+    int (*f)() = bar;
+    X = abs(Z);
+    return (abs(Z));
+  }
 }

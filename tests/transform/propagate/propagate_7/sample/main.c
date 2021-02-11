@@ -1,8 +1,14 @@
-struct STy { int Y; int X; };
+struct STy {
+  int Y;
+  int X;
+};
 
 int foo(int Y) {
-#pragma spf transform propagate
-  struct STy S;
-  S.X = Y;
-  return S.X;
+#pragma spf assert nomacro
+  {
+
+    struct STy S;
+    S.X = Y;
+    return Y;
+  }
 }

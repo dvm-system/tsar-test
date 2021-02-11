@@ -1,5 +1,8 @@
 int foo(int X) {
-#pragma spf transform propagate
-  int Y = X;
-  return Y;
+#pragma spf assert nomacro
+  {
+
+    int Y = X;
+    return X;
+  }
 }

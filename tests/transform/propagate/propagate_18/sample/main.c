@@ -1,7 +1,10 @@
 char bar();
 
 char foo() {
-#pragma spf transform propagate
-  char C;
-  return (C = bar()) && C;
+#pragma spf assert nomacro
+  {
+
+    char C;
+    return (C = bar()) && C;
+  }
 }
