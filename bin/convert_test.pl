@@ -171,7 +171,7 @@ sub mk_task_transform
   }
   exists $vars{$_} or die "$name.conf: '$_' is not set\n" for @required_vars;
 
-  #$vars{options} =~ s/(\s*-output-suffix=)\$suffix/$1/;
+  $vars{options} =~ s/(\s*-output-suffix=)\$suffix//;
 
   my $tdir = catfile($res_dir, $name);
   copy_src_transform($tdir, {"$name.$src_ext" => "main.$src_ext"}, 'CHECK');
@@ -227,7 +227,7 @@ sub mk_sample
 sub mk_sample_transform
 {
   my ($src, $dst_dir, $check_prefix, $src_tfm) = @_;
-  copy_src_transform($dst_dir, {$src => "main.$src_ext", defined $src_tfm ? ($src_tfm => "main.tfm.$src_ext") : ()}, $check_prefix);
+  copy_src_transform($dst_dir, {(defined $src_tfm ? $src_tfm : $src) => "main.$src_ext"}, $check_prefix);
   open my $f, '<', $src;
   my @lines = map {s/$src/main.$src_ext/g; $_} map {s~^(?://|!|C)$check_prefix: ~~ ? $_ : ()} <$f>;
   chomp $lines[-1] if @lines == 1;
@@ -267,26 +267,12 @@ sub gen_task_transform
   open my $f, '>', $conf;
   print $f
 'plugin = TsarPlugin
-'.($name ? $name : '').'
-suffix = tfm
 sources = main.'.$src_ext.'
 copy = $sources
-sample = $copy '.(defined $src_tfm ? "main.\$suffix.$src_ext " : '').'output.txt
-clean = $sample
+sample = $copy output.txt
+clean = $sample *.orig
 '.$options.'
-run = "$tsar $sources $options 2>&1 | perl -p ../output_filter.pl >output.txt"
+run = "$tsar $sources $options 2>&1 | $perl -p $sys_dir/output_filter.pl >output.txt"
 ';
-  close $f;
-
-  ## generate output_filter.pl ##
-  my $fname = catpath((splitpath($conf))[0,1], 'output_filter.pl');
-  undef $f;
-  open $f, '>', $fname;
-  print $f <<'EOF';
-use Cwd;
-use File::Spec::Functions;
-(my $s = canonpath(cwd)) =~ s/\\/\\\\/g;
-s/$s(:?\\|\/)//g;
-EOF
   close $f;
 }
