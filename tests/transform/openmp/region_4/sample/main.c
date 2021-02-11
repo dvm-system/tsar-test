@@ -1,13 +1,17 @@
-void foo(int N, int * restrict A);
+void foo(int N, int *restrict A);
 
-void baz(int M, int * restrict T, int N, int * restrict A) {
-  for (int I = 0; I < N; ++I) {
-    for (int J = 0; J < M; ++J)
-      A[I] = A[I] + T[J];
+void baz(int M, int *restrict T, int N, int *restrict A) {
+#pragma omp parallel
+  {
+#pragma omp for default(shared)
+    for (int I = 0; I < N; ++I) {
+      for (int J = 0; J < M; ++J)
+        A[I] = A[I] + T[J];
+    }
   }
 }
 
-void bar(int M, int * restrict T, int N, int * restrict A) {
+void bar(int M, int *restrict T, int N, int *restrict A) {
   baz(M, T, N, A);
 #pragma spf region
   {

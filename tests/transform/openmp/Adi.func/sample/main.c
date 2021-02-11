@@ -45,35 +45,51 @@ int main(int Argc, char *Argv[]) {
 
 void init(double (*A)[NY][NZ]) {
   int I, J, K;
-  for (I = 0; I < NX; I++)
-    for (J = 0; J < NY; J++)
-      for (K = 0; K < NZ; K++)
-        if (K == 0 || K == NZ - 1 || J == 0 || J == NY - 1 || I == 0 ||
-            I == NX - 1)
-          A[I][J][K] =
-              10.0 * I / (NX - 1) + 10.0 * J / (NY - 1) + 10.0 * K / (NZ - 1);
-        else
-          A[I][J][K] = 0;
+#pragma omp parallel
+  {
+#pragma omp for default(shared) private(J, K)
+    for (I = 0; I < NX; I++)
+      for (J = 0; J < NY; J++)
+        for (K = 0; K < NZ; K++)
+          if (K == 0 || K == NZ - 1 || J == 0 || J == NY - 1 || I == 0 ||
+              I == NX - 1)
+            A[I][J][K] =
+                10.0 * I / (NX - 1) + 10.0 * J / (NY - 1) + 10.0 * K / (NZ - 1);
+          else
+            A[I][J][K] = 0;
+  }
 }
 
-double iter(double(*A)[NY][NZ]) {
+double iter(double (*A)[NY][NZ]) {
   int I, J, K;
   double Eps = 0;
-  for (I = 1; I < NX - 1; I++)
-    for (J = 1; J < NY - 1; J++)
-      for (K = 1; K < NZ - 1; K++)
-        A[I][J][K] = (A[I - 1][J][K] + A[I + 1][J][K]) / 2;
-  for (I = 1; I < NX - 1; I++)
-    for (J = 1; J < NY - 1; J++)
-      for (K = 1; K < NZ - 1; K++)
-        A[I][J][K] = (A[I][J - 1][K] + A[I][J + 1][K]) / 2;
-  for (I = 1; I < NX - 1; I++)
-    for (J = 1; J < NY - 1; J++)
-      for (K = 1; K < NZ - 1; K++) {
-        double Tmp1 = (A[I][J][K - 1] + A[I][J][K + 1]) / 2;
-        double Tmp2 = fabs(A[I][J][K] - Tmp1);
-        Eps = MAX(Eps, Tmp2);
-        A[I][J][K] = Tmp1;
+#pragma omp parallel
+  {
+#pragma omp for default(shared) private(K) collapse(2) ordered(2)              \
+    schedule(static, 1)
+    for (I = 1; I < NX - 1; I++)
+      for (J = 1; J < NY - 1; J++) {
+#pragma omp ordered depend(sink : I - 1, J)
+        for (K = 1; K < NZ - 1; K++)
+          A[I][J][K] = (A[I - 1][J][K] + A[I + 1][J][K]) / 2;
+#pragma omp ordered depend(source)
       }
+
+#pragma omp for default(shared) private(J, K)
+    for (I = 1; I < NX - 1; I++)
+      for (J = 1; J < NY - 1; J++)
+        for (K = 1; K < NZ - 1; K++)
+          A[I][J][K] = (A[I][J - 1][K] + A[I][J + 1][K]) / 2;
+#pragma omp for default(shared) private(J, K) reduction(max : Eps)
+    for (I = 1; I < NX - 1; I++)
+      for (J = 1; J < NY - 1; J++)
+        for (K = 1; K < NZ - 1; K++) {
+          double Tmp1 = (A[I][J][K - 1] + A[I][J][K + 1]) / 2;
+          double Tmp2 = fabs(A[I][J][K] - Tmp1);
+          Eps = MAX(Eps, Tmp2);
+          A[I][J][K] = Tmp1;
+        }
+  }
+
   return Eps;
 }
