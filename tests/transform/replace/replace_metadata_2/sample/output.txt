@@ -1,4 +1,3 @@
-Error while processing replace_metadata_2.
 main.c:4:36: error: expected replacement for target parameter
 #pragma spf metadata replace(bar(X))
                                    ^

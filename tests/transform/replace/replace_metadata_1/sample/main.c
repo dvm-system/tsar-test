@@ -5,4 +5,7 @@ int foo(int X) {
   return X + X;
 }
 
-void baz() { foo(5); }
+void baz() {
+  #pragma spf transform replace with(foo)
+  bar(5, 5);
+}

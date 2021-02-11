@@ -1,4 +1,3 @@
-Error while processing replace_metadata_7.
 main.c:5:34: error: expected function parameter name
 #pragma spf metadata replace(bar(Y))
                                  ^

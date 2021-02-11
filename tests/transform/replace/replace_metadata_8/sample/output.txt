@@ -1,4 +1,3 @@
-Error while processing replace_metadata_8.
 main.c:4:34: error: passing 'double (*)[10]' to parameter of incompatible type 'double'
 #pragma spf metadata replace(bar(X))
                                  ^

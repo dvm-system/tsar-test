@@ -1,4 +1,3 @@
-Error while processing replace_metadata_3.
 main.c:4:30: error: missing replacement metadata
 #pragma spf metadata replace(bar(X))
                              ^

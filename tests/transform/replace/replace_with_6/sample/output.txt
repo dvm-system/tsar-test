@@ -1,4 +1,3 @@
-Error while processing replace_with_6.
 main.c:5:36: error: expected function name after 'with' clause
 #pragma spf transform replace with(baz)
                                    ^

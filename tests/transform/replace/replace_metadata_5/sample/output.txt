@@ -1,4 +1,3 @@
-Error while processing replace_metadata_5.
 main.c:6:30: error: function does not take 2 arguments
 #pragma spf metadata replace(bar({.X=X}, Y))
                              ^

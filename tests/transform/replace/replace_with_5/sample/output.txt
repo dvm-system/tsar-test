@@ -1,4 +1,3 @@
-Error while processing replace_with_5.
 main.c:5:41: error: directive '#pragma spf transform replace' cannot contain more than one 'with' clause
 #pragma spf transform replace with(baz) with(foo)
                                         ^

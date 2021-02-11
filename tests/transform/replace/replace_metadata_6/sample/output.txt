@@ -1,4 +1,3 @@
-Error while processing replace_metadata_6.
 main.c:6:36: error: invalid replacement metadata
 #pragma spf metadata replace(bar({.Y=Y}))
                                    ^
