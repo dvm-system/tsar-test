@@ -1,0 +1,15 @@
+Error while processing replace_metadata_7.
+main.c:5:34: error: expected function parameter name
+#pragma spf metadata replace(bar(Y))
+                                 ^
+main.c:4:7: note: declared here
+  int Y;
+      ^
+main.c:5:30: error: missing replacement metadata
+#pragma spf metadata replace(bar(Y))
+                             ^
+main.c:3:14: note: missing parameter in replacement metadata
+void foo(int X) {
+             ^
+2 errors generated.
+Error while processing main.c.

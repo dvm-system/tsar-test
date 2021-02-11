@@ -1,0 +1,13 @@
+main.c:5:22: warning: disable structure replacement
+void baz(struct STy *S, int I) {
+                     ^
+main.c:12:3: note: unable to build declaration of a record member
+  DataT *X;
+  ^
+main.c:22:22: warning: disable structure replacement
+void bar(struct STy *S1, struct STy *S2) {
+                     ^
+main.c:24:7: note: not-arrow access prevent replacement
+  baz(S1, 0);
+      ^
+2 warnings generated.

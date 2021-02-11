@@ -1,0 +1,6 @@
+main.cpp:15:28: remark: structure replacement
+void foo(STy *S, UnusedTy *U, double Val) {
+                           ^
+main.cpp:15:18: remark: remove unused declaration
+void foo(STy *S, UnusedTy *U, double Val) {
+                 ^

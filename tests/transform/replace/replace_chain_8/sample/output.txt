@@ -1,0 +1,13 @@
+main.c:8:10: warning: disable structure replacement
+void foo(struct STy *S) { baz(S); }
+         ^
+main.c:8:31: note: not-arrow access prevent replacement
+void foo(struct STy *S) { baz(S); }
+                              ^
+main.c:10:22: warning: disable structure replacement
+void bar(struct STy *S) {
+                     ^
+main.c:12:7: note: not-arrow access prevent replacement
+  foo(S);
+      ^
+2 warnings generated.

@@ -1,0 +1,13 @@
+main.cpp:8:22: warning: disable structure replacement
+void foo(struct STy *S, struct UnusedTy *U) {
+                     ^
+main.cpp:5:3: note: unable to build declaration of a record member
+  Int X;
+  ^
+main.cpp:8:42: remark: structure replacement
+void foo(struct STy *S, struct UnusedTy *U) {
+                                         ^
+main.cpp:8:25: remark: remove unused declaration
+void foo(struct STy *S, struct UnusedTy *U) {
+                        ^
+1 warning generated.

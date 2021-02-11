@@ -1,0 +1,4 @@
+main.c:6:10: warning: unable to replace indirect call expression
+  return baz();
+         ^
+1 warning generated.

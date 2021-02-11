@@ -1,0 +1,9 @@
+Error while processing replace_metadata_4.
+main.c:6:34: error: expected ')'
+#pragma spf metadata replace(bar({.=X}))
+                                 ^
+main.c:6:35: error: expected name of clause
+#pragma spf metadata replace(bar({.=X}))
+                                  ^
+2 errors generated.
+Error while processing main.c.

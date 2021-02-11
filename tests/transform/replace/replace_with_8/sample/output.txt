@@ -1,0 +1,10 @@
+main.c:6:10: warning: unable to replace call expression
+  return bar();
+         ^
+main.c:5:31: note: replacement metadata not found for function 'baz'
+#pragma spf transform replace with(baz)
+                              ^
+main.c:2:5: note: declared here
+int baz();
+    ^
+1 warning generated.

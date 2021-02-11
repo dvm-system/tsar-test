@@ -1,0 +1,18 @@
+main.c:9:1: warning: unable to remove directive in macro
+FOO
+^
+main.c:5:2: note: expanded from macro 'FOO'
+ _Pragma("spf transform replace(S) nostrict") \
+ ^
+<scratch space>:2:16: note: expanded from here
+ spf transform replace(S) nostrict
+               ^
+main.c:9:1: warning: disable structure replacement
+main.c:4:5: note: expanded from macro 'FOO'
+int foo(struct STy *S) { \
+    ^
+main.c:9:1: note: macro prevent replacement
+main.c:4:5: note: expanded from macro 'FOO'
+int foo(struct STy *S) { \
+    ^
+2 warnings generated.

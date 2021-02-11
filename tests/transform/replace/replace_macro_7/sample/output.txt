@@ -1,0 +1,19 @@
+main.c:9:5: warning: disable structure replacement
+int foo (struct STy *S) {
+    ^
+main.c:11:2: note: macro prevent replacement
+ CALL
+ ^
+main.c:3:19: note: expanded from macro 'CALL'
+#define CALL bar(S);
+                  ^
+main.c:9:10: warning: disable structure replacement
+int foo (struct STy *S) {
+         ^
+main.c:11:2: note: not-arrow access prevent replacement
+ CALL
+ ^
+main.c:3:18: note: expanded from macro 'CALL'
+#define CALL bar(S);
+                 ^
+2 warnings generated.

@@ -1,0 +1,10 @@
+main.c:11:5: warning: disable structure replacement
+int foo (int X) {
+    ^
+main.c:13:2: note: macro prevent replacement
+ CALL(X)
+ ^
+main.c:3:24: note: expanded from macro 'CALL'
+#define CALL(X) return bar(X);
+                       ^
+1 warning generated.

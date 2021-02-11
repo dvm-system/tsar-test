@@ -1,0 +1,6 @@
+Error while processing replace_metadata_1.
+main.c:4:37: error: replacement metadata for parameter already set
+#pragma spf metadata replace(bar(X, X))
+                                    ^
+1 error generated.
+Error while processing main.c.

@@ -1,0 +1,7 @@
+main.c:5:21: warning: disable structure replacement
+int foo(struct DTy *D, int X) {
+                    ^
+main.c:2:14: note: unable to build declaration of a record member
+struct DTy { struct STy S; };
+             ^
+1 warning generated.

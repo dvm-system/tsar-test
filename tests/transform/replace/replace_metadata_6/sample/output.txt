@@ -1,0 +1,18 @@
+Error while processing replace_metadata_6.
+main.c:6:36: error: invalid replacement metadata
+#pragma spf metadata replace(bar({.Y=Y}))
+                                   ^
+<scratch space>:5:1: note: expanded from here
+"Y"
+^
+main.c:1:8: error: record has no member 'Y'
+struct STy { int X; };
+       ^
+main.c:6:30: error: missing replacement metadata
+#pragma spf metadata replace(bar({.Y=Y}))
+                             ^
+main.c:5:13: note: missing parameter in replacement metadata
+int foo(int Y) {
+            ^
+3 errors generated.
+Error while processing main.c.

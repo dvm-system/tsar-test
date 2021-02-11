@@ -1,0 +1,19 @@
+Error while processing replace_metadata_8.
+main.c:4:34: error: passing 'double (*)[10]' to parameter of incompatible type 'double'
+#pragma spf metadata replace(bar(X))
+                                 ^
+main.c:4:34: error: type of target parameter and replacement parameter are not compatible
+main.c:1:19: note: declared here
+void bar(double (*Y)[10]);
+                  ^
+main.c:3:17: note: declared here
+void foo(double X) {
+                ^
+main.c:4:30: error: missing replacement metadata
+#pragma spf metadata replace(bar(X))
+                             ^
+main.c:3:17: note: missing parameter in replacement metadata
+void foo(double X) {
+                ^
+3 errors generated.
+Error while processing main.c.

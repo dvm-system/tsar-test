@@ -1,0 +1,9 @@
+Error while processing replace_metadata_2.
+main.c:4:36: error: expected replacement for target parameter
+#pragma spf metadata replace(bar(X))
+                                   ^
+main.c:1:20: note: missing parameter in replacement metadata
+int bar(int Y, int Z) { return Y + Z; }
+                   ^
+1 error generated.
+Error while processing main.c.

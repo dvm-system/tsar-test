@@ -1,0 +1,9 @@
+Error while processing replace_metadata_3.
+main.c:4:30: error: missing replacement metadata
+#pragma spf metadata replace(bar(X))
+                             ^
+main.c:3:20: note: missing parameter in replacement metadata
+int foo(int X, int Z) {
+                   ^
+1 error generated.
+Error while processing main.c.

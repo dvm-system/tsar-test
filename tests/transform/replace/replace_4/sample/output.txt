@@ -1,0 +1,12 @@
+main.c:3:48: remark: structure replacement
+void foo(struct UnusedTy *U1, struct UnusedTy *U2) {
+                                               ^
+main.c:3:31: remark: remove unused declaration
+void foo(struct UnusedTy *U1, struct UnusedTy *U2) {
+                              ^
+main.c:3:27: remark: structure replacement
+void foo(struct UnusedTy *U1, struct UnusedTy *U2) {
+                          ^
+main.c:3:10: remark: remove unused declaration
+void foo(struct UnusedTy *U1, struct UnusedTy *U2) {
+         ^

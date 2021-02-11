@@ -1,0 +1,15 @@
+Error while processing replace_metadata_5.
+main.c:6:30: error: function does not take 2 arguments
+#pragma spf metadata replace(bar({.X=X}, Y))
+                             ^
+main.c:3:5: note: declared here
+int bar(struct STy *S) { return S->X; }
+    ^
+main.c:6:30: error: missing replacement metadata
+#pragma spf metadata replace(bar({.X=X}, Y))
+                             ^
+main.c:5:20: note: missing parameter in replacement metadata
+int foo(int X, int Y) {
+                   ^
+2 errors generated.
+Error while processing main.c.

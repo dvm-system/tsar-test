@@ -1,0 +1,10 @@
+main.c:5:5: warning: disable structure replacement
+int foo (struct STy *S, int X) {
+    ^
+main.c:7:9: note: macro prevent replacement
+ return _S_;
+        ^
+main.c:3:16: note: expanded from macro '_S_'
+#define _S_ S->X = X
+               ^
+1 warning generated.
