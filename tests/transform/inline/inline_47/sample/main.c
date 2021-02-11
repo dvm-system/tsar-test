@@ -1,19 +1,24 @@
-int foo(){
-	return 95;
-}
+int foo() { return 95; }
 
+int main() {
+  int x = 56;
 
-int main(){
-	int x = 56;
+  {
+    if (x > 100) {
 
-#pragma spf transform inline
-	{
-		if(x > 100){
-			
-			x += foo();
-		}
-		else
-			x -= foo();
-	}
-	return 0;
+      /* foo() is inlined below */
+      int R0;
+#pragma spf assert nomacro
+      { R0 = 95; }
+      x += R0;
+    } else
+    /* foo() is inlined below */
+    {
+      int R1;
+#pragma spf assert nomacro
+      { R1 = 95; }
+      x -= R1;
+    }
+  }
+  return 0;
 }

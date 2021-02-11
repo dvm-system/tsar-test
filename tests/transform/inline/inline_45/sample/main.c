@@ -1,17 +1,12 @@
-int foo(){
-	return 95;
-}
+int foo() { return 95; }
 
+int main() {
+  int x = 56;
 
-int main(){
-	int x = 56;
+  if (x > 100)
+    x += foo();
+  else
+    x -= foo();
 
-
-#pragma spf transform inline
-	if(x > 100)
-		x += foo();
-	else
-		x -= foo();
-
-	return 0;
+  return 0;
 }

@@ -1,9 +1,13 @@
 int foo() { return 34; }
-int main(){
-	int x;
+int main() {
+  int x;
 #ifdef INL
-# pragma spf transform inline
+
 #endif
-	x = foo();
-	return 0;
+  /* foo() is inlined below */
+  int R0;
+#pragma spf assert nomacro
+  { R0 = 34; }
+  x = R0;
+  return 0;
 }

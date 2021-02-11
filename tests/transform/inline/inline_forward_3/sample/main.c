@@ -1,15 +1,14 @@
 
 void f();
 
-void f1() {
-  #pragma spf transform inline
-  f();
-}
+void f1() { f(); }
 
-struct A {int X;};
+struct A {
+  int X;
+};
 
 struct S {
-enum { SIZE = 10 };
+  enum { SIZE = 10 };
 };
 
 void f() { int N[SIZE]; }

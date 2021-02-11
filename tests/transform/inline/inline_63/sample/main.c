@@ -1,15 +1,19 @@
-int foo(int a){
-	return a--;
-}
+int foo(int a) { return a--; }
 
-int main(){
-	int x = 50;
+int main() {
+  int x = 50;
 
+  while (x > 0) {
 
-	while(x >0){
-		#pragma spf transform inline
-		x = foo(x);
-	}
+    /* foo(x) is inlined below */
+    int R0;
+#pragma spf assert nomacro
+    {
+      int a0 = x;
+      R0 = a0--;
+    }
+    x = R0;
+  }
 
-	return 0;
+  return 0;
 }

@@ -1,12 +1,14 @@
-void foo(int* a){
-	*a = 900;
-}
+void foo(int *a) { *a = 900; }
 
-int main(){
-	int a = 0;
+int main() {
+  int a = 0;
 
-#pragma spf transform inline
-	foo(&a);
+  /* foo(&a) is inlined below */
+#pragma spf assert nomacro
+  {
+    int *a0 = &a;
+    *a0 = 900;
+  }
 
-	return 0;
+  return 0;
 }

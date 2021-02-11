@@ -1,8 +1,5 @@
 void f() {
-  #define M 10
+#define M 10
 }
 
-void f1() {
-  #pragma spf transform inline
-  f();
-}
+void f1() { f(); }

@@ -1,15 +1,21 @@
-void f(int X) {
-}
+void f(int X) {}
 
 void g(int X) {
-  _Pragma("spf transform inline")
-  f(X)
 
-  ;
+  /* f(X) is inlined below */
+#pragma spf assert nomacro
+  { int X4 = X; }
 }
 
 void h() {
   int X0, X1;
-  #pragma spf transform inline
-  g(X1);
+
+  /* g(X1) is inlined below */
+#pragma spf assert nomacro
+  {
+    int X2 = X1;
+    /* f(X) is inlined below */
+#pragma spf assert nomacro
+    { int X3 = X2; }
+  }
 }

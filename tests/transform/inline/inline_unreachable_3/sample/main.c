@@ -1,11 +1,10 @@
-int f() {return 3;}
+int f() { return 3; }
 
-void g() {
-  #pragma spf transform inline
-  0 ? f() : 4;
-}
+void g() { 0 ? f() : 4; }
 
 void h() {
-  #pragma spf transform inline
-  g();
+
+  /* g() is inlined below */
+#pragma spf assert nomacro
+  { 0 ? f() : 4; }
 }

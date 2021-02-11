@@ -1,11 +1,5 @@
 #define M "b"
 
-char * f() {
-  return "a" M
-  "c";
-}
+char *f() { return "a" M "c"; }
 
-void f1() {
-  #pragma spf transform inline
-  f();
-}
+void f1() { f(); }

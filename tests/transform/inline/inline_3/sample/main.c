@@ -1,17 +1,20 @@
 int X;
 
-void f() {
-  X = 4;
-}
+void f() { X = 4; }
 
 void g() {
-  #pragma spf transform inline
-  f();
+
+  /* f() is inlined below */
+#pragma spf assert nomacro
+  { X = 4; }
 }
 
 int h() {
   int X = 5;
-  #pragma spf transform inline
-  g();
+
+  /* g() is inlined below */
+#pragma spf assert nomacro
+  { f(); }
+
   return X;
 }

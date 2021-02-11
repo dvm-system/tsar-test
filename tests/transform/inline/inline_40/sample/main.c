@@ -1,14 +1,15 @@
-int foo(){
-	return 100;
-}
+int foo() { return 100; }
 
-int main(){
-	int i,j = 0;
+int main() {
+  int i, j = 0;
 
-#pragma spf transform inline
-	for(i = foo(); i > 0; i--){
-		j++;
-	}
+  /* foo() is inlined below */
+  int R0;
+#pragma spf assert nomacro
+  { R0 = 100; }
+  for (i = R0; i > 0; i--) {
+    j++;
+  }
 
-	return 0;
+  return 0;
 }

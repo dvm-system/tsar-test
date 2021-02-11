@@ -2,7 +2,4 @@
 
 int f1() { return 0; }
 
-int f2() {
-#pragma spf transform inline
-  return MACRO(f1) 4;
-}
+int f2() { return MACRO(f1) 4; }

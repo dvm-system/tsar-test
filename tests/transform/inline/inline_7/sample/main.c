@@ -5,6 +5,18 @@ int f(int I) {
 }
 
 void g() {
-#pragma spf transform inline
-  f(1);
+
+  /* f(1) is inlined below */
+  int R0;
+#pragma spf assert nomacro
+  {
+    int I0 = 1;
+    if (I0) {
+      R0 = 5;
+      goto L0;
+    }
+    R0 = 10;
+  }
+L0:;
+  R0;
 }

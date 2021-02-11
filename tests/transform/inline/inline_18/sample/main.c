@@ -1,18 +1,25 @@
-int foo(){
-	int x = 45;
-	return x;
+int foo() {
+  int x = 45;
+  return x;
 }
 
-int foo_1(){
-	int x = 9;
-	return x;
+int foo_1() {
+  int x = 9;
+  return x;
 }
 
-int main(){
-	int i = 0;
+int main() {
+  int i = 0;
 
-	#pragma spf transform inline
-	i = foo(); i += foo_1();
+  /* foo() is inlined below */
+  int R0;
+#pragma spf assert nomacro
+  {
+    int x = 45;
+    R0 = x;
+  }
+  i = R0;
+  i += foo_1();
 
-	return 0;
+  return 0;
 }

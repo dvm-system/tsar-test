@@ -5,6 +5,13 @@ void f() {
 }
 
 void g() {
-  #pragma spf transform inline
-  f();
+
+  /* f() is inlined below */
+#pragma spf assert nomacro
+  {
+    if (1)
+      goto L0;
+    ;
+  }
+L0:;
 }

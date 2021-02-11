@@ -1,14 +1,13 @@
 extern int X;
 
-void f() {
-  X = 10;
-}
+void f() { X = 10; }
 
 int X;
 
 void g() {
   X = 5;
-  #pragma spf transform inline
-  f();
-}
 
+  /* f() is inlined below */
+#pragma spf assert nomacro
+  { X = 10; }
+}

@@ -1,13 +1,12 @@
 int X = 9;
 
-void foo(){
-	X++;
-}
+void foo() { X++; }
 
-int main(){
+int main() {
 
-#pragma spf transform inline
-	foo();
+  /* foo() is inlined below */
+#pragma spf assert nomacro
+  { X++; }
 
-	return 0;
+  return 0;
 }

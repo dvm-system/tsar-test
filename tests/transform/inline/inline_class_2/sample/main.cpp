@@ -9,6 +9,13 @@ A f() {
 }
 
 void g() {
-  #pragma spf transform inline
-  f();
+
+  /* f() is inlined below */
+  class A R0;
+#pragma spf assert nomacro
+  {
+    A A1;
+    R0 = A();
+  }
+  R0;
 }

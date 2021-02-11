@@ -6,16 +6,10 @@
 
 #define D(_d) _d
 
-
 #define E(_e) D(_e)
 
 #define Q(_q) _q
 
-int f() {
-return Q(E(C));
-}
+int f() { return Q(E(C)); }
 
-void f1() {
-#pragma spf transform inline
-  f();
-}
+void f1() { f(); }

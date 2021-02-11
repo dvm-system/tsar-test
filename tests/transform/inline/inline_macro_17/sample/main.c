@@ -5,7 +5,4 @@ int f() {
   return (int R X;
 }
 
-void f1() {
-#pragma spf transform inline
-  f();
-}
+void f1() { f(); }

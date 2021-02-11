@@ -1,11 +1,17 @@
 int f() { return 5; }
 
 int main() {
-  #pragma spf transform inline
+
   {
     int X;
     if (1)
-      X = f();
+    /* f() is inlined below */
+    {
+      int R0;
+#pragma spf assert nomacro
+      { R0 = 5; }
+      X = R0;
+    }
     return X;
   }
 }

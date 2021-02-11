@@ -6,6 +6,14 @@ void foo(int N, double (*A)[N]) {
 
 void bar() {
   double A[10][10];
-  #pragma spf transform inline
-  foo(10, A);
+
+  /* foo(10, A) is inlined below */
+#pragma spf assert nomacro
+  {
+    int N0 = 10;
+    double(*A0)[N0] = A;
+    for (int I = 0; I < N0; ++I)
+      for (int J = 0; J < N0; ++J)
+        A0[I][J] = I + J;
+  }
 }

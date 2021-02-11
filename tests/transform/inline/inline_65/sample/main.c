@@ -1,17 +1,34 @@
-void bar1() { }
+void bar1() {}
 void bar2(double x) {}
 
 void foo() {
   double val;
-  #pragma spf transform inline
+
   {
-    bar1();
-    bar2(val);
+    /* bar1() is inlined below */
+#pragma spf assert nomacro
+    {}
+
+    /* bar2(val) is inlined below */
+#pragma spf assert nomacro
+    { double x1 = val; }
   }
 }
 
 void foo1() {
-  #pragma spf transform inline
-  foo();
-}
 
+  /* foo() is inlined below */
+#pragma spf assert nomacro
+  {
+    double val;
+    {
+      /* bar1() is inlined below */
+#pragma spf assert nomacro
+      {}
+
+      /* bar2(val) is inlined below */
+#pragma spf assert nomacro
+      { double x0 = val; }
+    }
+  }
+}

@@ -1,25 +1,60 @@
-int foo_1(){
-	return 37;
+int foo_1() { return 37; }
+
+int foo_2() {
+
+  /* foo_1() is inlined below */
+  int R7;
+#pragma spf assert nomacro
+  { R7 = 37; }
+  return R7 + 21;
 }
 
-int foo_2(){
-	
-#pragma spf transform inline
-	return foo_1() + 21;
+int foo_3() {
+
+  /* foo_1() is inlined below */
+  int R4;
+#pragma spf assert nomacro
+  { R4 = 37; }
+  /* foo_2() is inlined below */
+  int R6;
+#pragma spf assert nomacro
+  {
+
+    /* foo_1() is inlined below */
+    int R5;
+#pragma spf assert nomacro
+    { R5 = 37; }
+    R6 = R5 + 21;
+  }
+  return R4 + R6;
 }
 
-int foo_3(){
+int main() {
+  int x = 0;
 
-#pragma spf transform inline
-	return foo_1() + foo_2();
-}
+  /* foo_3() is inlined below */
+  int R3;
+#pragma spf assert nomacro
+  {
 
-int main(){
-	int x = 0;
+    /* foo_1() is inlined below */
+    int R0;
+#pragma spf assert nomacro
+    { R0 = 37; }
+    /* foo_2() is inlined below */
+    int R2;
+#pragma spf assert nomacro
+    {
 
+      /* foo_1() is inlined below */
+      int R1;
+#pragma spf assert nomacro
+      { R1 = 37; }
+      R2 = R1 + 21;
+    }
+    R3 = R0 + R2;
+  }
+  x = R3;
 
-#pragma spf transform inline
-	x = foo_3();
-
-	return 0;
+  return 0;
 }
