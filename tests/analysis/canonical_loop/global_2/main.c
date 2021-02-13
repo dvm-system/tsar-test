@@ -12,6 +12,3 @@ void conj_grad(int * restrict colidx, int * restrict rowstr,
       q[j] = sum;
     }
 }
-//CHECK: Printing analysis 'Canonical Form Loop Analysis' for function 'conj_grad':
-//CHECK: loop at global_2.c:7:5 is semantically canonical
-//CHECK: loop at global_2.c:9:7 is semantically canonical

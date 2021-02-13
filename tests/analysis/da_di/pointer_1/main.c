@@ -10,48 +10,7 @@ void foo(double * restrict A) {
     A[I] = 1 + *P;
   }
 }
-//CHECK: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
-//CHECK:  loop at depth 1 pointer_1.c:6:3
-//CHECK:    shared:
-//CHECK:     <*A:3, ?>
-//CHECK:    first private:
-//CHECK:     <*A:3, ?> | <Y, 4>
 //CHEKC:    dynamic private:
-//CHECK:     <*A:3, ?>
-//CHECK:    second to last private:
-//CHECK:     <Y, 4>
-//CHECK:    private:
-//CHECK:     <P:4, 8>
-//CHECK:    output:
-//CHECK:     <P[0]:{10:17|4:8}, 4> <X, 4> <Y, 4>
-//CHECK:    anti:
-//CHECK:     <P[0]:{10:17|4:8}, 4> <X, 4> <Y, 4>
-//CHECK:    flow:
-//CHECK:     <P[0]:{10:17|4:8}, 4> <X, 4> <Y, 4>
-//CHECK:    induction:
-//CHECK:     <I:6[6:3], 4>:[Int,1,,1]
-//CHECK:    read only:
-//CHECK:     <A:3, 8> | <N, 4>
-//CHECK:    redundant:
-//CHECK:     <P[0]:{10:17|4:8}, 4> <X, 4> <Y, 4> | <X, 4>
-//CHECK:    lock:
-//CHECK:     <I:6[6:3], 4> | <N, 4> | <P[0]:{10:17|4:8}, 4> <X, 4> <Y, 4>
-//CHECK:    header access:
-//CHECK:     <I:6[6:3], 4> | <N, 4>
-//CHECK:    explicit access:
-//CHECK:     <A:3, 8> | <I:6[6:3], 4> | <N, 4> | <P:4, 8> | <P[0]:{10:17|4:8}, 4> <X, 4> <Y, 4>
-//CHECK:    address access:
-//CHECK:      <P[0]:{10:17|4:8}, 4> <X, 4> <Y, 4>
-//CHECK:    explicit access (separate):
-//CHECK:     <A:3, 8> <I:6[6:3], 4> <N, 4> <P:4, 8> <P[0]:{10:17|4:8}, 4> <Y, 4>
-//CHECK:    redundant (separate):
-//CHECK:     <P[0]:{10:17|4:8}, 4> <X, 4> <Y, 4>
-//CHECK:    lock (separate):
-//CHECK:     <I:6[6:3], 4> <N, 4>
-//CHECK:    address access (separate)
-//CHECK:     <X, 4> <Y, 4>
-//CHECK:    direct access (separate):
-//CHECK:     <*A:3, ?> <A:3, 8> <I:6[6:3], 4> <N, 4> <P:4, 8> <P[0]:{10:17|4:8}, 4> <X, 4> <Y, 4>
 //SAFE: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
 //SAFE:  loop at depth 1 pointer_1.c:6:3
 //SAFE:    private:

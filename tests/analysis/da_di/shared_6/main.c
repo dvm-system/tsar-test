@@ -7,26 +7,6 @@ void foo(double * restrict U) {
   for (int I = IStart; I < IEnd; I = I + IStep)
     U[I] = U[I] + 1;
 }
-//CHECK: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
-//CHECK:  loop at depth 1 shared_6.c:7:3
-//CHECK:    shared:
-//CHECK:     <*U:3, ?>
-//CHECK:    induction:
-//CHECK:     <I:7[7:3], 4>:[Int,,,]
-//CHECK:    read only:
-//CHECK:     <IEnd, 4> | <IStep, 4> | <U:3:28, 8>
-//CHECK:    lock:
-//CHECK:     <I:7[7:3], 4> | <IEnd, 4>
-//CHECK:    header access:
-//CHECK:     <I:7[7:3], 4> | <IEnd, 4>
-//CHECK:    explicit access:
-//CHECK:     <I:7[7:3], 4> | <IEnd, 4> | <IStep, 4> | <U:3:28, 8>
-//CHECK:    explicit access (separate):
-//CHECK:     <I:7[7:3], 4> <IEnd, 4> <IStep, 4> <U:3, 8>
-//CHECK:    lock (separate):
-//CHECK:     <I:7[7:3], 4> <IEnd, 4>
-//CHECK:    direct access (separate):
-//CHECK:     <*U:3, ?> <I:7[7:3], 4> <IEnd, 4> <IStep, 4> <U:3, 8>
 //SAFE: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
 //SAFE:  loop at depth 1 shared_6.c:7:3
 //SAFE:    output:

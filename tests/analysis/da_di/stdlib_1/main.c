@@ -6,26 +6,6 @@ int foo(char *S) {
     X = X + strlen(S);
   return X;
 }
-//CHECK: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
-//CHECK:  loop at depth 1 stdlib_1.c:5:3
-//CHECK:    induction:
-//CHECK:     <I:5[5:3], 4>:[Int,0,10,1]
-//CHECK:    reduction:
-//CHECK:     <X:4, 4>:add
-//CHECK:    read only:
-//CHECK:     <S:3, 8>
-//CHECK:    lock:
-//CHECK:     <I:5[5:3], 4>
-//CHECK:    header access:
-//CHECK:     <I:5[5:3], 4>
-//CHECK:    explicit access:
-//CHECK:     <I:5[5:3], 4> | <S:3, 8> | <X:4, 4>
-//CHECK:    explicit access (separate):
-//CHECK:     <I:5[5:3], 4> <S:3, 8> <X:4, 4>
-//CHECK:    lock (separate):
-//CHECK:     <I:5[5:3], 4>
-//CHECK:    direct access (separate):
-//CHECK:     <I:5[5:3], 4> <S:3, 8> <X:4, 4>
 //SAFE: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
 //SAFE:  loop at depth 1 stdlib_1.c:5:3
 //SAFE:    induction:

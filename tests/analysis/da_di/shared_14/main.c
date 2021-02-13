@@ -12,51 +12,6 @@ void foo(double *U) {
       U[J + I] = U[J + I] + 1;
   }
 }
-//CHECK: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
-//CHECK:  loop at depth 1 shared_14.c:7:3
-//CHECK:    private:
-//CHECK:     <J:6, 4>
-//CHECK:    output:
-//CHECK:     <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4>
-//CHECK:    anti:
-//CHECK:     <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4>
-//CHECK:    flow:
-//CHECK:     <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4>
-//CHECK:    induction:
-//CHECK:     <I:7[7:3], 4>:[Int,,,1]
-//CHECK:    read only:
-//CHECK:     <U:5, 8>
-//CHECK:    lock:
-//CHECK:     <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:7[7:3], 4>
-//CHECK:    header access:
-//CHECK:     <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:7[7:3], 4>
-//CHECK:    explicit access:
-//CHECK:     <I:7[7:3], 4> | <IEnd, 4> <JEnd, 4> <JStart, 4> | <J:6, 4> | <U:5, 8>
-//CHECK:    explicit access (separate):
-//CHECK:     <I:7[7:3], 4> <IEnd, 4> <J:6, 4> <JEnd, 4> <JStart, 4> <U:5, 8>
-//CHECK:    lock (separate):
-//CHECK:     <I:7[7:3], 4> <IEnd, 4>
-//CHECK:    direct access (separate):
-//CHECK:     <*U:5, ?> <I:7[7:3], 4> <IEnd, 4> <J:6, 4> <JEnd, 4> <JStart, 4> <U:5, 8>
-//CHECK:   loop at depth 2 shared_14.c:11:5
-//CHECK:     shared:
-//CHECK:      <*U:5, ?> <JEnd, 4>
-//CHECK:     induction:
-//CHECK:      <J:6, 4>:[Int,,,1]
-//CHECK:     read only:
-//CHECK:      <I:7[7:3], 4> | <U:5, 8>
-//CHECK:     lock:
-//CHECK:      <*U:5, ?> <JEnd, 4> | <J:6, 4>
-//CHECK:     header access:
-//CHECK:      <*U:5, ?> <JEnd, 4> | <J:6, 4>
-//CHECK:     explicit access:
-//CHECK:      <I:7[7:3], 4> | <J:6, 4> | <JEnd, 4> | <U:5, 8>
-//CHECK:     explicit access (separate):
-//CHECK:      <I:7[7:3], 4> <J:6, 4> <JEnd, 4> <U:5, 8>
-//CHECK:     lock (separate):
-//CHECK:      <J:6, 4> <JEnd, 4>
-//CHECK:     direct access (separate):
-//CHECK:      <*U:5, ?> <I:7[7:3], 4> <J:6, 4> <JEnd, 4> <U:5, 8>
 //SAFE: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
 //SAFE:  loop at depth 1 shared_14.c:7:3
 //SAFE:    private:

@@ -11,49 +11,6 @@ void foo(int *A) {
   }
 }
 
-//CHECK: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
-//CHECK:  loop at depth 1 private_array_7.c:3:3
-//CHECK:    private:
-//CHECK:     <J:8[8:5], 4> | <T:2, 32>
-//CHECK:    anti:
-//CHECK:     <*A:1, ?>:[1,1]
-//CHECK:    induction:
-//CHECK:     <I:3[3:3], 4>:[Int,0,100,1]
-//CHECK:    read only:
-//CHECK:     <A:1, 8>
-//CHECK:    lock:
-//CHECK:     <I:3[3:3], 4>
-//CHECK:    header access:
-//CHECK:     <I:3[3:3], 4>
-//CHECK:    explicit access:
-//CHECK:     <A:1, 8> | <I:3[3:3], 4> | <J:8[8:5], 4>
-//CHECK:    explicit access (separate):
-//CHECK:     <A:1, 8> <I:3[3:3], 4> <J:8[8:5], 4>
-//CHECK:    lock (separate):
-//CHECK:     <I:3[3:3], 4>
-//CHECK:    direct access (separate):
-//CHECK:     <*A:1, ?> <A:1, 8> <I:3[3:3], 4> <J:8[8:5], 4> <T:2, 32>
-//CHECK:   loop at depth 2 private_array_7.c:8:5
-//CHECK:     first private:
-//CHECK:      <*A:1, ?>
-//CHECK:     second to last private:
-//CHECK:      <*A:1, ?>
-//CHECK:     induction:
-//CHECK:      <J:8[8:5], 4>:[Int,0,2,1]
-//CHECK:     read only:
-//CHECK:      <A:1, 8> | <I:3[3:3], 4> | <T:2, 32>
-//CHECK:     lock:
-//CHECK:      <J:8[8:5], 4>
-//CHECK:     header access:
-//CHECK:      <J:8[8:5], 4>
-//CHECK:     explicit access:
-//CHECK:      <A:1, 8> | <I:3[3:3], 4> | <J:8[8:5], 4>
-//CHECK:     explicit access (separate):
-//CHECK:      <A:1, 8> <I:3[3:3], 4> <J:8[8:5], 4>
-//CHECK:     lock (separate):
-//CHECK:      <J:8[8:5], 4>
-//CHECK:     direct access (separate):
-//CHECK:      <*A:1, ?> <A:1, 8> <I:3[3:3], 4> <J:8[8:5], 4> <T:2, 32>
 //SAFE: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
 //SAFE:  loop at depth 1 private_array_7.c:3:3
 //SAFE:    private:

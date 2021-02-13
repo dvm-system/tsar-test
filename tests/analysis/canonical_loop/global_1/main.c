@@ -8,5 +8,3 @@ int foo(int S) {
   }
   return S;
 }
-//CHECK: Printing analysis 'Canonical Form Loop Analysis' for function 'foo':
-//CHECK: loop at global_1.c:6:3 is semantically canonical

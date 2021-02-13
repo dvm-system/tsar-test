@@ -12,53 +12,6 @@ void foo() {
       U[I][J] = U[I][J] + 1;
   }
 }
-//CHECK: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
-//CHECK:  loop at depth 1 shared_15.c:6:3
-//CHECK:    private:
-//CHECK:     <J:5, 4>
-//CHECK:    shared:
-//CHECK:     <U, 80000>
-//CHECK:    output:
-//CHECK:     <JStart, 4>
-//CHECK:    anti:
-//CHECK:     <JStart, 4>
-//CHECK:    flow:
-//CHECK:     <JStart, 4>
-//CHECK:    induction:
-//CHECK:     <I:6[6:3], 4>:[Int,,,1]
-//CHECK:    read only:
-//CHECK:     <IEnd, 4> | <JEnd, 4>
-//CHECK:    lock:
-//CHECK:     <I:6[6:3], 4> | <IEnd, 4>
-//CHECK:    header access:
-//CHECK:     <I:6[6:3], 4> | <IEnd, 4>
-//CHECK:    explicit access:
-//CHECK:     <I:6[6:3], 4> | <IEnd, 4> | <J:5, 4> | <JEnd, 4> | <JStart, 4>
-//CHECK:    explicit access (separate):
-//CHECK:     <I:6[6:3], 4> <IEnd, 4> <J:5, 4> <JEnd, 4> <JStart, 4>
-//CHECK:    lock (separate):
-//CHECK:     <I:6[6:3], 4> <IEnd, 4>
-//CHECK:    direct access (separate):
-//CHECK:     <I:6[6:3], 4> <IEnd, 4> <J:5, 4> <JEnd, 4> <JStart, 4> <U, 80000>
-//CHECK:   loop at depth 2 shared_15.c:11:5
-//CHECK:     shared:
-//CHECK:      <U, 80000>
-//CHECK:     induction:
-//CHECK:      <J:5, 4>:[Int,,,1]
-//CHECK:     read only:
-//CHECK:      <I:6[6:3], 4> | <JEnd, 4>
-//CHECK:     lock:
-//CHECK:      <J:5, 4> | <JEnd, 4>
-//CHECK:     header access:
-//CHECK:      <J:5, 4> | <JEnd, 4>
-//CHECK:     explicit access:
-//CHECK:      <I:6[6:3], 4> | <J:5, 4> | <JEnd, 4>
-//CHECK:     explicit access (separate):
-//CHECK:      <I:6[6:3], 4> <J:5, 4> <JEnd, 4>
-//CHECK:     lock (separate):
-//CHECK:      <J:5, 4> <JEnd, 4>
-//CHECK:     direct access (separate):
-//CHECK:      <I:6[6:3], 4> <J:5, 4> <JEnd, 4> <U, 80000>
 //SAFE: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
 //SAFE:  loop at depth 1 shared_15.c:6:3
 //SAFE:    private:

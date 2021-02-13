@@ -12,47 +12,6 @@ double foo() {
   }
   return U[50];
 }
-//CHECK: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
-//CHECK:  loop at depth 1 shared_20.c:7:3
-//CHECK:    private:
-//CHECK:     <J:5, 4>
-//CHECK:    shared:
-//CHECK:     <U:4:10, 800>
-//CHECK:    induction:
-//CHECK:     <I:7[7:3], 4>:[Int,0,100,10]
-//CHECK:    read only:
-//CHECK:     <JStart, 4>
-//CHECK:    lock:
-//CHECK:     <I:7[7:3], 4>
-//CHECK:    header access:
-//CHECK:     <I:7[7:3], 4>
-//CHECK:    explicit access:
-//CHECK:     <I:7[7:3], 4> | <J:5, 4> | <JStart, 4>
-//CHECK:    explicit access (separate):
-//CHECK:     <I:7[7:3], 4> <J:5, 4> <JStart, 4>
-//CHECK:    lock (separate):
-//CHECK:     <I:7[7:3], 4>
-//CHECK:    direct access (separate):
-//CHECK:     <I:7[7:3], 4> <J:5, 4> <JStart, 4> <U:4:10, 800>
-//CHECK:   loop at depth 2 shared_20.c:10:5
-//CHECK:     shared:
-//CHECK:      <U:4:10, 800>
-//CHECK:     induction:
-//CHECK:      <J:5, 4>:[Int,,,1]
-//CHECK:     read only:
-//CHECK:      <I:7[7:3], 4>
-//CHECK:     lock:
-//CHECK:      <J:5, 4>
-//CHECK:     header access:
-//CHECK:      <J:5, 4>
-//CHECK:     explicit access:
-//CHECK:      <I:7[7:3], 4> | <J:5, 4>
-//CHECK:     explicit access (separate):
-//CHECK:      <I:7[7:3], 4> <J:5, 4>
-//CHECK:     lock (separate):
-//CHECK:      <J:5, 4>
-//CHECK:     direct access (separate):
-//CHECK:      <I:7[7:3], 4> <J:5, 4> <U:4:10, 800>
 //SAFE: Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
 //SAFE:  loop at depth 1 shared_20.c:7:3
 //SAFE:    private:
