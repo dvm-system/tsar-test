@@ -1,0 +1,6 @@
+main.c:5:3: remark: parallel execution of loop is possible
+  for (int I = 98; I >= 0; I = I + X)
+  ^
+main.c:5:3: warning: unable to create parallel directive
+main.c:5:3: note: unable to implement pipeline execution for a loop with unknown step
+1 warning generated.

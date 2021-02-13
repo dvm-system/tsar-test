@@ -1,0 +1,35 @@
+main.c:70:3: remark: parallel execution of loop is possible
+  for (I = 1; I < NX - 1; I++)
+  ^
+main.c:70:3: warning: unable to create parallel directive
+main.c:59:21: note: unable to localize inout variable
+double iter(double(*A)[NY][NZ]) {
+                    ^
+main.c:66:3: remark: parallel execution of loop is possible
+  for (I = 1; I < NX - 1; I++)
+  ^
+main.c:66:3: warning: unable to create parallel directive
+main.c:59:21: note: unable to localize inout variable
+double iter(double(*A)[NY][NZ]) {
+                    ^
+main.c:62:3: remark: parallel execution of loop is possible
+  for (I = 1; I < NX - 1; I++)
+  ^
+main.c:62:3: warning: unable to create parallel directive
+main.c:59:21: note: unable to localize inout variable
+double iter(double(*A)[NY][NZ]) {
+                    ^
+main.c:63:5: remark: parallel execution of loop is possible
+    for (J = 1; J < NY - 1; J++)
+    ^
+main.c:64:7: remark: parallel execution of loop is possible
+      for (K = 1; K < NZ - 1; K++)
+      ^
+main.c:48:3: remark: parallel execution of loop is possible
+  for (I = 0; I < NX; I++)
+  ^
+main.c:48:3: warning: unable to create parallel directive
+main.c:46:20: note: unable to localize inout variable
+void init(double (*A)[NY][NZ]) {
+                   ^
+4 warnings generated.

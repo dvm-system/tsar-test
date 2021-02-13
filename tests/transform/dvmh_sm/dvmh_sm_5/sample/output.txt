@@ -1,0 +1,24 @@
+main.c:17:3: remark: parallel execution of loop is possible
+  for (int I = 0; I < N; ++I)
+  ^
+main.c:18:5: remark: parallel execution of loop is possible
+    for (int J = 0; J < N; ++J)
+    ^
+main.c:19:7: remark: parallel execution of loop is possible
+      for (int K = 0; K < 2; ++K)
+      ^
+main.c:13:3: remark: parallel execution of loop is possible
+  for (int I = 1; I < N; ++I)
+  ^
+main.c:14:5: remark: parallel execution of loop is possible
+    for (int J = 1; J < N; ++J)
+    ^
+main.c:9:3: remark: parallel execution of loop is possible
+  for (int I = 0; I < N; ++I)
+  ^
+main.c:10:5: remark: parallel execution of loop is possible
+    for (int J = 0; J < N; ++J)
+    ^
+main.c:11:7: remark: parallel execution of loop is possible
+      for (int K = 0; K < 2; ++K)
+      ^

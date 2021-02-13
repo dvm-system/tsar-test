@@ -1,0 +1,22 @@
+main.c:35:3: remark: parallel execution of loop is possible
+  for (int I = 1; I < L - 1; ++I)
+  ^
+main.c:35:3: warning: unable to create parallel directive
+main.c:27:65: note: unable to localize inout variable
+double iter(int L, double (* restrict A)[L], double (* restrict B)[L]) {
+                                                                ^
+main.c:29:3: remark: parallel execution of loop is possible
+  for (int I = 1; I < L - 1; ++I)
+  ^
+main.c:29:3: warning: unable to create parallel directive
+main.c:27:65: note: unable to localize inout variable
+double iter(int L, double (* restrict A)[L], double (* restrict B)[L]) {
+                                                                ^
+main.c:17:3: remark: parallel execution of loop is possible
+  for (int I = 0; I < L; ++I)
+  ^
+main.c:17:3: warning: unable to create parallel directive
+main.c:16:37: note: unable to localize inout variable
+void init(int L, double (* restrict A)[L], double (* restrict B)[L]) {
+                                    ^
+3 warnings generated.

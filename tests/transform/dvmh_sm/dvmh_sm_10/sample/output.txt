@@ -1,0 +1,18 @@
+main.c:8:3: remark: parallel execution of loop is possible
+  for (int I = 3; I < 100; ++I)
+  ^
+main.c:9:5: remark: parallel execution of loop is possible
+    for (int J = 2; J < 100; ++J)
+    ^
+main.c:10:7: remark: parallel execution of loop is possible
+      for (int K = 97; K >= 0; --K)
+      ^
+main.c:4:3: remark: parallel execution of loop is possible
+  for (int I = 99; I >= 3; --I)
+  ^
+main.c:5:5: remark: parallel execution of loop is possible
+    for (int J = 97; J >= 0; --J)
+    ^
+main.c:6:7: remark: parallel execution of loop is possible
+      for (int K = 2; K < 100; ++K)
+      ^
