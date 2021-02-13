@@ -104,6 +104,7 @@ sub process
     return 1
   }
   elsif ($show) {
+    print_out("########## ".$task->fullname." ##########\n");
     for my $fname (@copy) {
       show_file($fname);
     }
