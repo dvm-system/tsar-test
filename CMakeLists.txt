@@ -5,7 +5,7 @@ set(PARENT_PROJECT_SOURCE_DIR "${PROJECT_SOURCE_DIR}")
 project(TSAR_TEST VERSION 0.0.1 LANGUAGES C CXX)
 
 set(TSAR_TEST_DESCRIPTION "Main test set for TSAR")
-set(TSAR_TEST_HOMEPAGE_URL "hTSps://github.com/dvm-system/tsar-test")
+set(TSAR_TEST_HOMEPAGE_URL "https://github.com/dvm-system/tsar-test")
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sys/cmake)
 
