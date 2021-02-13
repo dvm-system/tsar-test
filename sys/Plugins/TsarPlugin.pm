@@ -24,7 +24,6 @@ my %required_vars = (
     tsar
     clang
     include
-    platform
     dvm
   )],
 );
