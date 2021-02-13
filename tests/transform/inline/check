@@ -10,6 +10,7 @@ inline_8/tsar
 inline_9/tsar
 inline_10/tsar
 inline_11/tsar
+inline_12/tsar
 inline_13/tsar
 inline_14/tsar
 inline_15/tsar
@@ -67,6 +68,8 @@ inline_class_1/tsar
 inline_class_2/tsar
 inline_enum_1/tsar
 inline_enum_2/tsar
+inline_enum_3/tsar
+inline_enum_3-CHECK-1/tsar
 inline_forward_1/tsar
 inline_forward_2/tsar
 inline_forward_3/tsar
@@ -108,10 +111,14 @@ inline_macro_26/tsar
 inline_macro_27/tsar
 inline_macro_28/tsar
 inline_macro_29/tsar
+inline_merge_1/tsar
+inline_merge_1-CHECK-1/tsar
 inline_param_1/tsar
 inline_param_2/tsar
 inline_param_3/tsar
 inline_param_4/tsar
+inline_param_5/tsar
+inline_param_5-CHECK-1/tsar
 inline_recursive_1/tsar
 inline_recursive_2/tsar
 inline_switch_1/tsar

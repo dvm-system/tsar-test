@@ -1,0 +1,2 @@
+In included file:
+warning: disable inline expansion of non-user defined function
