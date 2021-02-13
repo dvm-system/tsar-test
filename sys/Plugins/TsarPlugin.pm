@@ -60,6 +60,7 @@ sub process
   my $init  = $action eq 'init'  or
   my $check = $action eq 'check' or
   my $clean = $action eq 'clean' or
+  my $show  = $action eq 'show'  or
   die "action=$action is not supported.\n";
 
   my $run = $task->get_var('', 'run');
@@ -101,6 +102,19 @@ sub process
     ## try to remove empty work_dir ##
     m_chdir($tdir_abs);
     m_rm_empty_dir_recursive($work_dir);
+    return 1
+  }
+  elsif ($show) {
+    for my $fname (@copy) {
+      show_file($fname);
+    }
+    for my $fname (@sample) {
+      show_diff(catfile($sample_dir, $fname), catfile($work_dir, $fname));
+    }
+    while (my ($fname, $fname_ref) = each %sample_map) {
+      $fname_ref = catfile($sample_dir, $fname_ref) if !file_name_is_absolute($fname_ref);
+      show_diff($fname_ref, catfile($work_dir, $fname));
+    }
     return 1
   }
 
@@ -168,6 +182,35 @@ sub clean
     }
   }
   1
+}
+
+sub show_file
+{
+  my $fname = shift;
+  print_out("#### $fname ####\n");
+  -e $fname or return;
+  open my $f, '<', $fname or die "cannot open file $fname: $!\n";
+  if ($fname =~ /\.(?:cpp|c|f|f77)$/) {
+    my $i = 0;
+    print_out(map sprintf("%3d: $_", ++$i), <$f>);
+  }
+  else {
+    print_out(<$f>);
+  }
+  close $f;
+}
+
+sub show_diff
+{
+  my ($src, $dst) = @_;
+  if (!-e $src || !-e $dst) {
+    show_file($src);
+    show_file($dst);
+    return;
+  }
+  my $diff = diff($src, $dst) or return;
+  print_out("#### $src <=> $dst ####\n");
+  print_out($diff);
 }
 
 sub m_rm_empty_dir_recursive
