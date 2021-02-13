@@ -60,7 +60,7 @@ sub mk_task
   exists $vars{$_} or die "$name.conf: '$_' is not set\n" for @required_vars;
 
   my $tdir = catfile($res_dir, $name);
-  copy_src($tdir, {"$name.$src_ext" => "main.$src_ext"});
+  copy_src_discard_all($tdir, {"$name.$src_ext" => "main.$src_ext"});
   gen_task(catfile($tdir, 'tsar.conf'), @vars{qw(name options)});
   mk_sample("$name.$src_ext", catfile($tdir, 'sample'), 'CHECK');
 }
@@ -99,7 +99,7 @@ sub mk_task_safe
   (my $src_name = $name) =~ s/\.safe$// or die "unexpeced name '$name' for the SAFE test";
   for (@run) {
     my $tdir = catfile($res_dir, $name.$_->{name_suffix});
-    copy_src($tdir, {"$src_name.c" => 'main.c'});
+    copy_src_discard_all($tdir, {"$src_name.c" => 'main.c'});
     gen_task(catfile($tdir, 'tsar.conf'), $vars{name}, $vars{options}.$_->{add_opts});
     mk_sample("$src_name.c", catfile($tdir, 'sample'), $_->{check_prefix}||'CHECK');
   }
@@ -139,7 +139,7 @@ sub mk_task_redundant
 
   for (@run) {
     my $tdir = catfile($res_dir, $name.$_->{name_suffix});
-    copy_src($tdir, {"$name.c" => 'main.c'});
+    copy_src_discard_all($tdir, {"$name.c" => 'main.c'});
     gen_task(catfile($tdir, 'tsar.conf'), $vars{name}, $vars{options}.$_->{add_opts});
     mk_sample("$name.c", catfile($tdir, 'sample'), $_->{check_prefix}||'CHECK');
   }
@@ -193,6 +193,22 @@ sub copy_src
   }
 }
 
+sub copy_src_discard_all
+{
+  my ($dir, $src_map) = @_;
+  -e or die "$_ does not exist" for keys %$src_map;
+  make_path($dir);
+  while (my ($src, $dst) = each %$src_map) {
+    $dst = catfile($dir, $dst);
+    open my $f, '<', $src;
+    my @lines = grep !m~^(?://|!|C)\w+:~, <$f>;
+    close $f; undef $f;
+    open my $f, '>', $dst;
+    print $f @lines;
+    close $f;
+  }
+}
+
 sub copy_src_transform
 {
   my ($dir, $src_map, $discard_prefix) = @_;
@@ -212,7 +228,7 @@ sub copy_src_transform
 sub mk_sample
 {
   my ($src, $dst_dir, $check_prefix) = @_;
-  copy_src($dst_dir, {$src => 'main.c'});
+  copy_src_discard_all($dst_dir, {$src => 'main.c'});
   open my $f, '<', $src;
   my @lines = map {s/$src/main.c/g; $_} map {s~^(?://|!|C)$check_prefix: ~~ ? $_ : ()} <$f>;
   close $f;
