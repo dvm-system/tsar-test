@@ -52,7 +52,7 @@ sub mk_task
     elsif ($_ eq q(run = "$tsar $sample $options")) {}
     elsif ($_ eq q(run = "$tsar $sample $options | -check-prefix=SAFE")) { goto \&mk_task_safe }
     elsif ($_ eq q(      "$tsar $sample $options -fignore-redundant-memory=strict | -check-prefix=REDUNDANT")){ goto \&mk_task_redundant }
-    elsif ($_ eq q(suffix = tfm)) { goto \&mk_task_transform }
+    elsif (/^suffix =\s*(\S+)/) { goto \&mk_task_transform }
     else {
       die "unexpected content in '$name.conf':\n$_\n"
     }
