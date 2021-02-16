@@ -134,7 +134,7 @@ else()
 endif()
 
 set(PTS_OPTIONS "--total-time --failed f -s" CACHE STRING "Default PTS options.")
-set(TS_PTS_OPTIONS ${PTS_OPTIONS})
+string(REPLACE " " ";" TS_PTS_OPTIONS "${PTS_OPTIONS}")
 get_filename_component(PTS_PLUGIN_PATH sys ABSOLUTE)
 get_filename_component(PTS_TASK_PATH sys ABSOLUTE)
 
