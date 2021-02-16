@@ -1,8 +1,9 @@
 #!/bin/bash
 
-install_prefix=`dirname $0`/..
-pts=pts
+dir=`dirname $0`
+## Variables set by CMake ##
+perl=perl
+lib=$dir/../sys/lib
+############################
+"$perl" -I "$lib" "$dir/sapfor-test.pl" $*
 
-lib=$install_prefix/sys
-sys_tasks=$install_prefix/sys/tasks
-$pts -I$lib -T$sys_tasks --failed=f -s --total-time $*
