@@ -1,5 +1,3 @@
-set(TS_TASKS check init fail)
-
 function(tsar_test)
   # Syntax:
   # tsar_test TARGET cmake-target-name TASKS task-set-list [TEST task] [PASSNAME pass-name]
