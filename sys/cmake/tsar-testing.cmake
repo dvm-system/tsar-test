@@ -45,7 +45,7 @@ function(tsar_test)
       COMMENT "Run task set '${T}' for '${TS_PASSNAME}' pass..."
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
-    set_target_properties(${TARGET_NAME} PROPERTIES FOLDER "${TS_TEST_FOLDER}")
+    set_target_properties(${TARGET_NAME} PROPERTIES FOLDER "${TS_TEST_FOLDER}/${TARGET_PREFIX}")
     set_target_properties(${TARGET_NAME} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
     set_property(GLOBAL APPEND PROPERTY TS_TARGETS ${TARGET_NAME})
 
@@ -64,7 +64,7 @@ function(tsar_test)
     COMMENT "Clean task sets '${TS_TASKS}' for '${TS_PASSNAME}' pass..."
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
-  set_target_properties(Clean${TS_TARGET} PROPERTIES FOLDER "${TS_TEST_FOLDER}")
+  set_target_properties(Clean${TS_TARGET} PROPERTIES FOLDER "${TS_TEST_FOLDER}/Clean")
   set_target_properties(Clean${TS_TARGET} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
   set_property(GLOBAL APPEND PROPERTY TS_TARGETS Clean${TS_TARGET})
 endfunction(tsar_test)
