@@ -9,9 +9,10 @@ set(TSAR_TEST_HOMEPAGE_URL "https://github.com/dvm-system/tsar-test")
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sys/cmake)
 
-set(TS_TEST_FOLDER "Testing" CACHE STRING "Specify IDE folder for tests.")
-if (TS_TEST_FOLDER)
+set(TEST_FOLDER "Testing" CACHE STRING "Specify IDE folder for tests.")
+if (TEST_FOLDER)
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+  set(TS_TEST_FOLDER ${TEST_FOLDER})
 endif()
 
 find_package(Perl)
@@ -20,8 +21,6 @@ if (NOT PERL_FOUND)
 else()
   message(STATUS "Perl version: ${PERL_VERSION_STRING}")
 endif()
-
-set(TS_PERL_PATH ${PERL_EXECUTABLE})
 
 set(PTS_EXECUTABLE "" CACHE FILEPATH  "Path to PTS which runs tests.")
 if (NOT EXISTS "${PTS_EXECUTABLE}")
@@ -117,14 +116,14 @@ endif()
 add_custom_target(tsar-test-resources ALL)
 set_target_properties(tsar-test-resources PROPERTIES FOLDER Misc)
 
-set(DVM_PATH "" CACHE PATH "Path to DVM System")
-if (EXISTS "${DVM_PATH}")
-  get_filename_component(DVM_EXECUTABLE "${DVM_PATH}/user/dvm" ABSOLUTE)
+set(DVM_DIR "" CACHE PATH "Path to DVM System")
+if (EXISTS "${DVM_DIR}")
+  get_filename_component(DVM_EXECUTABLE "${DVM_DIR}/user/dvm" ABSOLUTE)
 endif()
 
 if (NOT EXISTS "${DVM_EXECUTABLE}")
   message(WARNING "Could NOT find DVM executable."
-                  " Set DVM_PATH to run DVMH-based tests.")
+                  " Set DVM_DIR to run DVMH-based tests.")
 else()
   set(TS_DVM_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sys/dvm)
   add_custom_command(TARGET tsar-test-resources POST_BUILD
@@ -134,7 +133,8 @@ else()
   )
 endif()
 
-set(TS_PTS_OPTIONS "--total-time --failed f -s" CACHE STRING "Default PTS options.")
+set(PTS_OPTIONS "--total-time --failed f -s" CACHE STRING "Default PTS options.")
+set(TS_PTS_OPTIONS PTS_OPTIONS)
 get_filename_component(PTS_PLUGIN_PATH sys ABSOLUTE)
 get_filename_component(PTS_TASK_PATH sys ABSOLUTE)
 
