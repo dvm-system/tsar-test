@@ -1,3 +1,0 @@
-pts=../pts/bin/pts.pl
-plugin_path=sys
-task_path=sys/tasks

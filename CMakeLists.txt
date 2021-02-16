@@ -138,6 +138,8 @@ set(TS_PTS_OPTIONS "--total-time --failed f -s" CACHE STRING "Default PTS option
 get_filename_component(PTS_PLUGIN_PATH sys ABSOLUTE)
 get_filename_component(PTS_TASK_PATH sys ABSOLUTE)
 
+configure_file(.sapfortest.in ${CMAKE_CURRENT_SOURCE_DIR}/.sapfortest @ONLY)
+
 configure_file(sys/config.in sys/config.gen @ONLY)
 file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/sys/config"
               INPUT  "${CMAKE_CURRENT_BINARY_DIR}/sys/config.gen")

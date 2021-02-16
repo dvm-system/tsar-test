@@ -1,6 +1,0 @@
-userprofile='C:\Users\username'
-tsar=$userprofile'\home\workspace\sapfor\build\analyzers\tsar\tools\tsar\Debug\tsar.exe'
-include=$userprofile'\home\workspace\sapfor\build\llvm-build\Debug\lib\clang\11.1.0\include'
-clang=$userprofile'/home/workspace/sapfor/build/llvm-build/Debug/bin/clang'
-platform=win
-dvm=

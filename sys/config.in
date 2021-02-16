@@ -1,7 +1,4 @@
-perl=@TS_PERL_PATH@
-pts=@TS_PTS_PATH@
-options=@TS_PTS_OPTIONS@
-tsar=@TS_TSAR_PATH@
-include=@TS_INCLUDE_PATH@
-clang=@TS_CLANG_PATH@
-dvm=@TS_DVM_PATH@
+tsar='"@TS_TSAR_PATH@"'
+include='@TS_INCLUDE_PATH@'
+clang='"@TS_CLANG_PATH@"'
+dvm='"@TS_DVM_PATH@"'
