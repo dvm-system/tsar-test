@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 use strict;
 use FindBin;
-use lib $FindBin::RealBin.'/../sys/lib';
 use File::Spec::Functions qw(splitpath catpath splitdir catdir catfile rel2abs);
 use Cwd;
 use File::Basename qw(dirname);
