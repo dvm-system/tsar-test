@@ -34,9 +34,9 @@ function(tsar_test)
   include(CTest)
 
   foreach(T ${TS_TASKS})
-    string(SUBSTRING ${T} 0 1 FIRST_LETSER)
-    string(TOUPPER ${FIRST_LETSER} FIRST_LETSER)
-    string(REGEX REPLACE "^.(.*)" "${FIRST_LETSER}\\1" TARGET_PREFIX ${T})
+    string(SUBSTRING ${T} 0 1 FIRST_LETTER)
+    string(TOUPPER ${FIRST_LETTER} FIRST_LETTER)
+    string(REGEX REPLACE "^.(.*)" "${FIRST_LETTER}\\1" TARGET_PREFIX ${T})
 
     set(TARGET_NAME ${TARGET_PREFIX}${TS_TARGET})
 
