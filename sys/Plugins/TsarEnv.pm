@@ -13,6 +13,9 @@ sub on_prepare {
   my $db = shift;
 
   my $h = $task->id->args_hash;
+  local($h->{env}) = {
+    map {($_ => [$task->get_arr('env', $_)])} $task->var_names('env')
+  } if $task->var_names('env');
   my @args = sort map {
     my $g = $_;
     map { (arg2str($g, $_, @{$h->{$g}{$_}})) } keys %{$h->{$g}}
