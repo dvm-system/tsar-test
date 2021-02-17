@@ -1,2 +1,3 @@
-include(tsar-testing)
-tsar_test(TARGET DIDependenceAnalysis TASKS "check;init;fail" TEST check PASSNAME "-da-di")
+include(sapfor-testing)
+sapfor_add_test(TARGET DIDependenceAnalysis
+  TASKS "pass;fail" TEST pass PASSNAME "-da-di")

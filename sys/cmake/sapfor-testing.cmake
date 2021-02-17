@@ -1,14 +1,15 @@
-function(tsar_test)
+function(sapfor_add_test)
   # Syntax:
   # tsar_test TARGET cmake-target-name TASKS task-set-list [TEST task] [PASSNAME pass-name]
   #
   # Example:
-  # tsar_test(TARGET example TASKS "check;init;fail" TEST check)
+  # sapfor_add_test(TARGET example TASKS "pass;fail" TEST pass)
   #
   # Generates custom commands for invoking pts.pl.
-  # Corresponding targets to run each task from TASKS (${TARGET_PREFXI}${TARGET}) are generated.
+  # Corresponding targets to run each task from TASKS:
+  #   ${TARGET_PREFXI}${TARGET}, Init${TARGET_PREFXI}${TARGET}) are generated.
   # Each task implies some target prefix.
-  # Target to clean the lasts execution results are also generated.
+  # Target to clean the lasts execution results of all sets are also generated.
   #
   # Use CTest to generate test for TEST task, which must be presented in TASKS list.
   #
@@ -42,12 +43,27 @@ function(tsar_test)
 
     add_custom_target(${TARGET_NAME}
       COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} "./${T}"
-      COMMENT "Run task set '${T}' for '${TS_PASSNAME}' pass..."
+      COMMENT "Run task set '${T}' for the '${TS_PASSNAME}' pass..."
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
-    set_target_properties(${TARGET_NAME} PROPERTIES FOLDER "${TS_TEST_FOLDER}/${TARGET_PREFIX}")
+
+    if (TS_TEST_FOLDER)
+      set_target_properties(${TARGET_NAME} PROPERTIES FOLDER "${TS_TEST_FOLDER}/Main/${TARGET_PREFIX}")
+    endif()
     set_target_properties(${TARGET_NAME} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
     set_property(GLOBAL APPEND PROPERTY TS_TARGETS ${TARGET_NAME})
+
+    add_custom_target(Init${TARGET_NAME}
+      COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} init "./${T}"
+      COMMENT "Initialize task set '${T}' for the '${TS_PASSNAME}' pass..."
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+
+    if (TS_TEST_FOLDER)
+      set_target_properties(Init${TARGET_NAME} PROPERTIES FOLDER "${TS_TEST_FOLDER}/Init/${TARGET_PREFIX}")
+    endif()
+    set_target_properties(Init${TARGET_NAME} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
+    set_property(GLOBAL APPEND PROPERTY TS_TARGETS Init${TARGET_NAME})
 
     if (TS_TEST AND ${T} STREQUAL "${TS_TEST}")
       add_test(NAME ${TARGET_NAME}
@@ -61,10 +77,12 @@ function(tsar_test)
 
   add_custom_target(Clean${TS_TARGET}
     COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} clean ${TASK_TO_CLEAN}
-    COMMENT "Clean task sets '${TS_TASKS}' for '${TS_PASSNAME}' pass..."
+    COMMENT "Clean task sets '${TS_TASKS}' for the '${TS_PASSNAME}' pass..."
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
-  set_target_properties(Clean${TS_TARGET} PROPERTIES FOLDER "${TS_TEST_FOLDER}/Clean")
+  if (TS_TEST_FOLDER)
+    set_target_properties(Clean${TS_TARGET} PROPERTIES FOLDER "${TS_TEST_FOLDER}/Clean")
+  endif()
   set_target_properties(Clean${TS_TARGET} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD ON)
   set_property(GLOBAL APPEND PROPERTY TS_TARGETS Clean${TS_TARGET})
-endfunction(tsar_test)
+endfunction(sapfor_add_test)
