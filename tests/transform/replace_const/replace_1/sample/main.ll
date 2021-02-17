@@ -1,5 +1,5 @@
-; ModuleID = '/tmp/replace_1-6e8fc4.ll'
-source_filename = "/tmp/replace_1-6e8fc4.ll"
+; ModuleID = '/tmp/main-6e8fc4.ll'
+source_filename = "/tmp/main-6e8fc4.ll"
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -134,7 +134,7 @@ attributes #1 = { nounwind readnone speculatable }
 !0 = !DIGlobalVariableExpression(var: !1, expr: !DIExpression())
 !1 = distinct !DIGlobalVariable(name: "a", scope: !2, file: !3, type: !11, isLocal: true, isDefinition: true)
 !2 = distinct !DISubprogram(name: "foo", scope: !4, file: !3, line: 1, type: !7, isLocal: false, isDefinition: true, scopeLine: 1, isOptimized: false, unit: !4)
-!3 = !DIFile(filename: "replace_1.f", directory: "/home/kaniandr/workspace/sapfor/analyzers/tsar/test/transform/replace_const")
+!3 = !DIFile(filename: "main.f", directory: ".")
 !4 = distinct !DICompileUnit(language: DW_LANG_Fortran90, file: !3, producer: " F90 Flang - 1.5 2017-05-01", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !5, retainedTypes: !5, globals: !6, imports: !5)
 !5 = !{}
 !6 = !{!0}
