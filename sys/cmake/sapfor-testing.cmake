@@ -42,7 +42,7 @@ function(sapfor_add_test)
     set(TARGET_NAME ${TARGET_PREFIX}${TS_TARGET})
 
     add_custom_target(${TARGET_NAME}
-      COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} "./${T}"
+      COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTION_LIST} ${PLUGIN_LIST} ${TASK_CONFIG} "./${T}"
       COMMENT "Run task set '${T}' for the '${TS_PASSNAME}' pass..."
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
@@ -54,7 +54,7 @@ function(sapfor_add_test)
     set_property(GLOBAL APPEND PROPERTY TS_TARGETS ${TARGET_NAME})
 
     add_custom_target(Init${TARGET_NAME}
-      COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} init "./${T}"
+      COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTION_LIST} ${PLUGIN_LIST} ${TASK_CONFIG} init "./${T}"
       COMMENT "Initialize task set '${T}' for the '${TS_PASSNAME}' pass..."
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
@@ -67,7 +67,7 @@ function(sapfor_add_test)
 
     if (TS_TEST AND ${T} STREQUAL "${TS_TEST}")
       add_test(NAME ${TARGET_NAME}
-        COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} "./${T}"
+        COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTION_LIST} ${PLUGIN_LIST} ${TASK_CONFIG} "./${T}"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
       )
     endif()
@@ -76,7 +76,7 @@ function(sapfor_add_test)
   endforeach()
 
   add_custom_target(Clean${TS_TARGET}
-    COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTIONS} ${PLUGIN_LIST} ${TASK_CONFIG} clean ${TASK_TO_CLEAN}
+    COMMAND ${PERL_EXECUTABLE} ${TS_PTS_PATH} ${TS_PTS_OPTION_LIST} ${PLUGIN_LIST} ${TASK_CONFIG} clean ${TASK_TO_CLEAN}
     COMMENT "Clean task sets '${TS_TASKS}' for the '${TS_PASSNAME}' pass..."
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
