@@ -4,4 +4,5 @@ add_subdirectory(inline)
 add_subdirectory(openmp)
 add_subdirectory(propagate)
 add_subdirectory(replace)
+add_subdirectory(replace_const)
 
