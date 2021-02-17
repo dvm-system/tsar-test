@@ -72,7 +72,7 @@ function(sapfor_add_test)
       )
     endif()
 
-    set(TASK_TO_CLEAN "${TASK_TO_CLEAN} \"./${T}\"")
+    set(TASK_TO_CLEAN ${TASK_TO_CLEAN} \"./${T}\")
   endforeach()
 
   add_custom_target(Clean${TS_TARGET}
