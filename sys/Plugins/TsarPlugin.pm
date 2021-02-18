@@ -133,6 +133,12 @@ sub process
 
   ## set environment ##
   local %ENV = %ENV;
+  if (my @include = $sys_conf->get_arr('', 'include')) {
+    my $delim = $^O eq 'MSWin32' ? ';' : ':';
+    my $path = join $delim, @include;
+    $ENV{$_} = $ENV{$_} ? join $delim, $ENV{$_}, $path : $path
+      for qw(C_INCLUDE_PATH CPLUS_INCLUDE_PATH);
+  }
   $ENV{$_} = $task->get_var('env', $_) for $task->var_names('env');
 
   ## run the command ##
