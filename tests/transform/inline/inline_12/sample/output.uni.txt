@@ -1,0 +1,1 @@
+warning: disable inline expansion for function without definition
