@@ -1,9 +1,9 @@
 #include "include/main.h"
 
-long A[N][N][2];
+int A[N][N][2];
 
 int main() {
-  long S = 0;
+  int S = 0;
   for (int I = 0; I < N; ++I)
     for (int J = 0; J < N; ++J)
       for (int K = 0; K < 2; ++K)
