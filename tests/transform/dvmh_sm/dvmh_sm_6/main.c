@@ -1,8 +1,4 @@
-#include <stdio.h>
-
-#define N 10
-
-long A[N][N][2];
+#include "main.h"
 
 int main() {
   long S = 0;
