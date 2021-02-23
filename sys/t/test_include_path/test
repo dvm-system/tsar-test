@@ -1,0 +1,2 @@
+echo "## $C_INCLUDE_PATH ##"
+echo "## $CPLUS_INCLUDE_PATH ##"
