@@ -1,6 +1,11 @@
 parallel
-  Adi.func/tsar
-  Adi.global/tsar
+  seq
+    Adi.func/tsar
+    Adi.func/compile
+  end_seq_seq
+    Adi.global/tsar
+    Adi.global/compile
+  end_seq
   dvmh_sm_1/tsar
   dvmh_sm_2/tsar
   dvmh_sm_3/tsar
@@ -20,17 +25,33 @@ parallel
   interproc_1/tsar
   interproc_2/tsar
   interproc_3/tsar
-  Jacobi/tsar
-  Jacobi.func/tsar
+  seq
+    Jacobi/tsar
+    Jacobi/compile
+  end_seq_seq
+    Jacobi.func/tsar
+    Jacobi.func/compile
+  end_seq
 end_parallel
 
 parallel
+  Adi.func/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0
+  Adi.func/run: env::DVMH_NUM_THREADS=4, env::DVMH_NUM_CUDAS=0
+  Adi.global/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0
+  Adi.global/run: env::DVMH_NUM_THREADS=4, env::DVMH_NUM_CUDAS=0
   dvmh_sm_5/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0
   dvmh_sm_5/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0
   dvmh_sm_6/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0
   dvmh_sm_6/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0
+  Jacobi/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0
+  Jacobi/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0
+  Jacobi.func/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, env::GRID_SIZE=8, env::ITERATION_NUMBER=10
+  Jacobi.func/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, env::GRID_SIZE=8, env::ITERATION_NUMBER=10
   seq
+    Adi.global/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
     dvmh_sm_5/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
     dvmh_sm_6/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
+    Jacobi/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
   end_seq
 end_parallel
+
