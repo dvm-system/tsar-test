@@ -55,6 +55,8 @@ sub process
   );
   $task->reload_config;
 
+  return 'skipped' if m_skip_not_set($task);
+
   my $action = $task->get_var('', 'action', 'check');
   my $init  = $action eq 'init'  or
   my $check = $action eq 'check' or
@@ -144,6 +146,7 @@ sub process
 
   ## run the command ##
   m_chdir($work_dir);
+  dbg2 and dprint("environment:\n", map "  $_=$ENV{$_}\n", sort keys %ENV);
   m_system($run);
 
   ## compare results ##
@@ -283,6 +286,22 @@ sub m_chdir
 {
   $CWD = $_[0] or die "Cannot chdir to '".rel2abs($_[0])."'";
   dbg1 and dprint("CWD = $CWD");
+}
+
+sub m_skip_not_set
+{
+  my $task = shift;
+
+  for ($task->get_arr('skip', 'not_set', [])) {
+    my ($gr, $var) = /^(\w*)::(\w+)$/ or die "Variable skip::not_set has a wrong value '$_'."
+      ." It should contain a list of variables in the form 'group::var'.\n";
+    $gr //= '';
+    if (!$task->get_arr($gr, $var, [])) {
+      print_out("Variable $_ is not set.\n");
+      return 1
+    }
+  }
+  0
 }
 
 1;
