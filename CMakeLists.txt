@@ -143,6 +143,7 @@ else()
   add_custom_command(TARGET tsar-test-resources POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy "${DVM_EXECUTABLE}"
                                      "${TS_DVM_PATH}"
+    COMMAND ${PERL_EXECUTABLE} "-pi -e\"s/^(?=export DVMH_)/#/\""  "${TS_DVM_PATH}"
     COMMENT "Copy DVM executable to ${TS_DVM_PATH}"
   )
 endif()
