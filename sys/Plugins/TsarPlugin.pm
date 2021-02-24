@@ -146,7 +146,7 @@ sub process
 
   ## run the command ##
   m_chdir($work_dir);
-  dbg2 and dprint("environment:\n", map "  $_=$ENV{$_}\n", sort keys %ENV);
+  #dbg2 and dprint("environment:\n", map "  $_=$ENV{$_}\n", sort keys %ENV);
   m_system($run);
 
   ## compare results ##
