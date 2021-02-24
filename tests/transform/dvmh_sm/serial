@@ -1,20 +1,9 @@
 parallel
-  seq
-    Adi.func/tsar
-    Adi.func/seq
-  end_seq_seq
-    Adi.global/tsar
-    Adi.global/seq
-  end_seq_seq
-    dvmh_sm_5/tsar
-    dvmh_sm_5/seq
-  end_seq_seq
-    dvmh_sm_6/tsar
-    dvmh_sm_6/seq
-  end_seq_seq
-    Jacobi/seq
-  end_seq_seq
-    Jacobi.func/seq: env::GRID_SIZE=8, env::ITERATION_NUMBER=10
-  end_seq
+  Adi.func/seq
+  Adi.global/seq
+  dvmh_sm_5/seq
+  dvmh_sm_6/seq
+  Jacobi/seq
+  Jacobi.func/seq: env::GRID_SIZE=8, env::ITERATION_NUMBER=10
 end_parallel
 
