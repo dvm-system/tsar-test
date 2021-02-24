@@ -28,7 +28,7 @@ int main(int Argc, char *Argv[]) {
   init(A);
   for (It = 1; It <= ItMax; It++) {
     Eps = iter(A);
-    printf(" IT = %4i   EPS = %14.7E\n", It, Eps);
+    printf(" IT = %4i   EPS = %14.3E\n", It, Eps);
     if (Eps < MaxEps)
       break;
   }
