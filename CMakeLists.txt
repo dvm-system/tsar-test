@@ -155,6 +155,16 @@ get_filename_component(PTS_TASK_PATH sys ABSOLUTE)
 
 configure_file(.sapfortest.in ${CMAKE_CURRENT_SOURCE_DIR}/.sapfortest @ONLY)
 
+macro(quote_path P)
+  if (${P})
+    set(${P} "'\"${${P}}\"'")
+  endif()
+endmacro()
+
+quote_path(TS_TSAR_PATH)
+quote_path(TS_CLANG_PATH)
+quote_path(TS_DVM_PATH)
+
 configure_file(sys/config.in sys/config.gen @ONLY)
 file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/sys/config"
               INPUT  "${CMAKE_CURRENT_BINARY_DIR}/sys/config.gen")
