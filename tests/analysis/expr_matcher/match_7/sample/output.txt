@@ -1,0 +1,4 @@
+Printing analysis 'High and Low Level Expression Matcher' for function 'foo':
+main.c:2:19 BinaryOperator '='  store i32 10, i32* %add.ptr1, align 4, !dbg !43, !tbaa !44
+main.c:2:5 UnaryOperator '*'  %1 = load i32*, i32** %add.ptr, align 8, !dbg !41, !tbaa !34
+main.c:2:7 DeclRefExpr  %0 = load i32**, i32*** %X.addr, align 8, !dbg !39, !tbaa !34

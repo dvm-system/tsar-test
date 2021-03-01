@@ -1,0 +1,41 @@
+Printing analysis 'High and Low Level Expression Matcher' for function 'main':
+main.c:8:10 BinaryOperator '='  store i32 0, i32* %I, align 4, !dbg !52, !tbaa !54
+main.c:8:15 DeclRefExpr  %3 = load i32, i32* %I, align 4, !dbg !57, !tbaa !54
+main.c:8:23 DeclRefExpr  %10 = load i32, i32* %I, align 4, !dbg !81, !tbaa !54
+main.c:8:23 UnaryOperator '++'  store i32 %inc9, i32* %I, align 4, !dbg !81, !tbaa !54
+main.c:9:12 BinaryOperator '='  store i32 0, i32* %J, align 4, !dbg !61, !tbaa !54
+main.c:9:17 DeclRefExpr  %4 = load i32, i32* %J, align 4, !dbg !64, !tbaa !54
+main.c:9:24 DeclRefExpr  %9 = load i32, i32* %J, align 4, !dbg !76, !tbaa !54
+main.c:9:24 UnaryOperator '++'  store i32 %inc, i32* %J, align 4, !dbg !76, !tbaa !54
+main.c:10:15 BinaryOperator '='  store double %mul5, double* %arrayidx7, align 8, !dbg !75, !tbaa !48
+main.c:10:9 DeclRefExpr  %7 = load i32, i32* %I, align 4, !dbg !72, !tbaa !54
+main.c:10:12 DeclRefExpr  %8 = load i32, i32* %J, align 4, !dbg !74, !tbaa !54
+main.c:10:17 DeclRefExpr  %5 = load i32, i32* %I, align 4, !dbg !68, !tbaa !54
+main.c:10:27 DeclRefExpr  %6 = load i32, i32* %J, align 4, !dbg !70, !tbaa !54
+main.c:11:10 BinaryOperator '='  store i32 1, i32* %I, align 4, !dbg !85, !tbaa !54
+main.c:11:15 DeclRefExpr  %11 = load i32, i32* %I, align 4, !dbg !88, !tbaa !54
+main.c:11:22 DeclRefExpr  %16 = load i32, i32* %I, align 4, !dbg !100, !tbaa !54
+main.c:11:22 UnaryOperator '++'  store i32 %inc23, i32* %I, align 4, !dbg !100, !tbaa !54
+main.c:12:10 BinaryOperator '='  store double %14, double* %arrayidx21, align 8, !dbg !99, !tbaa !48
+main.c:12:7 DeclRefExpr  %15 = load i32, i32* %I, align 4, !dbg !97, !tbaa !54
+main.c:12:13 DeclRefExpr  %14 = load double, double* %arrayidx19, align 8, !dbg !94, !tbaa !48
+main.c:12:15 DeclRefExpr  %12 = load i32, i32* %I, align 4, !dbg !92, !tbaa !54
+main.c:12:22 DeclRefExpr  %13 = load i32, i32* %I, align 4, !dbg !95, !tbaa !54
+main.c:13:8 BinaryOperator '='  store double 1.000000e+00, double* getelementptr inbounds ([100 x double], [100 x double]* @B, i64 0, i64 0), align 16, !dbg !104, !tbaa !48
+main.c:14:10 BinaryOperator '='  store i32 0, i32* %I, align 4, !dbg !105, !tbaa !54
+main.c:14:15 DeclRefExpr  %17 = load i32, i32* %I, align 4, !dbg !108, !tbaa !54
+main.c:14:22 DeclRefExpr  %26 = load i32, i32* %I, align 4, !dbg !133, !tbaa !54
+main.c:14:22 UnaryOperator '++'  store i32 %inc44, i32* %I, align 4, !dbg !133, !tbaa !54
+main.c:15:12 BinaryOperator '='  store i32 0, i32* %J, align 4, !dbg !112, !tbaa !54
+main.c:15:17 DeclRefExpr  %18 = load i32, i32* %J, align 4, !dbg !115, !tbaa !54
+main.c:15:25 DeclRefExpr  %25 = load i32, i32* %J, align 4, !dbg !129, !tbaa !54
+main.c:15:25 UnaryOperator '++'  store i32 %inc41, i32* %J, align 4, !dbg !129, !tbaa !54
+main.c:16:9 BinaryOperator '='  store double %add, double* %S, align 8, !dbg !127, !tbaa !48
+main.c:16:11 DeclRefExpr  %19 = load double, double* %S, align 8, !dbg !119, !tbaa !48
+main.c:16:15 DeclRefExpr  %22 = load double, double* %arrayidx36, align 8, !dbg !121, !tbaa !48
+main.c:16:17 DeclRefExpr  %20 = load i32, i32* %I, align 4, !dbg !120, !tbaa !54
+main.c:16:20 DeclRefExpr  %21 = load i32, i32* %J, align 4, !dbg !122, !tbaa !54
+main.c:16:25 DeclRefExpr  %24 = load double, double* %arrayidx38, align 8, !dbg !124, !tbaa !48
+main.c:16:27 DeclRefExpr  %23 = load i32, i32* %J, align 4, !dbg !123, !tbaa !54
+main.c:17:3 ReturnStmt  ret i32 %conv46, !dbg !139
+main.c:17:10 DeclRefExpr  %27 = load double, double* %S, align 8, !dbg !137, !tbaa !48
