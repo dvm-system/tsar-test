@@ -1,0 +1,4 @@
+Printing analysis 'High and Low Level Expression Matcher' for function 'bar':
+main.c:4:3 ReturnStmt  ret i32 %add, !dbg !28
+main.c:4:10 DeclRefExpr  %0 = load i32, i32* %X.addr, align 4, !dbg !27, !tbaa !21
+main.c:4:10 DeclRefExpr  %1 = load i32, i32* %Y.addr, align 4, !dbg !28, !tbaa !21
