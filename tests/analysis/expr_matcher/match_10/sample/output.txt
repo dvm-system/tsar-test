@@ -1,4 +1,5 @@
 Printing analysis 'High and Low Level Expression Matcher' for function 'main':
+main.c:7:10 Var 'S'  store double 0.000000e+00, double* %S, align 8, !dbg !47, !tbaa !48
 main.c:8:10 BinaryOperator '='  store i32 0, i32* %I, align 4, !dbg !52, !tbaa !54
 main.c:8:15 DeclRefExpr  %3 = load i32, i32* %I, align 4, !dbg !57, !tbaa !54
 main.c:8:23 DeclRefExpr  %10 = load i32, i32* %I, align 4, !dbg !81, !tbaa !54
