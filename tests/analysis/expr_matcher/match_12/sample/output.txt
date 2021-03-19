@@ -1,4 +1,4 @@
 Printing analysis 'High and Low Level Expression Matcher' for function 'bar':
-main.c:5:3 ReturnStmt  ret double %1, !dbg !25
-main.c:5:10 DeclRefExpr  %1 = load double, double* %X, align 8, !dbg !23, !tbaa !19
-main.c:4:3 Var 'X'  store double 0.000000e+00, double* %X, align 8, !dbg !18, !tbaa !19
+main.c:5:3 ReturnStmt  ret double %1
+main.c:5:10 DeclRefExpr  %1 = load double, double* %X, align 8
+main.c:4:3 Var 'X'  store double 0.000000e+00, double* %X, align 8

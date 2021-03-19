@@ -1,5 +1,5 @@
 Printing analysis 'High and Low Level Expression Matcher' for function 'foo':
-main.c:4:5 BinaryOperator '='  store i32 10, i32* %X.addr, align 4, !dbg !29, !tbaa !24
-main.c:5:3 ReturnStmt  ret i32 %call, !dbg !32
-main.c:5:10 CallExpr  %call = call i32 @bar(i32 %0), !dbg !31
-main.c:5:14 DeclRefExpr  %0 = load i32, i32* %X.addr, align 4, !dbg !30, !tbaa !24
+main.c:4:5 BinaryOperator '='  store i32 10, i32* %X.addr, align 4
+main.c:5:3 ReturnStmt  ret i32 %call
+main.c:5:10 CallExpr  %call = call i32 @bar(i32 %0)
+main.c:5:14 DeclRefExpr  %0 = load i32, i32* %X.addr, align 4

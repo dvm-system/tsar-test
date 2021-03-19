@@ -1,9 +1,9 @@
 Printing analysis 'High and Low Level Expression Matcher' for function 'foo':
-main.c:3:9 Var 'f'  store i32 (...)* bitcast (i32 (i32, i32)* @bar to i32 (...)*), i32 (...)** %f, align 8, !dbg !34, !tbaa !35
-main.c:4:3 ReturnStmt  ret i32 %call4, !dbg !43
-main.c:4:10 DeclRefExpr  %1 = load i32 (...)*, i32 (...)** %f, align 8, !dbg !39, !tbaa !35
-main.c:4:10 CallExpr  %call4 = call i32 %callee.knr.cast3(i32 %call2, i32 %call), !dbg !39
-main.c:4:12 DeclRefExpr  %5 = load i32 (...)*, i32 (...)** %f, align 8, !dbg !41, !tbaa !35
-main.c:4:12 CallExpr  %call2 = call i32 %callee.knr.cast1(i32 5, i32 6), !dbg !41
-main.c:4:21 DeclRefExpr  %2 = load i32 (...)*, i32 (...)** %f, align 8, !dbg !40, !tbaa !35
-main.c:4:21 CallExpr  %call = call i32 %callee.knr.cast(i32 2, i32 3), !dbg !40
+main.c:3:9 Var 'f'  store i32 (...)* bitcast (i32 (i32, i32)* @bar to i32 (...)*), i32 (...)** %f, align 8
+main.c:4:3 ReturnStmt  ret i32 %call4
+main.c:4:10 DeclRefExpr  %1 = load i32 (...)*, i32 (...)** %f, align 8
+main.c:4:10 CallExpr  %call4 = call i32 %callee.knr.cast3(i32 %call2, i32 %call)
+main.c:4:12 DeclRefExpr  %5 = load i32 (...)*, i32 (...)** %f, align 8
+main.c:4:12 CallExpr  %call2 = call i32 %callee.knr.cast1(i32 5, i32 6)
+main.c:4:21 DeclRefExpr  %2 = load i32 (...)*, i32 (...)** %f, align 8
+main.c:4:21 CallExpr  %call = call i32 %callee.knr.cast(i32 2, i32 3)

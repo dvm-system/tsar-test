@@ -1,6 +1,6 @@
 Printing analysis 'High and Low Level Expression Matcher' for function 'foo':
-main.c:5:11 BinaryOperator '='  store float %conv, float* %arrayidx, align 8, !dbg !58, !tbaa !59
-main.c:5:3 DeclRefExpr  %3 = load %struct.STy*, %struct.STy** %S.addr, align 8, !dbg !56, !tbaa !43
-main.c:5:19 MemberExpr  %2 = load i32, i32* %Q, align 4, !dbg !52, !tbaa !53
-main.c:5:16 MemberExpr  %1 = load %struct.YTy*, %struct.YTy** %Y, align 8, !dbg !49, !tbaa !50
-main.c:5:13 DeclRefExpr  %0 = load %struct.STy*, %struct.STy** %S.addr, align 8, !dbg !48, !tbaa !43
+main.c:5:11 BinaryOperator '='  store float %conv, float* %arrayidx, align 8
+main.c:5:3 DeclRefExpr  %3 = load %struct.STy*, %struct.STy** %S.addr, align 8
+main.c:5:19 MemberExpr  %2 = load i32, i32* %Q, align 4
+main.c:5:16 MemberExpr  %1 = load %struct.YTy*, %struct.YTy** %Y, align 8
+main.c:5:13 DeclRefExpr  %0 = load %struct.STy*, %struct.STy** %S.addr, align 8
