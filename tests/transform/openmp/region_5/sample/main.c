@@ -5,9 +5,9 @@ void foo(int N, int *A) {
   for (int I = 0; I < TSize; ++I)
     T[I] = I;
 #pragma spf region name(parallel)
-#pragma omp parallel
+#pragma omp parallel default(shared)
   {
-#pragma omp for default(shared)
+#pragma omp for
     for (int I = 0; I < N; ++I) {
       A[I] = I;
       for (int J = 0; J < TSize; ++J)

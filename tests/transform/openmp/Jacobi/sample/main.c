@@ -18,9 +18,9 @@ double A[L][L];
 double B[L][L];
 
 int main() {
-#pragma omp parallel
+#pragma omp parallel default(shared)
   {
-#pragma omp for default(shared)
+#pragma omp for
     for (int I = 0; I < L; ++I)
       for (int J = 0; J < L; ++J) {
         A[I][J] = 0;
@@ -33,16 +33,16 @@ int main() {
 
   for (int It = 1; It <= ITMAX; ++It) {
     double Eps = 0;
-#pragma omp parallel
+#pragma omp parallel default(shared)
     {
-#pragma omp for default(shared) reduction(max : Eps)
+#pragma omp for reduction(max : Eps)
       for (int I = 1; I < L - 1; ++I)
         for (int J = 1; J < L - 1; ++J) {
           double Tmp = fabs(B[I][J] - A[I][J]);
           Eps = Max(Tmp, Eps);
           A[I][J] = B[I][J];
         }
-#pragma omp for default(shared)
+#pragma omp for
       for (int I = 1; I < L - 1; ++I)
         for (int J = 1; J < L - 1; ++J)
           B[I][J] =

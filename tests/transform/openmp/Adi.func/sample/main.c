@@ -45,9 +45,9 @@ int main(int Argc, char *Argv[]) {
 
 void init(double (*A)[NY][NZ]) {
   int I, J, K;
-#pragma omp parallel
+#pragma omp parallel default(shared)
   {
-#pragma omp for default(shared) private(J, K)
+#pragma omp for private(J, K)
     for (I = 0; I < NX; I++)
       for (J = 0; J < NY; J++)
         for (K = 0; K < NZ; K++)
@@ -63,10 +63,9 @@ void init(double (*A)[NY][NZ]) {
 double iter(double (*A)[NY][NZ]) {
   int I, J, K;
   double Eps = 0;
-#pragma omp parallel
+#pragma omp parallel default(shared)
   {
-#pragma omp for default(shared) private(K) collapse(2) ordered(2)              \
-    schedule(static, 1)
+#pragma omp for private(K) collapse(2) ordered(2) schedule(static, 1)
     for (I = 1; I < NX - 1; I++)
       for (J = 1; J < NY - 1; J++) {
 #pragma omp ordered depend(sink : I - 1, J)
@@ -75,12 +74,12 @@ double iter(double (*A)[NY][NZ]) {
 #pragma omp ordered depend(source)
       }
 
-#pragma omp for default(shared) private(J, K)
+#pragma omp for private(J, K)
     for (I = 1; I < NX - 1; I++)
       for (J = 1; J < NY - 1; J++)
         for (K = 1; K < NZ - 1; K++)
           A[I][J][K] = (A[I][J - 1][K] + A[I][J + 1][K]) / 2;
-#pragma omp for default(shared) private(J, K) reduction(max : Eps)
+#pragma omp for private(J, K) reduction(max : Eps)
     for (I = 1; I < NX - 1; I++)
       for (J = 1; J < NY - 1; J++)
         for (K = 1; K < NZ - 1; K++) {

@@ -2,9 +2,9 @@ int bar() { return 10; };
 
 void foo(int N, double *A) {
   int X, Y;
-#pragma omp parallel
+#pragma omp parallel default(shared)
   {
-#pragma omp for default(shared) private(X, Y)
+#pragma omp for private(X, Y)
     for (int I = 0; I < N; ++I) {
       X = I;
       if (I > N) {
