@@ -27,7 +27,7 @@ void foo() {
 #pragma dvm actual(A)
 #pragma dvm region in(A)out(A) local(P, Q)
   {
-#pragma dvm parallel([I]) tie(A[I][][], P[][], Q[][]) private(P, Q)
+#pragma dvm parallel([I]) tie(A[I][][]) private(P, Q)
     for (int I = 0; I < NX; ++I) {
       for (int J = 0; J < NY; ++J) {
         Q[J][0] = J;
