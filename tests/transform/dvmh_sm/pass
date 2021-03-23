@@ -25,6 +25,7 @@ parallel
   interproc_1/tsar
   interproc_2/tsar
   interproc_3/tsar
+  reduction_1/tsar
   seq
     Jacobi/tsar
     Jacobi/compile
