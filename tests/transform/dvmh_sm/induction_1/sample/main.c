@@ -13,7 +13,6 @@ int main() {
       A[I] = I;
   }
 #pragma dvm get_actual(A, I)
-
   J = 1;
   for (I = 0; I < N - 1; ++I) {
     S = S + A[I] + A[J];

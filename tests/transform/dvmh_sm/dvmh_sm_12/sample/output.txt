@@ -1,0 +1,6 @@
+main.c:12:3: remark: parallel execution of loop is possible
+  for (int I = 0; I < 100; ++I)
+  ^
+main.c:7:3: remark: parallel execution of loop is possible
+  for (int I = 0; I < 100; ++I)
+  ^

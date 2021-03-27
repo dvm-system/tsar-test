@@ -32,7 +32,6 @@ int main() {
       }
   }
 #pragma dvm get_actual(A, B)
-
   for (int It = 1; It <= ITMAX; ++It) {
     double Eps = 0;
 #pragma dvm actual(A, B, Eps)
@@ -52,7 +51,6 @@ int main() {
               (A[I - 1][J] + A[I][J - 1] + A[I][J + 1] + A[I + 1][J]) / 4.0;
     }
 #pragma dvm get_actual(A, B, Eps)
-
     printf("It=%4i   Eps=%e\n", It, Eps);
     if (Eps < MAXEPS)
       break;

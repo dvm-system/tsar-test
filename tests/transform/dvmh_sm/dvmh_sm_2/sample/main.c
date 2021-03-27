@@ -4,7 +4,7 @@ double A[N], B[N];
 
 int main() {
   double S = 1.;
-#pragma dvm actual(A, B, S)
+#pragma dvm actual(S)
 #pragma dvm region in(A, B, S)out(A, B, S)
   {
 #pragma dvm parallel([I]) tie(A[I])
@@ -17,7 +17,6 @@ int main() {
     for (int I = 0; I < N / 2; I += 2)
       S = S * A[I] * B[I + 1];
   }
-#pragma dvm get_actual(A, B, S)
-
+#pragma dvm get_actual(S)
   return S;
 }

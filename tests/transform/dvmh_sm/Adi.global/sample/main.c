@@ -62,9 +62,10 @@ void init() {
 }
 
 double iter() {
+#pragma dvm actual(A)
   int I, J, K;
   double Eps = 0;
-#pragma dvm actual(A, Eps, I)
+#pragma dvm actual(Eps)
 #pragma dvm region in(A, Eps, I)out(A, Eps, I) local(J, K)
   {
 #pragma dvm parallel([I][J][K]) tie(A[I][J][K]) across(A [1:1] [0:0] [0:0])
@@ -88,7 +89,7 @@ double iter() {
           A[I][J][K] = Tmp1;
         }
   }
-#pragma dvm get_actual(A, Eps, I)
-
+#pragma dvm get_actual(A)
+#pragma dvm get_actual(Eps)
   return Eps;
 }

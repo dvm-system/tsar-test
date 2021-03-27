@@ -52,7 +52,6 @@ void foo() {
 }
 
 int main() {
-#pragma dvm actual(A)
 #pragma dvm region in(A)out(A)
   {
 #pragma dvm parallel([I][J][M]) tie(A[I][J][M])
@@ -62,10 +61,10 @@ int main() {
           A[I][J][M] = 1;
   }
 #pragma dvm get_actual(A)
-
   foo();
+#pragma dvm actual(A)
   double S = 0;
-#pragma dvm actual(A, S)
+#pragma dvm actual(S)
 #pragma dvm region in(A, S)out(S)
   {
 #pragma dvm parallel([I][J][M]) tie(A[I][J][M]) reduction(sum(S))
@@ -75,7 +74,8 @@ int main() {
           S = S + A[I][J][M];
   }
 #pragma dvm get_actual(S)
-
+#pragma dvm get_actual(A)
   printf("S = %e\n", S);
+#pragma dvm actual(A)
   return 0;
 }

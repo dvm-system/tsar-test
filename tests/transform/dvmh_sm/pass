@@ -21,6 +21,8 @@ parallel
   dvmh_sm_8/tsar
   dvmh_sm_9/tsar
   dvmh_sm_10/tsar
+  dvmh_sm_11/tsar
+  dvmh_sm_12/tsar
   induction_1/tsar
   interproc_1/tsar
   interproc_2/tsar

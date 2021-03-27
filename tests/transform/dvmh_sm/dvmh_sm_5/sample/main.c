@@ -6,7 +6,7 @@ long A[N][N][2];
 
 int main() {
   long S = 0;
-#pragma dvm actual(A, S)
+#pragma dvm actual(S)
 #pragma dvm region in(A, S)out(A, S)
   {
 #pragma dvm parallel([I][J][K]) tie(A[I][J][K])
@@ -26,8 +26,9 @@ int main() {
         for (int K = 0; K < 2; ++K)
           S += A[I][J][K];
   }
-#pragma dvm get_actual(A, S)
-
+#pragma dvm get_actual(S)
+#pragma dvm get_actual(A)
   printf("Sum = %ld\n", S);
+#pragma dvm actual(A)
   return 0;
 }
