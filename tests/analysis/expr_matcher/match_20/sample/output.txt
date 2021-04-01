@@ -1,0 +1,34 @@
+Printing analysis 'High and Low Level Expression Matcher' for function 'far':
+main.c:7:12 Var 'i'  store i32 1, i32* %i, align 4, !dbg !54, !tbaa !55
+main.c:7:19 DeclRefExpr  %1 = load i32, i32* %i, align 4, !dbg !57, !tbaa !55
+main.c:7:30 DeclRefExpr  %24 = load i32, i32* %i, align 4, !dbg !87, !tbaa !55
+main.c:7:30 UnaryOperator '++'  store i32 %inc, i32* %i, align 4, !dbg !87, !tbaa !55
+main.c:8:9 CallExpr  %call = call i32 @is_prime(i32 %3), !dbg !62
+main.c:8:18 DeclRefExpr  %3 = load i32, i32* %i, align 4, !dbg !61, !tbaa !55
+main.c:9:16 CompoundAssignOperator '+='  %8 = load double, double* %arrayidx, align 8, !dbg !67, !tbaa !68
+main.c:9:7 DeclRefExpr  %6 = load double*, double** %A.addr, align 8, !dbg !64, !tbaa !48
+main.c:9:9 DeclRefExpr  %7 = load i32, i32* %i, align 4, !dbg !65, !tbaa !55
+###
+main.c:9:7 DeclRefExpr  %8 = load double, double* %arrayidx, align 8, !dbg !42, !tbaa !43
+main.c:9:16 CompoundAssignOperator '+='  store double %add1, double* %arrayidx, align 8, !dbg !42, !tbaa !43
+###
+main.c:12:10 BinaryOperator '='  store double %call4, double* %arrayidx6, align 8, !dbg !76, !tbaa !68
+main.c:12:5 DeclRefExpr  %14 = load double*, double** %A.addr, align 8, !dbg !74, !tbaa !48
+main.c:12:7 DeclRefExpr  %15 = load i32, i32* %i, align 4, !dbg !75, !tbaa !55
+main.c:12:12 CallExpr  %call4 = call double @boo(double %11), !dbg !73
+main.c:12:16 DeclRefExpr  %9 = load double*, double** %A.addr, align 8, !dbg !71, !tbaa !48
+main.c:12:18 DeclRefExpr  %10 = load i32, i32* %i, align 4, !dbg !72, !tbaa !55
+###
+main.c:12:16 DeclRefExpr  %11 = load double, double* %arrayidx3, align 8, !dbg !46, !tbaa !43
+###
+main.c:13:9 CallExpr  %call9 = call i32 @is_prime(i32 %conv), !dbg !79
+main.c:13:18 DeclRefExpr  %16 = load double*, double** %A.addr, align 8, !dbg !77, !tbaa !48
+main.c:13:20 DeclRefExpr  %17 = load i32, i32* %i, align 4, !dbg !78, !tbaa !55
+###
+main.c:13:18 DeclRefExpr  %18 = load double, double* %arrayidx8, align 8, !dbg !52, !tbaa !43
+###
+main.c:14:16 CompoundAssignOperator '*='  %23 = load double, double* %arrayidx14, align 8, !dbg !84, !tbaa !68
+main.c:14:7 DeclRefExpr  %21 = load double*, double** %A.addr, align 8, !dbg !81, !tbaa !48
+main.c:14:9 DeclRefExpr  %22 = load i32, i32* %i, align 4, !dbg !82, !tbaa !55
+###
+main.c:14:16 CompoundAssignOperator '*='  store double %mul, double* %arrayidx14, align 8, !dbg !61, !tbaa !43

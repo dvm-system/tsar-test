@@ -1,0 +1,23 @@
+Printing analysis 'High and Low Level Expression Matcher' for function 'main':
+main.c:4:13 Var 'f'  store i32 22, i32* %f, align 4, !dbg !34, !tbaa !35
+main.c:5:12 Var 'i'  store i32 0, i32* %i, align 4, !dbg !40, !tbaa !35
+main.c:5:19 DeclRefExpr  %3 = load i32, i32* %i, align 4, !dbg !41, !tbaa !35
+main.c:5:26 DeclRefExpr  %6 = load i32, i32* %i, align 4, !dbg !51, !tbaa !35
+main.c:5:26 UnaryOperator '++'  store i32 %inc, i32* %i, align 4, !dbg !51, !tbaa !35
+main.c:6:10 BinaryOperator '='  store i32 0, i32* %arrayidx, align 4, !dbg !49, !tbaa !35
+main.c:6:7 DeclRefExpr  %5 = load i32, i32* %i, align 4, !dbg !46, !tbaa !35
+main.c:8:12 Var 'i'  store i32 0, i32* %i1, align 4, !dbg !56, !tbaa !35
+main.c:8:19 DeclRefExpr  %8 = load i32, i32* %i1, align 4, !dbg !57, !tbaa !35
+main.c:8:30 DeclRefExpr  %18 = load i32, i32* %i1, align 4, !dbg !80, !tbaa !35
+main.c:8:30 UnaryOperator '++'  store i32 %inc18, i32* %i1, align 4, !dbg !80, !tbaa !35
+main.c:9:10 BinaryOperator '='  store i32 %add, i32* %arrayidx9, align 4, !dbg !69, !tbaa !35
+main.c:9:7 DeclRefExpr  %13 = load i32, i32* %i1, align 4, !dbg !67, !tbaa !35
+main.c:9:12 DeclRefExpr  %11 = load i32, i32* %arrayidx7, align 4, !dbg !64, !tbaa !35
+main.c:9:14 DeclRefExpr  %10 = load i32, i32* %i1, align 4, !dbg !62, !tbaa !35
+main.c:9:19 DeclRefExpr  %12 = load i32, i32* %f, align 4, !dbg !65, !tbaa !35
+main.c:10:14 BinaryOperator '='  store i32 %add13, i32* %arrayidx16, align 4, !dbg !78, !tbaa !35
+main.c:10:7 DeclRefExpr  %17 = load i32, i32* %i1, align 4, !dbg !75, !tbaa !35
+main.c:10:16 DeclRefExpr  %15 = load i32, i32* %arrayidx12, align 4, !dbg !72, !tbaa !35
+main.c:10:18 DeclRefExpr  %14 = load i32, i32* %i1, align 4, !dbg !70, !tbaa !35
+main.c:10:27 DeclRefExpr  %16 = load i32, i32* %f, align 4, !dbg !73, !tbaa !35
+main.c:12:3 ReturnStmt  ret i32 0, !dbg !84
