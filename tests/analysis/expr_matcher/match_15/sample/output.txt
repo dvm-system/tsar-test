@@ -10,14 +10,14 @@ main.c:8:25 DeclRefExpr  %7 = load i32, i32* %j, align 4, !dbg !56, !tbaa !43
 main.c:8:32 DeclRefExpr  %20 = load i32, i32* %j, align 4, !dbg !81, !tbaa !43
 main.c:8:32 UnaryOperator '++'  store i32 %inc, i32* %j, align 4, !dbg !81, !tbaa !43
 main.c:9:11 BinaryOperator '='  store double %11, double* %tmp, align 8, !dbg !67, !tbaa !65
-main.c:9:13 DeclRefExpr  %11 = load double, double* %arrayidx6, align 8, !dbg !63, !tbaa !65
 main.c:9:15 DeclRefExpr  %9 = load i32, i32* %i, align 4, !dbg !61, !tbaa !43
+main.c:9:13 ArraySubscriptExpr  %11 = load double, double* %arrayidx6, align 8, !dbg !63, !tbaa !65
 main.c:9:18 DeclRefExpr  %10 = load i32, i32* %j, align 4, !dbg !64, !tbaa !43
 main.c:10:15 BinaryOperator '='  store double %14, double* %arrayidx14, align 8, !dbg !74, !tbaa !65
 main.c:10:9 DeclRefExpr  %15 = load i32, i32* %i, align 4, !dbg !71, !tbaa !43
 main.c:10:12 DeclRefExpr  %16 = load i32, i32* %j, align 4, !dbg !73, !tbaa !43
-main.c:10:17 DeclRefExpr  %14 = load double, double* %arrayidx10, align 8, !dbg !69, !tbaa !65
 main.c:10:19 DeclRefExpr  %12 = load i32, i32* %j, align 4, !dbg !68, !tbaa !43
+main.c:10:17 ArraySubscriptExpr  %14 = load double, double* %arrayidx10, align 8, !dbg !69, !tbaa !65
 main.c:10:22 DeclRefExpr  %13 = load i32, i32* %i, align 4, !dbg !70, !tbaa !43
 main.c:11:15 BinaryOperator '='  store double %17, double* %arrayidx18, align 8, !dbg !79, !tbaa !65
 main.c:11:9 DeclRefExpr  %18 = load i32, i32* %j, align 4, !dbg !76, !tbaa !43

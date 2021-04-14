@@ -16,14 +16,10 @@ main.c:11:9 DeclRefExpr  %15 = load i32, i32* %index, align 4, !dbg !89, !tbaa !
 main.c:11:18 CallExpr  %call = call double @boo(double %11), !dbg !87
 main.c:11:22 DeclRefExpr  %9 = load double*, double** %B.addr, align 8, !dbg !83, !tbaa !56
 main.c:11:24 DeclRefExpr  %10 = load i32, i32* %index, align 4, !dbg !84, !tbaa !66
-###
-main.c:11:22 DeclRefExpr  %11 = load double, double* %arrayidx, align 8, !dbg !54, !tbaa !56
-###
+main.c:11:22 ArraySubscriptExpr  %11 = load double, double* %arrayidx, align 8, !dbg !83, !tbaa !85
 main.c:13:10 BinaryOperator '='  store double %19, double* %arrayidx10, align 8, !dbg !100, !tbaa !85
 main.c:13:5 DeclRefExpr  %20 = load double*, double** %A.addr, align 8, !dbg !98, !tbaa !56
 main.c:13:7 DeclRefExpr  %21 = load i32, i32* %i, align 4, !dbg !99, !tbaa !66
 main.c:13:12 DeclRefExpr  %17 = load double*, double** %B.addr, align 8, !dbg !96, !tbaa !56
 main.c:13:14 DeclRefExpr  %18 = load i32, i32* %index, align 4, !dbg !97, !tbaa !66
-###
-main.c:13:12 DeclRefExpr  %19 = load double, double* %arrayidx8, align 8, !dbg !67, !tbaa !56
-
+main.c:13:12 ArraySubscriptExpr  %19 = load double, double* %arrayidx8, align 8, !dbg !96, !tbaa !85

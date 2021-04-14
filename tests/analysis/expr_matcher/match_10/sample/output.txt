@@ -19,8 +19,8 @@ main.c:11:22 DeclRefExpr  %16 = load i32, i32* %I, align 4
 main.c:11:22 UnaryOperator '++'  store i32 %inc23, i32* %I, align 4
 main.c:12:10 BinaryOperator '='  store double %14, double* %arrayidx21, align 8
 main.c:12:7 DeclRefExpr  %15 = load i32, i32* %I, align 4
-main.c:12:13 DeclRefExpr  %14 = load double, double* %arrayidx19, align 8
 main.c:12:15 DeclRefExpr  %12 = load i32, i32* %I, align 4
+main.c:12:13 ArraySubscriptExpr  %14 = load double, double* %arrayidx19, align 8
 main.c:12:22 DeclRefExpr  %13 = load i32, i32* %I, align 4
 main.c:13:8 BinaryOperator '='  store double 1.000000e+00, double* getelementptr inbounds ([100 x double], [100 x double]* @B, i64 0, i64 0), align 16
 main.c:14:10 BinaryOperator '='  store i32 0, i32* %I, align 4
@@ -33,10 +33,10 @@ main.c:15:25 DeclRefExpr  %25 = load i32, i32* %J, align 4
 main.c:15:25 UnaryOperator '++'  store i32 %inc41, i32* %J, align 4
 main.c:16:9 BinaryOperator '='  store double %add, double* %S, align 8
 main.c:16:11 DeclRefExpr  %19 = load double, double* %S, align 8
-main.c:16:15 DeclRefExpr  %22 = load double, double* %arrayidx36, align 8
 main.c:16:17 DeclRefExpr  %20 = load i32, i32* %I, align 4
+main.c:16:15 ArraySubscriptExpr  %22 = load double, double* %arrayidx36, align 8
 main.c:16:20 DeclRefExpr  %21 = load i32, i32* %J, align 4
-main.c:16:25 DeclRefExpr  %24 = load double, double* %arrayidx38, align 8
 main.c:16:27 DeclRefExpr  %23 = load i32, i32* %J, align 4
+main.c:16:25 ArraySubscriptExpr  %24 = load double, double* %arrayidx38, align 8
 main.c:17:3 ReturnStmt  ret i32 %conv46
 main.c:17:10 DeclRefExpr  %27 = load double, double* %S, align 8
