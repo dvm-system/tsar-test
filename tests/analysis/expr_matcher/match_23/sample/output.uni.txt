@@ -1,0 +1,12 @@
+Printing analysis 'High and Low Level Expression Matcher' for function 'foo':
+main.c:4:15 DeclRefExpr  %2 = load i32, i32* %K.addr, align 4
+main.c:4:12 DeclRefExpr  %0 = load i32, i32* %M.addr, align 4
+main.c:5:5 BinaryOperator '='  store i32* %18, i32** %A, align 8
+main.c:5:19 DeclRefExpr  %7 = load i32, i32* %K.addr, align 4
+main.c:5:16 DeclRefExpr  %5 = load i32, i32* %M.addr, align 4
+main.c:5:23 CallExpr  %call = call noalias i8* @malloc(i64 %mul) #4
+main.c:5:30 DeclRefExpr  %9 = load i32, i32* %N.addr, align 4
+main.c:5:45 DeclRefExpr  %10 = load i32, i32* %M.addr, align 4
+main.c:5:48 DeclRefExpr  %12 = load i32, i32* %K.addr, align 4
+main.c:6:3 ReturnStmt  ret i32* %19
+main.c:6:17 DeclRefExpr  %19 = load i32*, i32** %A, align 8
