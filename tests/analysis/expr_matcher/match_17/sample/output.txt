@@ -1,36 +1,36 @@
 Printing analysis 'High and Low Level Expression Matcher' for function 'boo':
-main.c:4:7 Var 'sum'  store i32 0, i32* %sum, align 4, !dbg !52, !tbaa !53
-main.c:4:16 Var 'square_sum'  store i32 0, i32* %square_sum, align 4, !dbg !55, !tbaa !53
-main.c:5:12 Var 'i'  store i32 0, i32* %i, align 4, !dbg !58, !tbaa !53
-main.c:5:19 DeclRefExpr  %4 = load i32, i32* %i, align 4, !dbg !59, !tbaa !53
-main.c:5:26 DeclRefExpr  %28 = load i32, i32* %i, align 4, !dbg !94, !tbaa !53
-main.c:5:26 UnaryOperator '++'  store i32 %inc17, i32* %i, align 4, !dbg !94, !tbaa !53
-main.c:6:14 Var 'j'  store i32 0, i32* %j, align 4, !dbg !64, !tbaa !53
-main.c:6:21 DeclRefExpr  %7 = load i32, i32* %j, align 4, !dbg !65, !tbaa !53
-main.c:6:28 DeclRefExpr  %27 = load i32, i32* %j, align 4, !dbg !89, !tbaa !53
-main.c:6:28 UnaryOperator '++'  store i32 %inc, i32* %j, align 4, !dbg !89, !tbaa !53
-main.c:7:13 BinaryOperator '='  store i32 %add, i32* %index, align 4, !dbg !73, !tbaa !53
-main.c:7:15 DeclRefExpr  %9 = load i32, i32* %i, align 4, !dbg !69, !tbaa !53
-main.c:7:23 DeclRefExpr  %10 = load i32, i32* %j, align 4, !dbg !71, !tbaa !53
-main.c:8:11 DeclRefExpr  %14 = load i32, i32* %sum, align 4, !dbg !76, !tbaa !53
-main.c:8:11 CompoundAssignOperator '+='  store i32 %add5, i32* %sum, align 4, !dbg !76, !tbaa !53
-main.c:8:14 DeclRefExpr  %11 = load i32*, i32** %A.addr, align 8, !dbg !74, !tbaa !46
-main.c:8:16 DeclRefExpr  %12 = load i32, i32* %index, align 4, !dbg !75, !tbaa !53
-main.c:8:14 ArraySubscriptExpr  %13 = load i32, i32* %arrayidx, align 4, !dbg !74, !tbaa !53
-main.c:9:16 BinaryOperator '='  store i32 %mul10, i32* %arrayidx12, align 4, !dbg !84, !tbaa !53
-main.c:9:7 DeclRefExpr  %21 = load i32*, i32** %A.addr, align 8, !dbg !82, !tbaa !46
-main.c:9:9 DeclRefExpr  %22 = load i32, i32* %index, align 4, !dbg !83, !tbaa !53
-main.c:9:18 DeclRefExpr  %15 = load i32*, i32** %A.addr, align 8, !dbg !77, !tbaa !46
-main.c:9:20 DeclRefExpr  %16 = load i32, i32* %index, align 4, !dbg !78, !tbaa !53
-main.c:9:18 ArraySubscriptExpr  %17 = load i32, i32* %arrayidx7, align 4, !dbg !77, !tbaa !53
-main.c:9:29 DeclRefExpr  %18 = load i32*, i32** %A.addr, align 8, !dbg !79, !tbaa !46
-main.c:9:31 DeclRefExpr  %19 = load i32, i32* %index, align 4, !dbg !80, !tbaa !53
-main.c:9:29 ArraySubscriptExpr  %20 = load i32, i32* %arrayidx9, align 4, !dbg !79, !tbaa !53
-main.c:10:18 DeclRefExpr  %26 = load i32, i32* %square_sum, align 4, !dbg !87, !tbaa !53
-main.c:10:18 CompoundAssignOperator '+='  store i32 %add15, i32* %square_sum, align 4, !dbg !87, !tbaa !53
-main.c:10:21 DeclRefExpr  %23 = load i32*, i32** %A.addr, align 8, !dbg !85, !tbaa !46
-main.c:10:23 DeclRefExpr  %24 = load i32, i32* %index, align 4, !dbg !86, !tbaa !53
-main.c:10:21 ArraySubscriptExpr  %25 = load i32, i32* %arrayidx14, align 4, !dbg !85, !tbaa !53
-main.c:13:3 ReturnStmt  ret i32 %mul19, !dbg !101
-main.c:13:10 DeclRefExpr  %29 = load i32, i32* %sum, align 4, !dbg !97, !tbaa !53
-main.c:13:16 DeclRefExpr  %30 = load i32, i32* %square_sum, align 4, !dbg !98, !tbaa !53
+main.c:4:7 Var 'sum'  store i32 0, i32* %sum, align 4
+main.c:4:16 Var 'square_sum'  store i32 0, i32* %square_sum, align 4
+main.c:5:12 Var 'i'  store i32 0, i32* %i, align 4
+main.c:5:19 DeclRefExpr  %4 = load i32, i32* %i, align 4
+main.c:5:26 DeclRefExpr  %28 = load i32, i32* %i, align 4
+main.c:5:26 UnaryOperator '++'  store i32 %inc17, i32* %i, align 4
+main.c:6:14 Var 'j'  store i32 0, i32* %j, align 4
+main.c:6:21 DeclRefExpr  %7 = load i32, i32* %j, align 4
+main.c:6:28 DeclRefExpr  %27 = load i32, i32* %j, align 4
+main.c:6:28 UnaryOperator '++'  store i32 %inc, i32* %j, align 4
+main.c:7:13 BinaryOperator '='  store i32 %add, i32* %index, align 4
+main.c:7:15 DeclRefExpr  %9 = load i32, i32* %i, align 4
+main.c:7:23 DeclRefExpr  %10 = load i32, i32* %j, align 4
+main.c:8:11 DeclRefExpr  %14 = load i32, i32* %sum, align 4
+main.c:8:11 CompoundAssignOperator '+='  store i32 %add5, i32* %sum, align 4
+main.c:8:14 DeclRefExpr  %11 = load i32*, i32** %A.addr, align 8
+main.c:8:16 DeclRefExpr  %12 = load i32, i32* %index, align 4
+main.c:8:14 ArraySubscriptExpr  %13 = load i32, i32* %arrayidx, align 4
+main.c:9:16 BinaryOperator '='  store i32 %mul10, i32* %arrayidx12, align 4
+main.c:9:7 DeclRefExpr  %21 = load i32*, i32** %A.addr, align 8
+main.c:9:9 DeclRefExpr  %22 = load i32, i32* %index, align 4
+main.c:9:18 DeclRefExpr  %15 = load i32*, i32** %A.addr, align 8
+main.c:9:20 DeclRefExpr  %16 = load i32, i32* %index, align 4
+main.c:9:18 ArraySubscriptExpr  %17 = load i32, i32* %arrayidx7, align 4
+main.c:9:29 DeclRefExpr  %18 = load i32*, i32** %A.addr, align 8
+main.c:9:31 DeclRefExpr  %19 = load i32, i32* %index, align 4
+main.c:9:29 ArraySubscriptExpr  %20 = load i32, i32* %arrayidx9, align 4
+main.c:10:18 DeclRefExpr  %26 = load i32, i32* %square_sum, align 4
+main.c:10:18 CompoundAssignOperator '+='  store i32 %add15, i32* %square_sum, align 4
+main.c:10:21 DeclRefExpr  %23 = load i32*, i32** %A.addr, align 8
+main.c:10:23 DeclRefExpr  %24 = load i32, i32* %index, align 4
+main.c:10:21 ArraySubscriptExpr  %25 = load i32, i32* %arrayidx14, align 4
+main.c:13:3 ReturnStmt  ret i32 %mul19
+main.c:13:10 DeclRefExpr  %29 = load i32, i32* %sum, align 4
+main.c:13:16 DeclRefExpr  %30 = load i32, i32* %square_sum, align 4

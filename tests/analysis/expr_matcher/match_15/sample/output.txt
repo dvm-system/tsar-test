@@ -1,25 +1,25 @@
 Printing analysis 'High and Low Level Expression Matcher' for function 'transpose':
-main.c:7:12 Var 'i'  store i32 0, i32* %i, align 4, !dbg !42, !tbaa !43
-main.c:7:19 DeclRefExpr  %2 = load i32, i32* %i, align 4, !dbg !47, !tbaa !43
-main.c:7:30 DeclRefExpr  %21 = load i32, i32* %i, align 4, !dbg !86, !tbaa !43
-main.c:7:30 UnaryOperator '++'  store i32 %inc20, i32* %i, align 4, !dbg !86, !tbaa !43
-main.c:8:14 Var 'j'  store i32 %add, i32* %j, align 4, !dbg !52, !tbaa !43
-main.c:8:18 DeclRefExpr  %5 = load i32, i32* %i, align 4, !dbg !53, !tbaa !43
-main.c:8:22 DeclRefExpr  %6 = load i32, i32* %i, align 4, !dbg !54, !tbaa !43
-main.c:8:25 DeclRefExpr  %7 = load i32, i32* %j, align 4, !dbg !56, !tbaa !43
-main.c:8:32 DeclRefExpr  %20 = load i32, i32* %j, align 4, !dbg !81, !tbaa !43
-main.c:8:32 UnaryOperator '++'  store i32 %inc, i32* %j, align 4, !dbg !81, !tbaa !43
-main.c:9:11 BinaryOperator '='  store double %11, double* %tmp, align 8, !dbg !67, !tbaa !65
-main.c:9:15 DeclRefExpr  %9 = load i32, i32* %i, align 4, !dbg !61, !tbaa !43
-main.c:9:13 ArraySubscriptExpr  %11 = load double, double* %arrayidx6, align 8, !dbg !63, !tbaa !65
-main.c:9:18 DeclRefExpr  %10 = load i32, i32* %j, align 4, !dbg !64, !tbaa !43
-main.c:10:15 BinaryOperator '='  store double %14, double* %arrayidx14, align 8, !dbg !74, !tbaa !65
-main.c:10:9 DeclRefExpr  %15 = load i32, i32* %i, align 4, !dbg !71, !tbaa !43
-main.c:10:12 DeclRefExpr  %16 = load i32, i32* %j, align 4, !dbg !73, !tbaa !43
-main.c:10:19 DeclRefExpr  %12 = load i32, i32* %j, align 4, !dbg !68, !tbaa !43
-main.c:10:17 ArraySubscriptExpr  %14 = load double, double* %arrayidx10, align 8, !dbg !69, !tbaa !65
-main.c:10:22 DeclRefExpr  %13 = load i32, i32* %i, align 4, !dbg !70, !tbaa !43
-main.c:11:15 BinaryOperator '='  store double %17, double* %arrayidx18, align 8, !dbg !79, !tbaa !65
-main.c:11:9 DeclRefExpr  %18 = load i32, i32* %j, align 4, !dbg !76, !tbaa !43
-main.c:11:12 DeclRefExpr  %19 = load i32, i32* %i, align 4, !dbg !78, !tbaa !43
-main.c:11:17 DeclRefExpr  %17 = load double, double* %tmp, align 8, !dbg !75, !tbaa !65
+main.c:7:12 Var 'i'  store i32 0, i32* %i, align 4
+main.c:7:19 DeclRefExpr  %2 = load i32, i32* %i, align 4
+main.c:7:30 DeclRefExpr  %21 = load i32, i32* %i, align 4
+main.c:7:30 UnaryOperator '++'  store i32 %inc20, i32* %i, align 4
+main.c:8:14 Var 'j'  store i32 %add, i32* %j, align 4
+main.c:8:18 DeclRefExpr  %5 = load i32, i32* %i, align 4
+main.c:8:22 DeclRefExpr  %6 = load i32, i32* %i, align 4
+main.c:8:25 DeclRefExpr  %7 = load i32, i32* %j, align 4
+main.c:8:32 DeclRefExpr  %20 = load i32, i32* %j, align 4
+main.c:8:32 UnaryOperator '++'  store i32 %inc, i32* %j, align 4
+main.c:9:11 BinaryOperator '='  store double %11, double* %tmp, align 8
+main.c:9:15 DeclRefExpr  %9 = load i32, i32* %i, align 4
+main.c:9:13 ArraySubscriptExpr  %11 = load double, double* %arrayidx6, align 8
+main.c:9:18 DeclRefExpr  %10 = load i32, i32* %j, align 4
+main.c:10:15 BinaryOperator '='  store double %14, double* %arrayidx14, align 8
+main.c:10:9 DeclRefExpr  %15 = load i32, i32* %i, align 4
+main.c:10:12 DeclRefExpr  %16 = load i32, i32* %j, align 4
+main.c:10:19 DeclRefExpr  %12 = load i32, i32* %j, align 4
+main.c:10:17 ArraySubscriptExpr  %14 = load double, double* %arrayidx10, align 8
+main.c:10:22 DeclRefExpr  %13 = load i32, i32* %i, align 4
+main.c:11:15 BinaryOperator '='  store double %17, double* %arrayidx18, align 8
+main.c:11:9 DeclRefExpr  %18 = load i32, i32* %j, align 4
+main.c:11:12 DeclRefExpr  %19 = load i32, i32* %i, align 4
+main.c:11:17 DeclRefExpr  %17 = load double, double* %tmp, align 8
