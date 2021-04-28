@@ -1,18 +1,44 @@
 parallel
-Adi.func/tsar
-Adi.global/tsar
-Jacobi/tsar
-openmp_1/tsar
-openmp_2/tsar
-openmp_3/tsar
-openmp_4/tsar
-openmp_5/tsar
-openmp_6/tsar
-openmp_7/tsar
-redundant_1/tsar
-region_1/tsar
-region_2/tsar
-region_3/tsar
-region_4/tsar
-region_5/tsar
+  seq
+    Adi.func/tsar
+    Adi.func/compile
+  end_seq_seq
+    Adi.global/tsar
+    Adi.global/compile
+  end_seq_seq
+    Jacobi/tsar
+    Jacobi/compile
+  end_seq_seq
+    Sor/tsar
+    Sor/compile
+  end_seq
+  openmp_1/tsar
+  openmp_2/tsar
+  openmp_3/tsar
+  openmp_4/tsar
+  openmp_5/tsar
+  openmp_6/tsar
+  openmp_7/tsar
+  redundant_1/tsar
+  region_1/tsar
+  region_2/tsar
+  region_3/tsar
+  region_4/tsar
+  region_5/tsar
+end_parallel
+
+parallel
+  seq
+    Adi.func/run: env::OMP_NUM_THREADSS=1
+    Adi.func/run: env::OMP_NUM_THREADSS=4
+  end_seq_seq
+    Adi.global/run: env::OMP_NUM_THREADSS=1
+    Adi.global/run: env::OMP_NUM_THREADSS=4
+  end_seq_seq  
+    Jacobi/run: env::OMP_NUM_THREADSS=1
+    Jacobi/run: env::OMP_NUM_THREADSS=4
+  end_seq_seq
+    Sor/run: env::OMP_NUM_THREADSS=1
+    Sor/run: env::OMP_NUM_THREADSS=4
+  end_seq
 end_parallel

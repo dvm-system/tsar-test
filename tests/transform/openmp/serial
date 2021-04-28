@@ -1,0 +1,7 @@
+parallel
+  Adi.func/seq
+  Adi.global/seq
+  Jacobi/seq
+  Sor/seq
+end_parallel
+
