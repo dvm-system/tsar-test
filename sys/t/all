@@ -1,3 +1,4 @@
 test_env/run:env::DVMH_NUM_THREADS=13
 test_env/run:env::DVMH_NUM_THREADS=42
 test_include_path/run
+test_library_path/run

@@ -24,6 +24,7 @@ my %required_vars = (
     tsar
     clang
     include
+    lib
     dvm
   )],
 );
@@ -142,6 +143,13 @@ sub process
     my $path = join $delim, @add_inc;
     $ENV{$_} = $ENV{$_} ? join $delim, $ENV{$_}, $path : $path
       for qw(C_INCLUDE_PATH CPLUS_INCLUDE_PATH);
+  }
+  # apply $add_library_path
+  if (my @add_lib = $task->get_arr('', 'add_library_path', [])) {
+    my $delim = $^O eq 'MSWin32' ? ';' : ':';
+    my $path = join $delim, @add_lib;
+    $ENV{$_} = $ENV{$_} ? join $delim, $ENV{$_}, $path : $path
+      for qw(LIBRARY_PATH LD_LIBRARY_PATH);
   }
 
   ## run the command ##

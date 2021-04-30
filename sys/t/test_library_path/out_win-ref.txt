@@ -1,0 +1,2 @@
+## foo;bar;a/path/with spaces ##
+## initial/path;foo;bar;a/path/with spaces ##
