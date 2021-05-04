@@ -26,6 +26,7 @@ my %required_vars = (
     include
     lib
     dvm
+    openmp
   )],
 );
 my $sys_conf;
