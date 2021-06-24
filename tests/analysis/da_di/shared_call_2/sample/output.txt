@@ -12,12 +12,12 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    explicit access:
     <I:6[6:3], 4> | <S:5, 8>
    address access:
-    bar():7:10
+    <X, 4>
    explicit access (separate):
     <I:6[6:3], 4> <S:5, 8>
    lock (separate):
     <I:6[6:3], 4>
    address access (separate):
-    bar():7:10
+    <X, 4>
    direct access (separate):
-    <I:6[6:3], 4> <S:5, 8> bar():7:10
+    <I:6[6:3], 4> <S:5, 8> <X, 4>

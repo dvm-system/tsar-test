@@ -96,8 +96,9 @@ redundant_3/tsar
 redundant_3-REDUNDANT/tsar
 redundant_4/tsar
 redundant_4-REDUNDANT/tsar
-#redundant_5/tsar
-redundant_5-REDUNDANT/tsar
+redundant_5/tsar
+redundant_6/tsar
+redundant_6-REDUNDANT/tsar
 shared_1/tsar
 shared_10/tsar
 shared_11/tsar
