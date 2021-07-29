@@ -28,23 +28,36 @@ int main(int Argc, char *Argv[]) {
   init();
   for (It = 1; It <= ItMax; It++) {
     Eps = iter();
+#pragma dvm get_actual(A)
     printf(" IT = %4i   EPS = %14.3E\n", It, Eps);
+#pragma dvm actual(A)
     if (Eps < MaxEps)
       break;
   }
+#pragma dvm get_actual(A)
   printf(" ADI Benchmark Completed.\n");
+#pragma dvm actual(A)
+#pragma dvm get_actual(A)
   printf(" Size            = %4d x %4d x %4d\n", NX, NY, NZ);
+#pragma dvm actual(A)
+#pragma dvm get_actual(A)
   printf(" Iterations      =       %12d\n", ItMax);
+#pragma dvm actual(A)
+#pragma dvm get_actual(A)
   printf(" Operation type  =   double precision\n");
+#pragma dvm actual(A)
+#pragma dvm get_actual(A)
   printf(" Verification    =       %12s\n",
          (fabs(Eps - 0.07249074) < 1e-6 ? "SUCCESSFUL" : "UNSUCCESSFUL"));
+#pragma dvm actual(A)
+#pragma dvm get_actual(A)
   printf(" END OF ADI Benchmark\n");
+#pragma dvm actual(A)
   return 0;
 }
 
 void init() {
   int I, J, K;
-#pragma dvm actual(A, I)
 #pragma dvm region in(A, I)out(A, I) local(J, K)
   {
 #pragma dvm parallel([I][J][K]) tie(A[I][J][K])
@@ -58,11 +71,9 @@ void init() {
           else
             A[I][J][K] = 0;
   }
-#pragma dvm get_actual(A, I)
 }
 
 double iter() {
-#pragma dvm actual(A)
   int I, J, K;
   double Eps = 0;
 #pragma dvm actual(Eps)
@@ -89,7 +100,6 @@ double iter() {
           A[I][J][K] = Tmp1;
         }
   }
-#pragma dvm get_actual(A)
 #pragma dvm get_actual(Eps)
   return Eps;
 }

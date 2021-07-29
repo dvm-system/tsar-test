@@ -1,0 +1,9 @@
+main.c:15:5: remark: parallel execution of loop is possible
+    for (int K = 0; K < 10; ++K) {
+    ^
+main.c:10:7: remark: parallel execution of loop is possible
+      for (int K = 0; K < 10; ++K)
+      ^
+main.c:6:3: remark: parallel execution of loop is possible
+  for (int K = 0; K < 10; ++K)
+  ^

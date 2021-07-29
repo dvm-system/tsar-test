@@ -24,7 +24,6 @@ void bar(double C[5], double B[5], double A[5]) {
 }
 
 void foo() {
-#pragma dvm actual(A)
 #pragma dvm region in(A)out(A) local(P, Q)
   {
 #pragma dvm parallel([I]) tie(A[I][][]) private(P, Q)
@@ -48,7 +47,6 @@ void foo() {
           A[I][J][M] = A[I][J][M] + A[I][J + 1][M];
     }
   }
-#pragma dvm get_actual(A)
 }
 
 int main() {
@@ -60,9 +58,7 @@ int main() {
         for (int M = 0; M < 5; ++M)
           A[I][J][M] = 1;
   }
-#pragma dvm get_actual(A)
   foo();
-#pragma dvm actual(A)
   double S = 0;
 #pragma dvm actual(S)
 #pragma dvm region in(A, S)out(S)
