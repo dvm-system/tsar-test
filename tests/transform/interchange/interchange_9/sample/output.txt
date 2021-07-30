@@ -1,0 +1,10 @@
+main.c:4:23: warning: disable loop interchange
+#pragma spf transform interchange(K, J)
+                      ^
+main.c:4:35: note: unable to find an interchangeable loop with the 'K' induction variable
+#pragma spf transform interchange(K, J)
+                                  ^
+<scratch space>:5:1: note: expanded from here
+"K"
+^
+1 warning generated.

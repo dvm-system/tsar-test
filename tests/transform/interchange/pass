@@ -1,0 +1,17 @@
+parallel
+  interchange_1/tsar
+  interchange_2/tsar
+  interchange_3/tsar
+  interchange_4/tsar
+  interchange_5/tsar
+  interchange_6/tsar
+  interchange_7/tsar
+  interchange_8/tsar
+  interchange_9/tsar
+  interchange_10/tsar
+  interchange_11/tsar
+  interchange_12/tsar
+  interchange_13/tsar
+  interchange_14/tsar
+  interchange_15/tsar
+end_parallel

@@ -1,0 +1,4 @@
+main.c:5:3: warning: unable to interchange loop with data dependencies (use the 'nostrict' clause to force transformation)
+  for (int I = 0; I < 50; ++I)
+  ^
+1 warning generated.

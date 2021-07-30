@@ -1,0 +1,7 @@
+main.c:5:3: warning: disable loop interchange
+  for (int I = 0; I < 100; ++I)
+  ^
+main.c:6:5: note: irregular loop structure prevents transformation (use the 'nostrict' clause to force transformation)
+    for (int J = I; J < 100; ++J)
+    ^
+1 warning generated.
