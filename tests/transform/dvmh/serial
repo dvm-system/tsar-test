@@ -1,0 +1,5 @@
+parallel
+  interproc_1/seq
+  Jacobi/seq
+end_parallel
+

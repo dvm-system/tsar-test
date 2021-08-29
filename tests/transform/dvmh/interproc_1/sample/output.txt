@@ -1,0 +1,31 @@
+main.c:18:3: warning: unable to create parallel directive
+  for (int I = 0; I < 100; ++I) {
+  ^
+main.c:17:30: note: unable to localize inout variable
+double foo(double (*restrict A)[100], double (*restrict B)[100]) {
+                             ^
+main.c:17:57: note: unable to localize inout variable
+double foo(double (*restrict A)[100], double (*restrict B)[100]) {
+                                                        ^
+main.c:20:5: warning: unable to create parallel directive
+    for (int J = 1; J < 100; ++J)
+    ^
+main.c:17:30: note: unable to localize inout variable
+double foo(double (*restrict A)[100], double (*restrict B)[100]) {
+                             ^
+main.c:17:57: note: unable to localize inout variable
+double foo(double (*restrict A)[100], double (*restrict B)[100]) {
+                                                        ^
+main.c:28:3: warning: unable to create parallel directive
+  for (int I = 0; I < 100; ++I)
+  ^
+main.c:26:21: note: unable to localize inout variable
+double bar(double (*B)[100]) {
+                    ^
+main.c:29:5: warning: unable to create parallel directive
+    for (int J = 0; J < 100; ++J)
+    ^
+main.c:26:21: note: unable to localize inout variable
+double bar(double (*B)[100]) {
+                    ^
+4 warnings generated.
