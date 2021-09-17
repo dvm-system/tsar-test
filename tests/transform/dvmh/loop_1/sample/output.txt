@@ -1,0 +1,8 @@
+note: main.c:12:3: in function main i32 (): unable to represent lower bound of the loop
+
+warning: main.c:12:3: in function main i32 (): type overflow
+
+note: main.c:16:3: in function main i32 (): unable to represent lower bound of the loop
+
+warning: main.c:16:3: in function main i32 (): type overflow
+

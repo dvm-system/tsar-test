@@ -12,10 +12,10 @@ double bar(double (*B)[100]);
 
 int main() {
 
-#pragma dvm array align([iEX1][iEX2] with dvmh_temp0[iEX1][iEX2])
+#pragma dvm array align([iEX1][iEX2] with dvmh_temp0[iEX1][iEX2]) shadow[0][0]
   double A[100][100];
 
-#pragma dvm array align([iEX1][iEX2] with dvmh_temp0[iEX1][iEX2])
+#pragma dvm array align([iEX1][iEX2] with dvmh_temp0[iEX1][iEX2]) shadow[0][0]
   double B[100][100];
 #pragma dvm region in(A)out(A)
   {

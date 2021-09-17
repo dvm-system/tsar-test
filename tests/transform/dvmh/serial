@@ -1,5 +1,7 @@
 parallel
   interproc_1/seq
+  loop_1/seq
+  loop_2/seq
   Jacobi/seq
 end_parallel
 

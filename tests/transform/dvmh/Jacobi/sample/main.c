@@ -19,13 +19,13 @@ void *dvmh_temp0;
 
 #pragma dvm array align([iEX1][iEX2] with dvmh_temp0[iEX1][iEX2])
 double A[L][L];
-#pragma dvm array align([iEX1][iEX2] with dvmh_temp0[iEX1][iEX2])
+#pragma dvm array align([iEX1][iEX2] with dvmh_temp0[iEX1][iEX2]) shadow[0][0]
 double B[L][L];
 
 int main() {
 #pragma dvm region in(A, B)out(A, B)
   {
-#pragma dvm parallel([I][J] on B[I][J])
+#pragma dvm parallel([I][J] on A[I][J])
     for (int I = 0; I < L; ++I)
       for (int J = 0; J < L; ++J) {
         A[I][J] = 0;
