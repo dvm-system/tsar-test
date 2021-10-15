@@ -2,6 +2,10 @@ parallel
   interproc_1/seq
   loop_1/seq
   loop_2/seq
+  remote_1/seq
+  remote_2/seq
+  remote_3/seq
+  remote_4/seq
   Jacobi/seq
 end_parallel
 
