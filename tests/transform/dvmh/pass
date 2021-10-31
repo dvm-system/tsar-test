@@ -21,6 +21,9 @@ parallel
     remote_4/tsar
     remote_4/compile
   end_seq_seq
+    file_1/tsar
+    file_1/compile
+  end_seq_seq
     Jacobi/tsar
     Jacobi/compile
   end_seq
@@ -43,6 +46,8 @@ parallel
   remote_3/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2"
   remote_4/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, gird="1"
   remote_4/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2"
+  file_1/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, gird="1"
+  file_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2"
   seq
     Jacobi/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, gird="1 1"
     Jacobi/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="2 2"
@@ -62,6 +67,8 @@ parallel
     remote_3/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2"
     remote_4/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="2"
     remote_4/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2"
+    file_1/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="2"
+    file_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2"
   end_seq
 end_parallel
 

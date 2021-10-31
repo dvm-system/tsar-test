@@ -3,6 +3,7 @@ parallel
   Adi.global/seq
   dvmh_sm_5/seq
   dvmh_sm_6/seq
+  file_1/seq
   Jacobi/seq
   Jacobi.func/seq: env::GRID_SIZE=8, env::ITERATION_NUMBER=10
 end_parallel

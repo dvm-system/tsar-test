@@ -31,6 +31,9 @@ parallel
   reduction_1/tsar
   private_1/tsar
   seq
+    file_1/tsar
+    file_1/compile
+  end_seq_seq
     Jacobi/tsar
     Jacobi/compile
   end_seq_seq
@@ -48,6 +51,8 @@ parallel
   dvmh_sm_5/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0
   dvmh_sm_6/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0
   dvmh_sm_6/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0
+  file_1/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0
+  file_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0
   Jacobi/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0
   Jacobi/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0
   Jacobi.func/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, env::GRID_SIZE=8, env::ITERATION_NUMBER=10
@@ -56,6 +61,7 @@ parallel
     Adi.global/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
     dvmh_sm_5/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
     dvmh_sm_6/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
+    file_1/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
     Jacobi/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1
   end_seq
 end_parallel
