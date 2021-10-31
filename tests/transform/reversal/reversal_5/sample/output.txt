@@ -1,0 +1,7 @@
+main.c:3:31: warning: unable to find a reversible loop with the 'I' induction variable
+#pragma spf transform reverse(I)
+                              ^
+<scratch space>:5:1: note: expanded from here
+"I"
+^
+1 warning generated.

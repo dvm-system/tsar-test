@@ -5,6 +5,7 @@ add_subdirectory(openmp)
 add_subdirectory(propagate)
 add_subdirectory(replace)
 add_subdirectory(interchange)
+add_subdirectory(reversal)
 
 if (TSAR_ENABLE_FORTRAN)
   add_subdirectory(replace_const)
