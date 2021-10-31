@@ -23,6 +23,7 @@ my %required_vars = (
   '' => [qw(
     tsar
     clang
+    llvm_link
     include
     lib
     dvm
