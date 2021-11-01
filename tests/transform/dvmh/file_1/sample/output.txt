@@ -1,11 +1,11 @@
-foo.c:3:15: error: unable to insert DVMH directive '#pragma dvm array align([iEX1] with dvmh_temp0[iEX1]) shadow[0]'
-extern double B[100];
-              ^
-note: proper definition for 'B' not found
 foo.c:2:15: error: unable to insert DVMH directive '#pragma dvm array align([iEX1] with dvmh_temp0[iEX1]) shadow[0]'
 extern double A[100];
               ^
 note: proper definition for 'A' not found
+foo.c:3:15: error: unable to insert DVMH directive '#pragma dvm array align([iEX1] with dvmh_temp0[iEX1]) shadow[0]'
+extern double B[100];
+              ^
+note: proper definition for 'B' not found
 error: unable to create template definition for 'dvmh_temp0'
 3 errors generated.
 Error while processing foo.c.
