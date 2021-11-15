@@ -9,9 +9,6 @@ parallel
     loop_2/tsar
     loop_2/compile
   end_seq_seq
-    remote_1/tsar
-    remote_1/compile
-  end_seq_seq
     remote_2/tsar
     remote_2/compile
   end_seq_seq
@@ -41,8 +38,6 @@ parallel
   loop_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2"
   loop_2/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, gird="1"
   loop_2/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2"
-  remote_1/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, gird="1"
-  remote_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="1"
   remote_2/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, gird="1"
   remote_2/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2"
   remote_3/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, gird="1"
@@ -64,8 +59,6 @@ parallel
     loop_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2"
     loop_2/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="2"
     loop_2/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2"
-    remote_1/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="1"
-    remote_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="1"
     remote_2/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="2"
     remote_2/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2"
     remote_3/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="2"
