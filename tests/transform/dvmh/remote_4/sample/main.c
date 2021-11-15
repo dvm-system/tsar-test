@@ -21,7 +21,7 @@ static void init() {
 static void update() {
   for (int I = 2; I < 100; ++I) {
 #pragma dvm remote_access(A[])
-    A[I] = A[I] + A[0] + A[1] + A[50];
+    { A[I] = A[I] + A[0] + A[1] + A[50]; }
   }
 }
 
