@@ -6,6 +6,7 @@ parallel
   remote_2/seq
   remote_3/seq
   remote_4/seq
+  corner_1/seq
   file_1/seq
   Jacobi/seq
 end_parallel
