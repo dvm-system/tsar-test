@@ -1,5 +1,7 @@
 parallel
   seq
+    no_distr_1/tsar
+  end_seq_seq
     interproc_1/tsar
     interproc_1/compile
   end_seq_seq
@@ -20,6 +22,9 @@ parallel
   end_seq_seq
     corner_1/tsar
     corner_1/compile
+  end_seq_seq
+    user_dir_1/tsar
+    user_dir_1/compile
   end_seq_seq
     file_1/tsar
     file_1/compile
@@ -46,6 +51,8 @@ parallel
   remote_4/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2"
   corner_1/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, gird="1 1"
   corner_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2 2"
+  user_dir_1/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, gird="1"
+  user_dir_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2"
   file_1/run: env::DVMH_NUM_THREADS=1, env::DVMH_NUM_CUDAS=0, gird="1"
   file_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=0, gird="2"
   seq
@@ -67,6 +74,8 @@ parallel
     remote_4/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2"
     corner_1/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="2 2"
     corner_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2 2"
+    user_dir_1/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="2"
+    user_dir_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2"
     file_1/run: env::DVMH_NUM_THREADS=0, env::DVMH_NUM_CUDAS=1, grid="2"
     file_1/run: env::DVMH_NUM_THREADS=2, env::DVMH_NUM_CUDAS=1, grid="2"
   end_seq
