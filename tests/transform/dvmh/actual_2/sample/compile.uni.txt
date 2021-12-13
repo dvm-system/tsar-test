@@ -1,0 +1,2 @@
+/usr/bin/ld: dvm_sys/lib/dvmh.a(all_objs.o): in function `dvmh_tmpnam':
+dvm_sys/rts/dvmh/dvmh_stdio.cpp:1487: warning: the use of `tmpnam' is dangerous, better use `mkstemp'

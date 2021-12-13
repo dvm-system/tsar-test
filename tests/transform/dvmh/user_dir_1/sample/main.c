@@ -31,7 +31,6 @@ int main() {
     C[I] = I;
   for (int I = 0; I < 100; ++I) {
 #pragma dvm get_actual(S)
-#pragma dvm get_actual(S)
     S = S - C[I];
 #pragma dvm actual(S)
   }

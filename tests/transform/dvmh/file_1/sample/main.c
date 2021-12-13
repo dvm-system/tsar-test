@@ -20,8 +20,7 @@ int main() {
     for (int I = 0; I < 100; ++I)
       S = S + A[I] + B[I];
   }
-#pragma dvm get_actual(S)
-#pragma dvm get_actual(A, B)
+#pragma dvm get_actual(A, B, S)
   printf("S = %f\n", S);
 #pragma dvm actual(A, B)
   return 0;

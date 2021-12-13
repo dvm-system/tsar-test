@@ -27,7 +27,6 @@ int main() {
 #pragma dvm get_actual(A)
   double S = foo(A, B);
 #pragma dvm actual(A)
-#pragma dvm actual(A)
   printf("S = %f\n", S);
   return 0;
 }

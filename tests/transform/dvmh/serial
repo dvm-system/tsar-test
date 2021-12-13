@@ -8,6 +8,10 @@ parallel
   remote_4/seq
   corner_1/seq
   user_dir_1/seq
+  no_distr_2/seq
+  no_distr_3/seq
+  actual_1/seq
+  actual_2/seq
   file_1/seq
   Jacobi/seq
 end_parallel

@@ -58,8 +58,7 @@ int main() {
     }
 #pragma dvm get_actual(Eps)
     double E1 = Eps;
-#pragma dvm get_actual(Eps)
-#pragma dvm get_actual(A, B)
+#pragma dvm get_actual(A, B, Eps)
     printf("It=%4i   Eps=%e\n", It, Eps);
 #pragma dvm actual(A, B)
     if (E1 < MAXEPS)
