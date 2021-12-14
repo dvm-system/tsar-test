@@ -10,6 +10,7 @@ parallel
   user_dir_1/seq
   no_distr_2/seq
   no_distr_3/seq
+  no_distr_4/seq
   actual_1/seq
   actual_2/seq
   file_1/seq

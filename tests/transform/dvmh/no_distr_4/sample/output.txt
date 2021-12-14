@@ -1,0 +1,10 @@
+main.c:4:2: warning: unable to create parallel directive
+ for (int I = 0; I < Size; ++I)
+ ^
+main.c:3:29: note: unable to localize inout variable
+void foo(int Size, double (*X)[Size]) {
+                            ^
+main.c:4:2: remark: Can not calculate count of iterations for this loop, information about iterations in all loops in parallel regions 'DEFAULT' will be ignored (1016)
+ for (int I = 0; I < Size; ++I)
+ ^
+1 warning generated.
