@@ -1,3 +1,10 @@
 main.c:3:3: remark: parallel execution of loop is possible
   for (int I = 0; I < N; ++I) {
   ^
+main.c:3:3: warning: unable to optimize data transfer directive '#pragma dvm actual(A, N)'
+main.c:3:3: warning: unable to optimize data transfer directive '#pragma dvm get_actual(A)'
+main.c:2:6: warning: unable to insert directive '#pragma dvm get_actual(A)'
+void foo(int N) {
+     ^
+main.c:2:6: warning: unable to insert directive '#pragma dvm actual(N)'
+4 warnings generated.

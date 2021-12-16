@@ -12,14 +12,11 @@ int main() {
       A[I] = I;
   }
 #pragma dvm get_actual(A)
-#pragma dvm get_actual(A)
   int Cond = foo() > A[50];
 #pragma dvm actual(A)
   if (Cond) {
 #pragma dvm get_actual(A)
-#pragma dvm get_actual(A)
     A[50] = foo();
-#pragma dvm actual(A)
 #pragma dvm actual(A)
   }
 #pragma dvm region in(A, S)out(S)

@@ -69,8 +69,7 @@ int main() {
         for (int M = 0; M < 5; ++M)
           S = S + A[I][J][M];
   }
-#pragma dvm get_actual(S)
-#pragma dvm get_actual(A)
+#pragma dvm get_actual(A, S)
   printf("S = %e\n", S);
 #pragma dvm actual(A)
   return 0;

@@ -21,8 +21,7 @@ int main() {
         for (int K = 0; K < 2; ++K)
           S += A[I][J][K];
   }
-#pragma dvm get_actual(S)
-#pragma dvm get_actual(A)
+#pragma dvm get_actual(A, S)
   printf("Sum = %ld\n", S);
 #pragma dvm actual(A)
   return 0;

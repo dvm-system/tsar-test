@@ -18,7 +18,6 @@ double A[L][L];
 double B[L][L];
 
 int main() {
-#pragma dvm actual(A, B)
 #pragma dvm region in(A, B)out(A, B)
   {
 #pragma dvm parallel([I][J]) tie(A[I][J], B[I][J])
@@ -31,10 +30,9 @@ int main() {
           B[I][J] = 3 + I + J;
       }
   }
-#pragma dvm get_actual(A, B)
   for (int It = 1; It <= ITMAX; ++It) {
     double Eps = 0;
-#pragma dvm actual(A, B, Eps)
+#pragma dvm actual(Eps)
 #pragma dvm region in(A, B, Eps)out(A, B, Eps)
     {
 #pragma dvm parallel([I][J]) tie(A[I][J], B[I][J]) reduction(max(Eps))
@@ -52,6 +50,8 @@ int main() {
     }
 #pragma dvm get_actual(A, B, Eps)
     printf("It=%4i   Eps=%e\n", It, Eps);
+#pragma dvm actual(A, B)
+#pragma dvm get_actual(Eps)
     if (Eps < MAXEPS)
       break;
   }
