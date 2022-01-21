@@ -4,7 +4,10 @@ main.c:4:2: warning: unable to create parallel directive
 main.c:3:29: note: unable to localize inout variable
 void foo(int Size, double (*X)[Size]) {
                             ^
+main.c:3:14: warning: disable distribution of 'X': no function calls (1037)
+void foo(int Size, double (*X)[Size]) {
+             ^
 main.c:4:2: remark: Can not calculate count of iterations for this loop, information about iterations in all loops in parallel regions 'DEFAULT' will be ignored (1016)
  for (int I = 0; I < Size; ++I)
  ^
-1 warning generated.
+2 warnings generated.

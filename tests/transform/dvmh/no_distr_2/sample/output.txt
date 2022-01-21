@@ -4,7 +4,13 @@ main.c:4:2: warning: unable to create parallel directive
 main.c:3:18: note: unable to localize inout variable
 void foo(double *X, int Size) {
                  ^
+main.c:17:11: warning: disable distribution of 'C': store an address to memory (1037)
+  double *X = C + 100;
+          ^
+main.c:3:18: warning: disable distribution of 'X': unable to establish correspondence with actual parameter of an array type (1037)
+void foo(double *X, int Size) {
+                 ^
 main.c:4:2: remark: Can not calculate count of iterations for this loop, information about iterations in all loops in parallel regions 'DEFAULT' will be ignored (1016)
  for (int I = 0; I < Size; ++I)
  ^
-1 warning generated.
+3 warnings generated.

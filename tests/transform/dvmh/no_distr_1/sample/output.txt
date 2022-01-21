@@ -1,0 +1,4 @@
+main.c:14:3: warning: disable distribution of 'C': unknown function call (1037)
+  foo(C);
+  ^
+1 warning generated.
