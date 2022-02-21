@@ -157,7 +157,7 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
    read only:
     <A:44, 8> | <B:45, 8> | <ITMAX:43, 4> | <L:42, 4>
    redundant:
-    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> iter():48:18 printf():49:5 | <sapfor.var, 4>
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> <sapfor.var, 17> iter():48:18 printf():49:5 | <sapfor.var, 4>
    lock:
     <ITMAX:43, 4> | <It:47[47:3], 4>
    header access:
@@ -165,7 +165,7 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
    explicit access:
     <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> printf():49:5 | <A:44, 8> | <B:45, 8> | <Eps:48[47:39], 8> | <ITMAX:43, 4> | <It:47[47:3], 4> | <L:42, 4> | <sapfor.var, 4>
    address access:
-    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> iter():48:18 printf():49:5
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <malloc():44:20,?> <malloc():45:20,?> <sapfor.var, 17> iter():48:18 printf():49:5
    explicit access (separate):
     <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <A:44, 8> <B:45, 8> <Eps:48[47:39], 8> <ITMAX:43, 4> <It:47[47:3], 4> <L:42, 4> <sapfor.var, 4> printf():49:5
    redundant (separate):
@@ -173,8 +173,8 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
    lock (separate):
     <ITMAX:43, 4> <It:47[47:3], 4>
    address access (separate):
-    iter():48:18 printf():49:5
+    <sapfor.var, 17> iter():48:18 printf():49:5
    direct access (separate):
-    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <A:44, 8> <B:45, 8> <Eps:48[47:39], 8> <ITMAX:43, 4> <It:47[47:3], 4> <L:42, 4> <sapfor.var, 4> iter():48:18 printf():49:5
+    <*A:{46:11|48:26|53:8|44:12}, ?> <*B:{46:14|48:29|54:8|45:12}, ?> <A:44, 8> <B:45, 8> <Eps:48[47:39], 8> <ITMAX:43, 4> <It:47[47:3], 4> <L:42, 4> <sapfor.var, 17> <sapfor.var, 4> iter():48:18 printf():49:5
    indirect access (separate):
     <malloc():44:20,?> <malloc():45:20,?>

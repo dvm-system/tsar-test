@@ -15,7 +15,7 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
    read only:
     <A:23, 8> | <ItMax:24, 4> | <MaxEps:22, 8>
    redundant:
-    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> iter():30:11 printf():31:5
+    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> <sapfor.var, 26> iter():30:11 printf():31:5
    lock:
     <It:24, 4> | <ItMax:24, 4>
    header access:
@@ -23,7 +23,7 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
    explicit access:
     <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> printf():31:5 | <A:23, 8> | <Eps:22, 8> | <It:24, 4> | <ItMax:24, 4> | <MaxEps:22, 8>
    address access:
-    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> iter():30:11 printf():31:5
+    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> <sapfor.var, 26> iter():30:11 printf():31:5
    explicit access (separate):
     <*A:{28:8|30:16|35:8|23:11}, ?> <A:23, 8> <Eps:22, 8> <It:24, 4> <ItMax:24, 4> <MaxEps:22, 8> printf():31:5
    redundant (separate):
@@ -31,9 +31,9 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
    lock (separate):
     <It:24, 4> <ItMax:24, 4>
    address access (separate):
-    iter():30:11 printf():31:5
+    <sapfor.var, 26> iter():30:11 printf():31:5
    direct access (separate):
-    <*A:{28:8|30:16|35:8|23:11}, ?> <A:23, 8> <Eps:22, 8> <It:24, 4> <ItMax:24, 4> <MaxEps:22, 8> iter():30:11 printf():31:5
+    <*A:{28:8|30:16|35:8|23:11}, ?> <A:23, 8> <Eps:22, 8> <It:24, 4> <ItMax:24, 4> <MaxEps:22, 8> <sapfor.var, 26> iter():30:11 printf():31:5
    indirect access (separate):
     <malloc():27:26,?>
 Printing analysis 'Dependency Analysis (Metadata)' for function 'init':
