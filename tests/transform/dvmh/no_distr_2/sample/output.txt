@@ -13,4 +13,5 @@ void foo(double *X, int Size) {
 main.c:4:2: remark: Can not calculate count of iterations for this loop, information about iterations in all loops in parallel regions 'DEFAULT' will be ignored (1016)
  for (int I = 0; I < Size; ++I)
  ^
+main.c:4:2: remark: writes to non distributed array prevents parallelization of this loop (3006)
 3 warnings generated.

@@ -10,4 +10,11 @@ void foo(int Size, double (*X)[Size]) {
 main.c:4:2: remark: Can not calculate count of iterations for this loop, information about iterations in all loops in parallel regions 'DEFAULT' will be ignored (1016)
  for (int I = 0; I < Size; ++I)
  ^
+main.c:4:2: remark: writes to non distributed array prevents parallelization of this loop (3006)
+main.c:5:4: remark: unknown array dependency prevents parallelization of this loop (3006)
+   for (int J = 0; J < Size; ++J)
+   ^
+main.c:5:4: remark: unknown scalar dependency prevents parallelization of this loop (3006)
+main.c:5:4: remark: unknown array reference for writes prevent parallelization of this loop (3006)
+main.c:5:4: remark: writes to non distributed array prevents parallelization of this loop (3006)
 2 warnings generated.

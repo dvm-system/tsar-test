@@ -1,0 +1,4 @@
+main.c:9:3: remark: unknown array dependency prevents parallelization of this loop (3006)
+  for (int I = 2; I < 100; ++I)
+  ^
+main.c:9:3: remark: unknown scalar dependency prevents parallelization of this loop (3006)

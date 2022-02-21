@@ -1,0 +1,9 @@
+main.c:29:3: remark: unknown array dependency prevents parallelization of this loop (3006)
+  for (int It = 1; It <= ITMAX; ++It) {
+  ^
+main.c:29:3: remark: unknown scalar dependency prevents parallelization of this loop (3006)
+main.c:29:3: remark: internal/external moves via GOTO or EXIT operations prevent parallelization of this loop (3006)
+main.c:29:3: remark: IO operations prevent parallelization of this loop (3006)
+main.c:29:3: remark: stop operations prevent parallelization of this loop (3006)
+main.c:29:3: remark: unknown array reference for writes prevent parallelization of this loop (3006)
+main.c:29:3: remark: non pure procedures prevent parallelization of this loop (3006)
