@@ -11,3 +11,6 @@ if (TSAR_ENABLE_FORTRAN)
   add_subdirectory(replace_const)
 endif()
 
+if (TSAR_ENABLE_APC)
+  add_subdirectory(dvmh)
+endif()
