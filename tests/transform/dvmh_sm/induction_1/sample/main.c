@@ -18,6 +18,7 @@ int main() {
 #pragma dvm get_actual(A, I)
     S = S + A[I] + A[J];
     J = J + 1;
+#pragma dvm get_actual(I)
   }
 #pragma dvm actual(I)
   return S;
