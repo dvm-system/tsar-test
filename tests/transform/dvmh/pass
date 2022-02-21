@@ -20,6 +20,8 @@ parallel
     loop_2/tsar
     loop_2/compile
   end_seq_seq
+    remote_1/tsar
+  end_seq_seq
     remote_2/tsar
     remote_2/compile
   end_seq_seq
