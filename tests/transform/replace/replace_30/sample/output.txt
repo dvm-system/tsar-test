@@ -1,0 +1,7 @@
+main.c:7:35: warning: unable to replace any object except an argument or a local variable
+#pragma spf transform replace(S1, S3)
+                                  ^
+main.c:6:14: warning: inititialization prevent structure replacement
+  struct STy S1 = {1, 2};
+             ^
+2 warnings generated.

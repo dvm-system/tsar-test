@@ -17,6 +17,20 @@ replace_15/tsar
 replace_16/tsar
 replace_17/tsar
 replace_18/tsar
+replace_19/tsar
+replace_20/tsar
+replace_21/tsar
+replace_22/tsar
+replace_23/tsar
+replace_24/tsar
+replace_25/tsar
+replace_26/tsar
+replace_27/tsar
+replace_28/tsar
+replace_29/tsar
+replace_30/tsar
+replace_31/tsar
+replace_32/tsar
 replace_chain_1/tsar
 replace_chain_2/tsar
 replace_chain_3/tsar
@@ -35,6 +49,7 @@ replace_macro_6/tsar
 replace_macro_7/tsar
 replace_macro_8/tsar
 replace_macro_9/tsar
+replace_macro_10/tsar
 replace_metadata_1/tsar
 replace_metadata_2/tsar
 replace_metadata_3/tsar
@@ -62,4 +77,8 @@ replace_with_16/tsar
 replace_with_17/tsar
 replace_with_18/tsar
 replace_with_19/tsar
+replace_with_20/tsar
+replace_with_21/tsar
+replace_with_22/tsar
+replace_with_23/tsar
 end_parallel

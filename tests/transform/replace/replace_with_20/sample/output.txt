@@ -1,0 +1,7 @@
+main.c:23:3: warning: unable to replace call expression
+  foo(S, N);
+  ^
+main.c:1:19: note: unable to pass pointer to a member of a structure as an array
+struct STy { int *B; };
+                  ^
+1 warning generated.

@@ -1,0 +1,23 @@
+main.c:7:3: remark: structure replacement
+  DECL1, DECL2
+  ^
+main.c:3:15: note: expanded from macro 'DECL1'
+#define DECL1 struct STy S
+              ^
+main.c:7:10: warning: live declaration prevent dead code elimination
+  DECL1, DECL2
+         ^
+main.c:4:15: note: expanded from macro 'DECL2'
+#define DECL2 X;
+              ^
+main.c:7:3: remark: structure replacement
+  DECL1, DECL2
+  ^
+main.c:3:26: note: expanded from macro 'DECL1'
+#define DECL1 struct STy S
+                         ^
+main.c:7:3: note: unable to remove unused declaration
+main.c:3:26: note: expanded from macro 'DECL1'
+#define DECL1 struct STy S
+                         ^
+1 warning generated.

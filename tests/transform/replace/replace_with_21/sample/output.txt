@@ -1,0 +1,7 @@
+main.c:21:18: warning: disable structure replacement
+struct STy * bar(struct STy *S, int N) {
+                 ^
+main.c:24:10: note: not-arrow access prevent replacement
+  return S;
+         ^
+1 warning generated.

@@ -18,7 +18,7 @@ int foo(struct STy *S) {
   return _S_->X;
 }
 
-/* Replacement for int foo (struct STy *S) */
+/* Replacement for int foo(struct STy *S) */
 int foo_spf0(int *S_X1) {
 #pragma spf metadata replace(foo({.X = S_X1}))
   bar_spf0(S_X1);

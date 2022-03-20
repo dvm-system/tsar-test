@@ -1,0 +1,7 @@
+main.c:5:9: warning: disable structure replacement
+int foo(struct STy *S) {
+        ^
+main.c:9:14: note: not-arrow access prevent replacement
+    Sum = (S + I)->T.A + S[I].T.B;
+             ^
+1 warning generated.

@@ -1,0 +1,13 @@
+main.c:8:18: warning: disable structure replacement
+struct STy * foo(struct STy *S1, struct STy *S2, int N) {
+                 ^
+main.c:12:10: note: not-arrow access prevent replacement
+  return S1;  
+         ^
+main.c:10:3: warning: unable to replace call expression
+  bar(S1, N);
+  ^
+main.c:1:18: note: unable to pass pointer to a member of a structure as an array
+struct STy { int X; };
+                 ^
+2 warnings generated.

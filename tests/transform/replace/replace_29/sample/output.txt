@@ -1,0 +1,18 @@
+main.c:5:18: warning: inititialization prevent structure replacement
+  struct STy S3, S4 = {1, 2};
+                 ^
+main.c:4:18: remark: structure replacement
+  struct STy S1, S2;
+                 ^
+main.c:4:18: remark: remove unused declaration
+main.c:5:3: remark: structure replacement
+  struct STy S3, S4 = {1, 2};
+  ^
+main.c:5:18: warning: live declaration prevent dead code elimination
+  struct STy S3, S4 = {1, 2};
+                 ^
+main.c:5:14: remark: structure replacement
+  struct STy S3, S4 = {1, 2};
+             ^
+main.c:5:14: note: unable to remove unused declaration
+2 warnings generated.

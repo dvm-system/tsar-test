@@ -1,0 +1,4 @@
+main.c:21:22: warning: diasable strict replacement of a structure-type with array
+void bar(struct STy *S1, struct STy *S2, int N) {
+                     ^
+1 warning generated.
