@@ -1,0 +1,3 @@
+Printing analysis 'High and Low Level Expression Matcher' for function 'foo':
+main.c:2:3 ReturnStmt  ret i32* %arrayidx
+main.c:2:11 DeclRefExpr  %0 = load i32*, i32** %X.addr, align 8
