@@ -1,0 +1,4 @@
+main.c:6:13: warning: Array dimensions do not match
+    #pragma spf transform initialize(arr1 = arr2)
+            ^
+1 warning generated.
