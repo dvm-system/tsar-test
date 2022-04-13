@@ -5,7 +5,7 @@ int main() {
   int foo();
 
   for (i = 0; i < 1000; i++) {
-    = a;
+    #pragma spf transform initialize(foo = a)
   }
   return 0;
 }
