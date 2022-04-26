@@ -25,13 +25,15 @@ induction_1/tsar
 interproc_1/tsar
 interproc_10/tsar
 interproc_11/tsar
+interproc_12/tsar
 interproc_2/tsar
 interproc_2-REDUNDANT/tsar
 interproc_3/tsar
 interproc_3-REDUNDANT/tsar
 interproc_4/tsar
 interproc_5/tsar
-interproc_6/tsar
+#interproc_6/tsar
+interproc_6.safe/tsar
 interproc_7/tsar
 interproc_8/tsar
 interproc_9/tsar
@@ -88,6 +90,9 @@ reduction_4/tsar
 reduction_5/tsar
 #reduction_6/tsar
 reduction_7/tsar
+reduction_8/tsar
+reduction_9/tsar
+reduction_10/tsar
 redundant_1/tsar
 redundant_1-REDUNDANT/tsar
 redundant_2/tsar

@@ -3,13 +3,13 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    private:
     <J:5, 4>
    output:
-    <JStart, 4> | <U, 80000>
+    <U, 80000>
    anti:
-    <JStart, 4> | <U, 80000>
+    <U, 80000>
    flow:
-    <JStart, 4> | <U, 80000>
+    <U, 80000>
    induction:
-    <I:6[6:3], 4>:[Int,,,1]
+    <I:6[6:3], 4>:[Int,,,1] | <JStart, 4>:[Int,,,1]
    read only:
     <IEnd, 4> | <JEnd, 4>
    lock:

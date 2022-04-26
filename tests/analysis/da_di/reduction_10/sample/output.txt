@@ -1,0 +1,22 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
+ loop at depth 1 main.c:6:3
+   induction:
+    <I:6[6:3], 4>:[Int,0,10,1]
+   reduction:
+    <S:4:7, 4>:mult
+   no promoted scalar:
+    <S:4:7, 4>
+   lock:
+    <I:6[6:3], 4>
+   header access:
+    <I:6[6:3], 4>
+   explicit access:
+    <I:6[6:3], 4> | <S:4:7, 4>
+   explicit access (separate):
+    <I:6[6:3], 4> <S:4:7, 4>
+   lock (separate):
+    <I:6[6:3], 4>
+   no promoted scalar (separate):
+    <S:4:7, 4>
+   direct access (separate):
+    <I:6[6:3], 4> <S:4:7, 4>
