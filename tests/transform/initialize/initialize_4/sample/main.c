@@ -8,14 +8,14 @@ int main() {
   crr2 = (int*)malloc(N * sizeof(int));*/
 
   for (i = 0; i < 1000; i++) {
-    for (int i0 = 0; i0 < 30; i0++) {
-      crr1[i0] = crr2[i0];
+    for (int i0 = 0; i0 < 50; i0++) {
+      arr1[i0] = arr2[i0];
     }
     for (int i0 = 0; i0 < 20; i0++) {
       brr1[i0] = brr2[i0];
     }
-    for (int i0 = 0; i0 < 50; i0++) {
-      arr1[i0] = arr2[i0];
+    for (int i0 = 0; i0 < 30; i0++) {
+      crr1[i0] = crr2[i0];
     }
   }
   return 0;
