@@ -1,0 +1,5 @@
+main.c:8:38: error: Given DeclRefExpr is not a variable
+    #pragma spf transform initialize(foo = a)
+                                     ^
+1 error generated.
+Error while processing main.c.

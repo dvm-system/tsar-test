@@ -1,0 +1,4 @@
+main.c:6:58: warning: Too many dimensions given
+    #pragma spf transform initialize(arr1 = arr2 [5][10][20])
+                                                         ^
+1 warning generated.
