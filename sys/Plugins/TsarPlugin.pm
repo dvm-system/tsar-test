@@ -6,6 +6,7 @@ use strict;
 
 use ConfigFile;
 use Exceptions;
+use FileHandle;
 use File::chdir;
 use File::Copy qw(copy);
 use File::Path qw(make_path remove_tree);
@@ -228,7 +229,7 @@ sub show_diff
     show_file($dst);
     return;
   }
-  my $diff = diff($src, $dst) or return;
+  my $diff = m_diff($src, $dst) or return;
   print_out("#### $src <=> $dst ####\n");
   print_out($diff);
 }
@@ -285,7 +286,7 @@ sub m_compare
     print_out("Sample file '$fname_ref' does not exist.\n");
     return 0;
   }
-  if (diff $fname, $fname_ref) {
+  if (m_diff($fname, $fname_ref)) {
     print_out("File '$fname' differs from '$fname_ref'\n");
     return 0;
   }
@@ -312,6 +313,17 @@ sub m_skip_not_set
     }
   }
   0
+}
+
+sub m_diff
+{
+  my $fname1 = shift;
+  my $fname2 = shift;
+  my $f1 = FileHandle->new("< $fname1") or die "cannot open file '$fname1': $!\n";
+  my $f2 = FileHandle->new("< $fname2") or die "cannot open file '$fname2': $!\n";
+  binmode $f1, ':crlf';
+  binmode $f2, ':crlf';
+  diff $f1, $f2
 }
 
 1;
