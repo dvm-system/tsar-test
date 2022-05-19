@@ -108,7 +108,7 @@ if (TSAR_FOUND)
       if (TS_LLVM_LINK_TOOL)
         set(TS_LLVM_LINK_PATH "${TS_LLVM_LINK_PATH}$<$<CONFIG:${C}>:${TSAR_BINARY_DIR_${C}}/${TS_LLVM_LINK_TOOL}${CMAKE_EXECUTABLE_SUFFIX}>")
       endif()
-      set(TS_LIBRARY_PATH "'$<SHELL_PATH:${TSAR_BINARY_DIR_${C}}/../lib>'")
+      set(TS_LIBRARY_PATH "${TS_LIBRARY_PATH}$<$<CONFIG:${C}>:'$<SHELL_PATH:${TSAR_BINARY_DIR_${C}}/../lib>'>")
       file(GLOB TS_OMP_LIBRARIES LIST_DIRECTORIES false
                 RELATIVE ${TS_LIBRARY_PATH} ${TS_LIBRARY_PATH}/*omp.*)
     endforeach()
