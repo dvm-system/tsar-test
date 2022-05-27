@@ -6,6 +6,7 @@ add_subdirectory(propagate)
 add_subdirectory(replace)
 add_subdirectory(interchange)
 add_subdirectory(reversal)
+add_subdirectory(remove_redarray)
 
 if (TSAR_ENABLE_FORTRAN)
   add_subdirectory(replace_const)

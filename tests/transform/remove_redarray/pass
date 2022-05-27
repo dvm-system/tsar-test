@@ -1,0 +1,11 @@
+parallel
+  remove_redarray_1/tsar
+  remove_redarray_2/tsar
+  remove_redarray_3/tsar
+  remove_redarray_4/tsar
+  remove_redarray_5/tsar
+  remove_redarray_6/tsar
+  remove_redarray_7/tsar
+  remove_redarray_8/tsar
+  remove_redarray_9/tsar
+end_parallel
