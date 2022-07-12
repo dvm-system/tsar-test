@@ -1,11 +1,11 @@
 Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
  loop at depth 1 main.c:4:2
    shared:
-    <*A:3, ?>
+    <*A:3, +?>
    first private:
-    <*A:3, ?>
+    <*A:3, +?>
    dynamic private:
-    <*A:3, ?>
+    <*A:3, +?>
    induction:
     <I:4[4:2], 4>:[Int,0,10,1]
    read only:
@@ -25,4 +25,4 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    address access (separate):
     <*((char*)&X+4), 4> <X, 4>
    direct access (separate):
-    <*A:3, ?> <A:3, 8> <I:4[4:2], 4> <X, 4>
+    <*A:3, +?> <A:3, 8> <I:4[4:2], 4> <X, 4>

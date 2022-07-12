@@ -2,9 +2,11 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'bar':
 Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
  loop at depth 1 main.c:8:3
    private:
-    <A:{4:3|4:10}, ?>
+    <A:{4:3|4:10}, +?>
    induction:
     <I:8[8:3], 4>:[Int,0,10,1]
+   redundant:
+    <A:{4:3|4:10}, +?>
    lock:
     <I:8[8:3], 4>
    header access:
@@ -13,7 +15,9 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
     <I:8[8:3], 4>
    explicit access (separate):
     <I:8[8:3], 4>
+   redundant (separate):
+    <A:{4:3|4:10}, +?>
    lock (separate):
     <I:8[8:3], 4>
    direct access (separate):
-    <A:{4:3|4:10}, ?> <I:8[8:3], 4>
+    <A:{4:3|4:10}, +?> <I:8[8:3], 4>

@@ -1,11 +1,11 @@
 Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
  loop at depth 1 main.c:7:3
    output:
-    <*U:3, ?> | <I:7[7:3], 4>
+    <*U:3, +?> | <I:7[7:3], 4>
    anti:
-    <*U:3, ?> | <I:7[7:3], 4>
+    <*U:3, +?> | <I:7[7:3], 4>
    flow:
-    <*U:3, ?> | <I:7[7:3], 4>
+    <*U:3, +?> | <I:7[7:3], 4>
    read only:
     <IEnd, 4> | <IStep, 4> | <U:3, 8>
    lock:
@@ -19,4 +19,4 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    lock (separate):
     <I:7[7:3], 4> <IEnd, 4>
    direct access (separate):
-    <*U:3, ?> <I:7[7:3], 4> <IEnd, 4> <IStep, 4> <U:3, 8>
+    <*U:3, +?> <I:7[7:3], 4> <IEnd, 4> <IStep, 4> <U:3, 8>

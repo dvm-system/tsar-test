@@ -1,4 +1,4 @@
-const int N = 100;
+enum { N = 100 };
 
 double A[N][N];
 

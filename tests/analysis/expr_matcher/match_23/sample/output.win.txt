@@ -1,12 +1,12 @@
-Printing analysis 'High and Low Level Expression Matcher' for function 'foo':
-main.c:4:15 DeclRefExpr  %2 = load i32, i32* %K.addr, align 4
-main.c:4:12 DeclRefExpr  %0 = load i32, i32* %M.addr, align 4
-main.c:5:5 BinaryOperator '='  store i32* %18, i32** %A, align 8
-main.c:5:19 DeclRefExpr  %7 = load i32, i32* %K.addr, align 4
-main.c:5:16 DeclRefExpr  %5 = load i32, i32* %M.addr, align 4
-main.c:5:23 CallExpr  %call = call noalias i8* @malloc(i64 %mul)
-main.c:5:30 DeclRefExpr  %9 = load i32, i32* %N.addr, align 4
-main.c:5:45 DeclRefExpr  %10 = load i32, i32* %M.addr, align 4
-main.c:5:48 DeclRefExpr  %12 = load i32, i32* %K.addr, align 4
-main.c:6:3 ReturnStmt  ret i32* %19
-main.c:6:17 DeclRefExpr  %19 = load i32*, i32** %A, align 8
+Printing analysis 'High and Low Level Expression Matcher (Clang)' for function 'foo':
+main.c:4:15 DeclRefExpr  %2 = load i32, ptr %K.addr, align 4
+main.c:4:12 DeclRefExpr  %0 = load i32, ptr %M.addr, align 4
+main.c:5:5 BinaryOperator '='  store ptr %call, ptr %A, align 8
+main.c:5:19 DeclRefExpr  %6 = load i32, ptr %K.addr, align 4
+main.c:5:16 DeclRefExpr  %4 = load i32, ptr %M.addr, align 4
+main.c:5:23 CallExpr  %call = call noalias ptr @malloc(i64 noundef %mul) #5
+main.c:5:30 DeclRefExpr  %8 = load i32, ptr %N.addr, align 4
+main.c:5:45 DeclRefExpr  %9 = load i32, ptr %M.addr, align 4
+main.c:5:48 DeclRefExpr  %11 = load i32, ptr %K.addr, align 4
+main.c:6:3 ReturnStmt  ret ptr %17
+main.c:6:17 DeclRefExpr  %17 = load ptr, ptr %A, align 8

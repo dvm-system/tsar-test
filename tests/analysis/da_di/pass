@@ -41,7 +41,6 @@ Jacobi/tsar
 Jacobi.func/tsar
 malloc_1/tsar
 malloc_2/tsar
-malloc_2-REDUNDANT/tsar
 malloc_3/tsar
 malloc_3-REDUNDANT/tsar
 #pointer_1/tsar
@@ -108,12 +107,10 @@ shared_1/tsar
 shared_10/tsar
 shared_11/tsar
 shared_12/tsar
-#shared_13/tsar
-shared_13.safe-SAFE/tsar
+shared_13/tsar
 #shared_14/tsar
 shared_14.safe-SAFE/tsar
-#shared_15/tsar
-shared_15.safe-SAFE/tsar
+shared_15/tsar
 shared_16/tsar
 shared_17/tsar
 shared_18/tsar

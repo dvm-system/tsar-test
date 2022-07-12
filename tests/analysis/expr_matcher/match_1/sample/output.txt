@@ -1,2 +1,2 @@
-Printing analysis 'High and Low Level Expression Matcher' for function 'foo':
-main.c:1:21 BinaryOperator '='  store i32 10, i32* %X.addr, align 4
+Printing analysis 'High and Low Level Expression Matcher (Clang)' for function 'foo':
+main.c:1:21 BinaryOperator '='  store i32 10, ptr %X.addr, align 4

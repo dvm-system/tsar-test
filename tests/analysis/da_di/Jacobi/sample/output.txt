@@ -69,7 +69,7 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
    explicit access:
     <A, 512> <B, 512> printf():40:5 | <Eps:30[29:39], 8> | <I:31[31:5], 4> | <I:37[37:5], 4> | <It:29[29:3], 4> | <J:32[32:7], 4> | <J:38[38:7], 4> | <Tmp:33[32:39], 8> | <sapfor.var, 4>
    address access:
-    <A, 512> <B, 512> <sapfor.var, 17> printf():40:5
+    <A, 512> <B, 512> printf():40:5
    explicit access (separate):
     <Eps:30[29:39], 8> <I:31[31:5], 4> <I:37[37:5], 4> <It:29[29:3], 4> <J:32[32:7], 4> <J:38[38:7], 4> <Tmp:33[32:39], 8> <sapfor.var, 4> printf():40:5
    redundant (separate):
@@ -77,9 +77,9 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
    lock (separate):
     <It:29[29:3], 4>
    address access (separate):
-    <sapfor.var, 17> printf():40:5
+    printf():40:5
    direct access (separate):
-    <A, 512> <B, 512> <Eps:30[29:39], 8> <I:31[31:5], 4> <I:37[37:5], 4> <It:29[29:3], 4> <J:32[32:7], 4> <J:38[38:7], 4> <Tmp:33[32:39], 8> <sapfor.var, 17> <sapfor.var, 4> printf():40:5
+    <A, 512> <B, 512> <Eps:30[29:39], 8> <I:31[31:5], 4> <I:37[37:5], 4> <It:29[29:3], 4> <J:32[32:7], 4> <J:38[38:7], 4> <Tmp:33[32:39], 8> <sapfor.var, 4> printf():40:5
   loop at depth 2 main.c:37:5
     shared:
      <B, 512>

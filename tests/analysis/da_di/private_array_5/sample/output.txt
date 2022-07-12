@@ -1,11 +1,11 @@
 Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
  loop at depth 1 main.c:2:3
    shared:
-    <*A:1, ?>
+    <*A:1, +?>
    first private:
-    <*A:1, ?>
+    <*A:1, +?>
    dynamic private:
-    <*A:1, ?>
+    <*A:1, +?>
    private:
     <T:3[2:33], 192>
    induction:
@@ -23,4 +23,4 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    lock (separate):
     <I:2[2:3], 4>
    direct access (separate):
-    <*A:1, ?> <A:1, 8> <I:2[2:3], 4> <T:3[2:33], 192>
+    <*A:1, +?> <A:1, 8> <I:2[2:3], 4> <T:3[2:33], 192>

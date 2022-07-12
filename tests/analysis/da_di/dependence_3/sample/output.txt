@@ -3,11 +3,11 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    private:
     <J:4[4:5], 4> | <V:3[2:31], 4>
    output:
-    <*A:1, ?>
+    <*A:1, +?>
    anti:
-    <*A:1, ?>
+    <*A:1, +?>
    flow:
-    <*A:1, ?>
+    <*A:1, +?>
    induction:
     <I:2[2:3], 4>:[Int,0,,1]
    read only:
@@ -23,10 +23,10 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    lock (separate):
     <I:2[2:3], 4> <K:1, 4>
    direct access (separate):
-    <*A:1, ?> <A:1, 8> <I:2[2:3], 4> <J:4[4:5], 4> <K:1, 4> <M:1, 4> <N:1, 4> <V:3[2:31], 4>
+    <*A:1, +?> <A:1, 8> <I:2[2:3], 4> <J:4[4:5], 4> <K:1, 4> <M:1, 4> <N:1, 4> <V:3[2:31], 4>
   loop at depth 2 main.c:4:5
     shared:
-     <*A:1, ?>
+     <*A:1, +?>
     induction:
      <J:4[4:5], 4>:[Int,,,1]
     read only:
@@ -42,4 +42,4 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
     lock (separate):
      <J:4[4:5], 4> <N:1, 4>
     direct access (separate):
-     <*A:1, ?> <A:1, 8> <J:4[4:5], 4> <M:1, 4> <N:1, 4> <V:3[2:31], 4>
+     <*A:1, +?> <A:1, 8> <J:4[4:5], 4> <M:1, 4> <N:1, 4> <V:3[2:31], 4>

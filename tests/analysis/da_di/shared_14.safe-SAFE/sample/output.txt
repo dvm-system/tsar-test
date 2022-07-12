@@ -3,47 +3,47 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    private:
     <J:6, 4>
    output:
-    <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4>
+    <*U:5, +?> <IEnd, 4> <JEnd, 4> <JStart, 4>
    anti:
-    <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4>
+    <*U:5, +?> <IEnd, 4> <JEnd, 4> <JStart, 4>
    flow:
-    <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4>
+    <*U:5, +?> <IEnd, 4> <JEnd, 4> <JStart, 4>
    induction:
     <I:7[7:3], 4>:[Int,,,1]
    read only:
     <U:5, 8>
    lock:
-    <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:7[7:3], 4>
+    <*U:5, +?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:7[7:3], 4>
    header access:
-    <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:7[7:3], 4>
+    <*U:5, +?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:7[7:3], 4>
    explicit access:
-    <*U:5, ?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:7[7:3], 4> | <J:6, 4> | <U:5, 8>
+    <*U:5, +?> <IEnd, 4> <JEnd, 4> <JStart, 4> | <I:7[7:3], 4> | <J:6, 4> | <U:5, 8>
    explicit access (separate):
     <I:7[7:3], 4> <IEnd, 4> <J:6, 4> <JEnd, 4> <JStart, 4> <U:5, 8>
    lock (separate):
     <I:7[7:3], 4> <IEnd, 4>
    direct access (separate):
-    <*U:5, ?> <I:7[7:3], 4> <IEnd, 4> <J:6, 4> <JEnd, 4> <JStart, 4> <U:5, 8>
+    <*U:5, +?> <I:7[7:3], 4> <IEnd, 4> <J:6, 4> <JEnd, 4> <JStart, 4> <U:5, 8>
   loop at depth 2 main.c:11:5
     output:
-     <*U:5, ?> <JEnd, 4>
+     <*U:5, +?> <JEnd, 4>
     anti:
-     <*U:5, ?> <JEnd, 4>
+     <*U:5, +?> <JEnd, 4>
     flow:
-     <*U:5, ?> <JEnd, 4>
+     <*U:5, +?> <JEnd, 4>
     induction:
      <J:6, 4>:[Int,,,1]
     read only:
      <I:7[7:3], 4> | <U:5, 8>
     lock:
-     <*U:5, ?> <JEnd, 4> | <J:6, 4>
+     <*U:5, +?> <JEnd, 4> | <J:6, 4>
     header access:
-     <*U:5, ?> <JEnd, 4> | <J:6, 4>
+     <*U:5, +?> <JEnd, 4> | <J:6, 4>
     explicit access:
-     <*U:5, ?> <JEnd, 4> | <I:7[7:3], 4> | <J:6, 4> | <U:5, 8>
+     <*U:5, +?> <JEnd, 4> | <I:7[7:3], 4> | <J:6, 4> | <U:5, 8>
     explicit access (separate):
      <I:7[7:3], 4> <J:6, 4> <JEnd, 4> <U:5, 8>
     lock (separate):
      <J:6, 4> <JEnd, 4>
     direct access (separate):
-     <*U:5, ?> <I:7[7:3], 4> <J:6, 4> <JEnd, 4> <U:5, 8>
+     <*U:5, +?> <I:7[7:3], 4> <J:6, 4> <JEnd, 4> <U:5, 8>

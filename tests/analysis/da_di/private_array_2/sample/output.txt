@@ -3,9 +3,9 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    first private:
     <T:2, 24>
    anti:
-    <*X:1, ?>:[1:1]
+    <*X:1, +?>:[1:1]
    flow:
-    <*X:1, ?>:[1:1]
+    <*X:1, +?>:[1:1]
    induction:
     <I:4[4:3], 4>:[Int,1,,1]
    read only:
@@ -21,4 +21,4 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    lock (separate):
     <I:4[4:3], 4> <N:1, 4>
    direct access (separate):
-    <*X:1, ?> <I:4[4:3], 4> <N:1, 4> <T:2, 24> <X:1, 8>
+    <*X:1, +?> <I:4[4:3], 4> <N:1, 4> <T:2, 24> <X:1, 8>

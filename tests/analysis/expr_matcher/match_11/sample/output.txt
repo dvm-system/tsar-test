@@ -1,11 +1,11 @@
-Printing analysis 'High and Low Level Expression Matcher' for function 'foo':
-main.c:2:3 UnaryOperator '*'  %1 = load i32, i32* %0, align 4
-main.c:2:3 UnaryOperator '++'  store i32 %inc, i32* %0, align 4
-main.c:2:6 DeclRefExpr  %0 = load i32*, i32** %X.addr, align 8
-main.c:3:3 ReturnStmt  ret i32* %2
-main.c:3:10 DeclRefExpr  %2 = load i32*, i32** %X.addr, align 8
-Printing analysis 'High and Low Level Expression Matcher' for function 'bar':
-main.c:7:3 ParenExpr  %4 = load i32, i32* %call, align 4
-main.c:7:3 UnaryOperator '++'  store i32 %inc, i32* %call, align 4
-main.c:7:8 CallExpr  %call = call i32* @foo(i32* %1)
-main.c:7:12 DeclRefExpr  %0 = load i8*, i8** %X.addr, align 8
+Printing analysis 'High and Low Level Expression Matcher (Clang)' for function 'foo':
+main.c:2:3 UnaryOperator '*'  %1 = load i32, ptr %0, align 4
+main.c:2:3 UnaryOperator '++'  store i32 %inc, ptr %0, align 4
+main.c:2:6 DeclRefExpr  %0 = load ptr, ptr %X.addr, align 8
+main.c:3:3 ReturnStmt  ret ptr %2
+main.c:3:10 DeclRefExpr  %2 = load ptr, ptr %X.addr, align 8
+Printing analysis 'High and Low Level Expression Matcher (Clang)' for function 'bar':
+main.c:7:3 ParenExpr  %3 = load i32, ptr %call, align 4
+main.c:7:3 UnaryOperator '++'  store i32 %inc, ptr %call, align 4
+main.c:7:8 CallExpr  %call = call ptr @foo(ptr noundef %0)
+main.c:7:12 DeclRefExpr  %0 = load ptr, ptr %X.addr, align 8

@@ -6,7 +6,7 @@ struct STy {
   struct QTy {
     T V1;
     T V2;
-  } * Q;
+  } *Q;
   unsigned N;
   enum Kind K;
 };

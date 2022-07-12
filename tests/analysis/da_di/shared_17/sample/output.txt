@@ -1,7 +1,7 @@
 Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
  loop at depth 1 main.c:5:3
    shared:
-    <*U:3, ?>
+    <*U:3, +?>
    private:
     <J:4, 4>
    induction:
@@ -19,10 +19,10 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    lock (separate):
     <I:5[5:3], 4> <IEnd, 4>
    direct access (separate):
-    <*U:3, ?> <I:5[5:3], 4> <IEnd, 4> <J:4, 4> <JEnd, 4> <JStart, 4> <U:3, 8>
+    <*U:3, +?> <I:5[5:3], 4> <IEnd, 4> <J:4, 4> <JEnd, 4> <JStart, 4> <U:3, 8>
   loop at depth 2 main.c:6:5
     shared:
-     <*U:3, ?>
+     <*U:3, +?>
     induction:
      <J:4, 4>:[Int,,,1]
     read only:
@@ -38,4 +38,4 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
     lock (separate):
      <J:4, 4> <JEnd, 4>
     direct access (separate):
-     <*U:3, ?> <I:5[5:3], 4> <J:4, 4> <JEnd, 4> <U:3, 8>
+     <*U:3, +?> <I:5[5:3], 4> <J:4, 4> <JEnd, 4> <U:3, 8>

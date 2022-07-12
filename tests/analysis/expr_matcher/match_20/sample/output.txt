@@ -1,26 +1,26 @@
-Printing analysis 'High and Low Level Expression Matcher' for function 'far':
-main.c:7:12 Var 'i'  store i32 1, i32* %i, align 4
-main.c:7:19 DeclRefExpr  %1 = load i32, i32* %i, align 4
-main.c:7:30 DeclRefExpr  %24 = load i32, i32* %i, align 4
-main.c:7:30 UnaryOperator '++'  store i32 %inc, i32* %i, align 4
-main.c:8:9 CallExpr  %call = call i32 @is_prime(i32 %3)
-main.c:8:18 DeclRefExpr  %3 = load i32, i32* %i, align 4
-main.c:9:16 ArraySubscriptExpr  %8 = load double, double* %arrayidx, align 8
-main.c:9:16 CompoundAssignOperator '+='  store double %add1, double* %arrayidx, align 8
-main.c:9:7 DeclRefExpr  %6 = load double*, double** %A.addr, align 8
-main.c:9:9 DeclRefExpr  %7 = load i32, i32* %i, align 4
-main.c:12:10 BinaryOperator '='  store double %call4, double* %arrayidx6, align 8
-main.c:12:5 DeclRefExpr  %14 = load double*, double** %A.addr, align 8
-main.c:12:7 DeclRefExpr  %15 = load i32, i32* %i, align 4
-main.c:12:12 CallExpr  %call4 = call double @boo(double %11)
-main.c:12:16 DeclRefExpr  %9 = load double*, double** %A.addr, align 8
-main.c:12:18 DeclRefExpr  %10 = load i32, i32* %i, align 4
-main.c:12:16 ArraySubscriptExpr  %11 = load double, double* %arrayidx3, align 8
-main.c:13:9 CallExpr  %call9 = call i32 @is_prime(i32 %conv)
-main.c:13:18 DeclRefExpr  %16 = load double*, double** %A.addr, align 8
-main.c:13:20 DeclRefExpr  %17 = load i32, i32* %i, align 4
-main.c:13:18 ArraySubscriptExpr  %18 = load double, double* %arrayidx8, align 8
-main.c:14:16 ArraySubscriptExpr  %23 = load double, double* %arrayidx14, align 8
-main.c:14:16 CompoundAssignOperator '*='  store double %mul, double* %arrayidx14, align 8
-main.c:14:7 DeclRefExpr  %21 = load double*, double** %A.addr, align 8
-main.c:14:9 DeclRefExpr  %22 = load i32, i32* %i, align 4
+Printing analysis 'High and Low Level Expression Matcher (Clang)' for function 'far':
+main.c:7:12 Var 'i'  store i32 1, ptr %i, align 4
+main.c:7:19 DeclRefExpr  %0 = load i32, ptr %i, align 4
+main.c:7:30 DeclRefExpr  %22 = load i32, ptr %i, align 4
+main.c:7:30 UnaryOperator '++'  store i32 %inc, ptr %i, align 4
+main.c:8:9 CallExpr  %call = call i32 @is_prime(i32 noundef %1)
+main.c:8:18 DeclRefExpr  %1 = load i32, ptr %i, align 4
+main.c:9:16 ArraySubscriptExpr  %6 = load double, ptr %arrayidx, align 8
+main.c:9:16 CompoundAssignOperator '+='  store double %add1, ptr %arrayidx, align 8
+main.c:9:7 DeclRefExpr  %4 = load ptr, ptr %A.addr, align 8
+main.c:9:9 DeclRefExpr  %5 = load i32, ptr %i, align 4
+main.c:12:10 BinaryOperator '='  store double %call4, ptr %arrayidx6, align 8
+main.c:12:5 DeclRefExpr  %12 = load ptr, ptr %A.addr, align 8
+main.c:12:7 DeclRefExpr  %13 = load i32, ptr %i, align 4
+main.c:12:12 CallExpr  %call4 = call double @boo(double noundef %9)
+main.c:12:16 DeclRefExpr  %7 = load ptr, ptr %A.addr, align 8
+main.c:12:18 DeclRefExpr  %8 = load i32, ptr %i, align 4
+main.c:12:16 ArraySubscriptExpr  %9 = load double, ptr %arrayidx3, align 8
+main.c:13:9 CallExpr  %call9 = call i32 @is_prime(i32 noundef %conv)
+main.c:13:18 DeclRefExpr  %14 = load ptr, ptr %A.addr, align 8
+main.c:13:20 DeclRefExpr  %15 = load i32, ptr %i, align 4
+main.c:13:18 ArraySubscriptExpr  %16 = load double, ptr %arrayidx8, align 8
+main.c:14:16 ArraySubscriptExpr  %21 = load double, ptr %arrayidx14, align 8
+main.c:14:16 CompoundAssignOperator '*='  store double %mul, ptr %arrayidx14, align 8
+main.c:14:7 DeclRefExpr  %19 = load ptr, ptr %A.addr, align 8
+main.c:14:9 DeclRefExpr  %20 = load i32, ptr %i, align 4

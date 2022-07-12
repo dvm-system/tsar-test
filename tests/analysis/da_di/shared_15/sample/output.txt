@@ -1,17 +1,11 @@
 Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
  loop at depth 1 main.c:6:3
-   private:
-    <J:5, 4>
    shared:
     <U, 80000>
-   output:
-    <JStart, 4>
-   anti:
-    <JStart, 4>
-   flow:
-    <JStart, 4>
+   private:
+    <J:5, 4>
    induction:
-    <I:6[6:3], 4>:[Int,,,1]
+    <I:6[6:3], 4>:[Int,,,1] | <JStart, 4>:[Int,,,1]
    read only:
     <IEnd, 4> | <JEnd, 4>
    lock:

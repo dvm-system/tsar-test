@@ -1,4 +1,4 @@
-Printing analysis 'High and Low Level Expression Matcher' for function 'bar':
+Printing analysis 'High and Low Level Expression Matcher (Clang)' for function 'bar':
 main.c:4:3 ReturnStmt  ret i32 %add
-main.c:4:10 DeclRefExpr  %0 = load i32, i32* %X.addr, align 4
-main.c:4:14 DeclRefExpr  %1 = load i32, i32* %Y.addr, align 4
+main.c:4:10 DeclRefExpr  %0 = load i32, ptr %X.addr, align 4
+main.c:4:14 DeclRefExpr  %1 = load i32, ptr %Y.addr, align 4

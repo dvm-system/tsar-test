@@ -5,45 +5,39 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'main':
    dynamic private:
     <Eps:22, 8>
    output:
-    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> printf():31:5
+    <*A:{27:26|23}, ?> printf():31:5
    anti:
-    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> printf():31:5
+    <*A:{27:26|23}, ?> printf():31:5
    flow:
-    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> printf():31:5
+    <*A:{27:26|23}, ?> printf():31:5
    induction:
     <It:24, 4>:[Int,1,,1]
    read only:
     <A:23, 8> | <ItMax:24, 4> | <MaxEps:22, 8>
-   redundant:
-    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> <sapfor.var, 26> iter():30:11 printf():31:5
    lock:
     <It:24, 4> | <ItMax:24, 4>
    header access:
     <It:24, 4> | <ItMax:24, 4>
    explicit access:
-    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> printf():31:5 | <A:23, 8> | <Eps:22, 8> | <It:24, 4> | <ItMax:24, 4> | <MaxEps:22, 8>
+    <*A:{27:26|23}, ?> printf():31:5 | <A:23, 8> | <Eps:22, 8> | <It:24, 4> | <ItMax:24, 4> | <MaxEps:22, 8>
    address access:
-    <*A:{28:8|30:16|35:8|23:11}, ?> <malloc():27:26,?> <sapfor.var, 26> iter():30:11 printf():31:5
+    <*A:{27:26|23}, ?> printf():31:5
    explicit access (separate):
-    <*A:{28:8|30:16|35:8|23:11}, ?> <A:23, 8> <Eps:22, 8> <It:24, 4> <ItMax:24, 4> <MaxEps:22, 8> printf():31:5
-   redundant (separate):
-    <*A:{28:8|30:16|35:8|23:11}, ?>
+    <*A:{27:26|23}, ?> <A:23, 8> <Eps:22, 8> <It:24, 4> <ItMax:24, 4> <MaxEps:22, 8> printf():31:5
    lock (separate):
     <It:24, 4> <ItMax:24, 4>
    address access (separate):
-    <sapfor.var, 26> iter():30:11 printf():31:5
+    printf():31:5
    direct access (separate):
-    <*A:{28:8|30:16|35:8|23:11}, ?> <A:23, 8> <Eps:22, 8> <It:24, 4> <ItMax:24, 4> <MaxEps:22, 8> <sapfor.var, 26> iter():30:11 printf():31:5
-   indirect access (separate):
-    <malloc():27:26,?>
+    <*A:{27:26|23}, ?> <A:23, 8> <Eps:22, 8> <It:24, 4> <ItMax:24, 4> <MaxEps:22, 8> printf():31:5
 Printing analysis 'Dependency Analysis (Metadata)' for function 'init':
  loop at depth 1 main.c:48:3
    shared:
-    <*A:46, ?>
+    <*A:46, +?>
    first private:
-    <*A:46, ?>
+    <*A:46, +?>
    dynamic private:
-    <*A:46, ?>
+    <*A:46, +?>
    private:
     <J:47, 4> | <K:47, 4>
    induction:
@@ -61,14 +55,14 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'init':
    lock (separate):
     <I:47, 4>
    direct access (separate):
-    <*A:46, ?> <A:46, 8> <I:47, 4> <J:47, 4> <K:47, 4>
+    <*A:46, +?> <A:46, 8> <I:47, 4> <J:47, 4> <K:47, 4>
   loop at depth 2 main.c:49:5
     shared:
-     <*A:46, ?>
+     <*A:46, +?>
     first private:
-     <*A:46, ?>
+     <*A:46, +?>
     dynamic private:
-     <*A:46, ?>
+     <*A:46, +?>
     private:
      <K:47, 4>
     induction:
@@ -86,14 +80,14 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'init':
     lock (separate):
      <J:47, 4>
     direct access (separate):
-     <*A:46, ?> <A:46, 8> <I:47, 4> <J:47, 4> <K:47, 4>
+     <*A:46, +?> <A:46, 8> <I:47, 4> <J:47, 4> <K:47, 4>
    loop at depth 3 main.c:50:7
      shared:
-      <*A:46, ?>
+      <*A:46, +?>
      first private:
-      <*A:46, ?>
+      <*A:46, +?>
      dynamic private:
-      <*A:46, ?>
+      <*A:46, +?>
      induction:
       <K:47, 4>:[Int,0,384,1]
      read only:
@@ -109,15 +103,15 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'init':
      lock (separate):
       <K:47, 4>
      direct access (separate):
-      <*A:46, ?> <A:46, 8> <I:47, 4> <J:47, 4> <K:47, 4>
+      <*A:46, +?> <A:46, 8> <I:47, 4> <J:47, 4> <K:47, 4>
 Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
  loop at depth 1 main.c:62:3
    private:
     <J:60, 4> | <K:60, 4>
    anti:
-    <*A:59, ?>:[1:1,0:0,0:0]
+    <*A:59, +?>:[1:1,0:0,0:0]
    flow:
-    <*A:59, ?>:[1:1,0:0,0:0]
+    <*A:59, +?>:[1:1,0:0,0:0]
    induction:
     <I:60, 4>:[Int,1,383,1]
    read only:
@@ -133,10 +127,10 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
    lock (separate):
     <I:60, 4>
    direct access (separate):
-    <*A:59, ?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
+    <*A:59, +?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
   loop at depth 2 main.c:63:5
     shared:
-     <*A:59, ?>
+     <*A:59, +?>
     private:
      <K:60, 4>
     induction:
@@ -154,10 +148,10 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
     lock (separate):
      <J:60, 4>
     direct access (separate):
-     <*A:59, ?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
+     <*A:59, +?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
    loop at depth 3 main.c:64:7
      shared:
-      <*A:59, ?>
+      <*A:59, +?>
      induction:
       <K:60, 4>:[Int,1,383,1]
      read only:
@@ -173,10 +167,10 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
      lock (separate):
       <K:60, 4>
      direct access (separate):
-      <*A:59, ?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
+      <*A:59, +?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
  loop at depth 1 main.c:66:3
    shared:
-    <*A:59, ?>
+    <*A:59, +?>
    private:
     <J:60, 4> | <K:60, 4>
    induction:
@@ -194,14 +188,14 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
    lock (separate):
     <I:60, 4>
    direct access (separate):
-    <*A:59, ?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
+    <*A:59, +?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
   loop at depth 2 main.c:67:5
     private:
      <K:60, 4>
     anti:
-     <*A:59, ?>:[1:1,0:0]
+     <*A:59, +?>:[1:1,0:0]
     flow:
-     <*A:59, ?>:[1:1,0:0]
+     <*A:59, +?>:[1:1,0:0]
     induction:
      <J:60, 4>:[Int,1,383,1]
     read only:
@@ -217,10 +211,10 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
     lock (separate):
      <J:60, 4>
     direct access (separate):
-     <*A:59, ?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
+     <*A:59, +?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
    loop at depth 3 main.c:68:7
      shared:
-      <*A:59, ?>
+      <*A:59, +?>
      induction:
       <K:60, 4>:[Int,1,383,1]
      read only:
@@ -236,10 +230,10 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
      lock (separate):
       <K:60, 4>
      direct access (separate):
-      <*A:59, ?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
+      <*A:59, +?> <A:59, 8> <I:60, 4> <J:60, 4> <K:60, 4>
  loop at depth 1 main.c:70:3
    shared:
-    <*A:59, ?>
+    <*A:59, +?>
    private:
     <J:60, 4> | <K:60, 4> | <Tmp1:73[72:36], 8> | <Tmp2:74[72:36], 8>
    induction:
@@ -259,10 +253,10 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
    lock (separate):
     <I:60, 4>
    direct access (separate):
-    <*A:59, ?> <A:59, 8> <Eps:61, 8> <I:60, 4> <J:60, 4> <K:60, 4> <Tmp1:73[72:36], 8> <Tmp2:74[72:36], 8>
+    <*A:59, +?> <A:59, 8> <Eps:61, 8> <I:60, 4> <J:60, 4> <K:60, 4> <Tmp1:73[72:36], 8> <Tmp2:74[72:36], 8>
   loop at depth 2 main.c:71:5
     shared:
-     <*A:59, ?>
+     <*A:59, +?>
     private:
      <K:60, 4> | <Tmp1:73[72:36], 8> | <Tmp2:74[72:36], 8>
     induction:
@@ -282,14 +276,14 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
     lock (separate):
      <J:60, 4>
     direct access (separate):
-     <*A:59, ?> <A:59, 8> <Eps:61, 8> <I:60, 4> <J:60, 4> <K:60, 4> <Tmp1:73[72:36], 8> <Tmp2:74[72:36], 8>
+     <*A:59, +?> <A:59, 8> <Eps:61, 8> <I:60, 4> <J:60, 4> <K:60, 4> <Tmp1:73[72:36], 8> <Tmp2:74[72:36], 8>
    loop at depth 3 main.c:72:7
      private:
       <Tmp1:73[72:36], 8> | <Tmp2:74[72:36], 8>
      anti:
-      <*A:59, ?>:[1:1]
+      <*A:59, +?>:[1:1]
      flow:
-      <*A:59, ?>:[1:1]
+      <*A:59, +?>:[1:1]
      induction:
       <K:60, 4>:[Int,1,383,1]
      reduction:
@@ -307,4 +301,4 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'iter':
      lock (separate):
       <K:60, 4>
      direct access (separate):
-      <*A:59, ?> <A:59, 8> <Eps:61, 8> <I:60, 4> <J:60, 4> <K:60, 4> <Tmp1:73[72:36], 8> <Tmp2:74[72:36], 8>
+      <*A:59, +?> <A:59, 8> <Eps:61, 8> <I:60, 4> <J:60, 4> <K:60, 4> <Tmp1:73[72:36], 8> <Tmp2:74[72:36], 8>

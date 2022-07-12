@@ -1,1 +1,1 @@
-const int N = 10;
+enum { N = 10 };

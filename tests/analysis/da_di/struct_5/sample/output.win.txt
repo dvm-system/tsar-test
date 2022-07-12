@@ -5,16 +5,16 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
    reduction:
     <Res:4, 8>:add
    read only:
-    <S:{5:25|3:23}, 16>
+    <S:3:23, 16>
    lock:
-    <I:5[5:3], 4> | <S:{5:25|3:23}, 16>
+    <I:5[5:3], 4> | <S:3:23, 16>
    header access:
-    <I:5[5:3], 4> | <S:{5:25|3:23}, 16>
+    <I:5[5:3], 4> | <S:3:23, 16>
    explicit access:
     <I:5[5:3], 4> | <Res:4, 8>
    explicit access (separate):
     <I:5[5:3], 4> <Res:4, 8>
    lock (separate):
-    <I:5[5:3], 4> <S:{5:25|3:23}, 16>
+    <I:5[5:3], 4> <S:3:23, 16>
    direct access (separate):
-    <I:5[5:3], 4> <Res:4, 8> <S:{5:25|3:23}, 16>
+    <I:5[5:3], 4> <Res:4, 8> <S:3:23, 16>

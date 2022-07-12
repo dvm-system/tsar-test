@@ -3,17 +3,17 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'test':
    private:
     <b:3:13, 8> | <i:4[4:9], 4>
    output:
-    <*a:{7:9|1:16}, ?> <a[0]:1, 4>
+    <*a:{7:9|1:16}, +?> <a[0]:1, 4>
    anti:
-    <*a:{7:9|1:16}, ?> <a[0]:1, 4>
+    <*a:{7:9|1:16}, +?> <a[0]:1, 4>
    flow:
-    <*a:{7:9|1:16}, ?> <a[0]:1, 4>
+    <*a:{7:9|1:16}, +?> <a[0]:1, 4>
    induction:
     <j:2[2:5], 4>:[Int,0,10,1]
    read only:
     <a:1, 8>
    redundant:
-    <*a:{7:9|1:16}, ?> <a[0]:1, 4>
+    <*a:{7:9|1:16}, +?> <a[0]:1, 4>
    lock:
     <j:2[2:5], 4>
    header access:
@@ -23,11 +23,11 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'test':
    explicit access (separate):
     <a:1, 8> <a[0]:1, 4> <i:4[4:9], 4> <j:2[2:5], 4>
    redundant (separate):
-    <*a:{7:9|1:16}, ?>
+    <*a:{7:9|1:16}, +?>
    lock (separate):
     <j:2[2:5], 4>
    direct access (separate):
-    <*a:{7:9|1:16}, ?> <a:1, 8> <a[0]:1, 4> <b:3:13, 8> <i:4[4:9], 4> <j:2[2:5], 4>
+    <*a:{7:9|1:16}, +?> <a:1, 8> <a[0]:1, 4> <b:3:13, 8> <i:4[4:9], 4> <j:2[2:5], 4>
   loop at depth 2 main.c:4:9
     shared:
      <b:3:13, 8>

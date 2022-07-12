@@ -2,24 +2,24 @@ Printing analysis 'Dependency Analysis (Metadata)' for function 'bar':
 Printing analysis 'Dependency Analysis (Metadata)' for function 'foo':
  loop at depth 1 main.c:8:3
    private:
-    <X:6:7, 4>
+    <X:6, 4>
    induction:
     <I:8[8:3], 4>:[Int,0,10,1]
    reduction:
     <S:6, 4>:mult
    no promoted scalar:
-    <X:6:7, 4>
+    <X:6, 4>
    lock:
-    <I:8[8:3], 4> | <X:6:7, 4>
+    <I:8[8:3], 4> | <X:6, 4>
    header access:
     <I:8[8:3], 4>
    explicit access:
-    <I:8[8:3], 4> | <S:6, 4> | <X:6:7, 4>
+    <I:8[8:3], 4> | <S:6, 4> | <X:6, 4>
    explicit access (separate):
-    <I:8[8:3], 4> <S:6, 4> <X:6:7, 4>
+    <I:8[8:3], 4> <S:6, 4> <X:6, 4>
    lock (separate):
-    <I:8[8:3], 4> <X:6:7, 4>
+    <I:8[8:3], 4> <X:6, 4>
    no promoted scalar (separate):
-    <X:6:7, 4>
+    <X:6, 4>
    direct access (separate):
-    <I:8[8:3], 4> <S:6, 4> <X:6:7, 4>
+    <I:8[8:3], 4> <S:6, 4> <X:6, 4>
