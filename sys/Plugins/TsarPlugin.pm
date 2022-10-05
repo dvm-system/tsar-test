@@ -25,6 +25,7 @@ my %required_vars = (
     tsar
     clang
     llvm_link
+    llvm_profdata
     include
     lib
     dvm

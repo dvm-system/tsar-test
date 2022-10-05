@@ -3,5 +3,6 @@ include=@TS_INCLUDE_PATH@
 lib=@TS_LIBRARY_PATH@
 clang=@TS_CLANG_PATH@
 llvm_link=@TS_LLVM_LINK_PATH@
+llvm_profdata=@TS_LLVM_PROFDATA_PATH@
 dvm=@TS_DVM_PATH@
 openmp=@TS_OMP_LIBRARIES@
