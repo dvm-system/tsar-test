@@ -1,0 +1,10 @@
+main.c:6:10: warning: disable dead code elimination
+  return (X = 0, X) ? 1 : X;
+         ^
+main.c:6:11: warning: side effect prevent dead code elimination
+  return (X = 0, X) ? 1 : X;
+          ^
+main.c:6:23: remark: remove unreachable code
+  return (X = 0, X) ? 1 : X;
+                      ^
+2 warnings generated.

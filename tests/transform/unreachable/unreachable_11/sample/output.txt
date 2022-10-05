@@ -1,0 +1,10 @@
+main.c:6:7: warning: disable dead code elimination
+  if ((X = Argc) > 1)
+      ^
+main.c:6:8: warning: side effect prevent dead code elimination
+  if ((X = Argc) > 1)
+       ^
+main.c:7:5: remark: remove unreachable code
+    return X;
+    ^
+2 warnings generated.

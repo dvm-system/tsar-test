@@ -1,0 +1,6 @@
+main.c:7:4: remark: remove unreachable code
+   case 2: break;
+   ^
+main.c:5:4: remark: remove unreachable code
+   case 0: break;
+   ^

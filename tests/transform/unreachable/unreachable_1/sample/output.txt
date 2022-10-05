@@ -1,0 +1,8 @@
+Command line arguments aren't specified!
+Command line arguments aren't specified!
+main.c:6:17: remark: remove unreachable code
+  if (Argc > 1) {
+                ^
+main.c:12:5: remark: remove unreachable code
+    printf("%s\n", "Command line arguments are specified!");
+    ^

@@ -1,0 +1,8 @@
+Command line arguments aren't specified!
+Command line arguments aren't specified!
+main.cpp:6:28: remark: remove unreachable code
+  if (int X = Argc; X > 1) {
+                           ^
+main.cpp:11:25: remark: remove unreachable code
+  if (int X = Argc - 1) {
+                        ^

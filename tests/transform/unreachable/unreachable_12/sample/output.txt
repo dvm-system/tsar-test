@@ -1,0 +1,21 @@
+main.c:4:23: remark: remove unreachable code
+  for((void)Argc; 0;) {}
+                      ^
+main.c:5:22: remark: remove unreachable code
+  for(int I; 0; ++I) {}
+                     ^
+main.c:6:23: remark: remove unreachable code
+  for(; Argc = 0, 0;) {}
+                      ^
+main.c:6:9: warning: disable dead code elimination
+  for(; Argc = 0, 0;) {}
+        ^
+main.c:6:9: warning: side effect prevent dead code elimination
+main.c:7:33: remark: remove unreachable code
+  for((void)Argc; Argc = 0, 0;) {}
+                                ^
+main.c:7:19: warning: disable dead code elimination
+  for((void)Argc; Argc = 0, 0;) {}
+                  ^
+main.c:7:19: warning: side effect prevent dead code elimination
+4 warnings generated.

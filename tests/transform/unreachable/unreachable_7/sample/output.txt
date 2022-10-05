@@ -1,0 +1,6 @@
+main.c:4:12: remark: remove unreachable code
+  if (1 || 0)
+           ^
+main.c:6:3: remark: remove unreachable code
+  return 1;
+  ^

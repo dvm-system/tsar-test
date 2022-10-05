@@ -1,0 +1,5 @@
+main.c:3:23: error: directive 'transform' does not contain clause 'remove'
+#pragma spf transform remove unreachable
+                      ^
+1 error generated.
+Error while processing main.c.

@@ -1,0 +1,6 @@
+main.c:8:3: remark: remove unreachable code
+  STMT;
+  ^
+main.c:1:14: note: expanded from macro 'STMT'
+#define STMT X = 5
+             ^
