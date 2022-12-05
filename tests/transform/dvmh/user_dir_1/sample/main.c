@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+#pragma dvm template[99] distribute[block]
+void *dvmh_temp1;
+
 #pragma dvm template[100] distribute[block]
 void *dvmh_temp0;
 
@@ -27,12 +30,15 @@ int main() {
       S = S + A[I];
     }
   }
-  for (int I = 0; I < 100; ++I)
-    C[I] = I;
   for (int I = 0; I < 100; ++I) {
-#pragma dvm get_actual(S)
-    S = S - C[I];
-#pragma dvm actual(S)
+    C[I] = I;
+#pragma dvm actual(C)
+  }
+#pragma dvm region in(C, S)out(S)
+  {
+#pragma dvm parallel([I] on dvmh_temp1[I]) reduction(sum(S))
+    for (int I = 0; I < 100; ++I)
+      S = S - C[I];
   }
 #pragma dvm get_actual(S)
   printf("%s\n", S == 0 ? "success" : "error");
