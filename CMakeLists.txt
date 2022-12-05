@@ -220,21 +220,35 @@ add_custom_target(tsar-test-resources ALL)
 set_target_properties(tsar-test-resources PROPERTIES FOLDER Misc)
 
 set(DVM_DIR "" CACHE PATH "Path to DVM System")
+if (WIN32)
+  set(DVM_SCRIPT_NAME dvm.bat)
+else()
+  set(DVM_SCRIPT_NAME dvm)
+endif()
 if (EXISTS "${DVM_DIR}")
-  get_filename_component(DVM_EXECUTABLE "${DVM_DIR}/user/dvm" ABSOLUTE)
+  get_filename_component(DVM_EXECUTABLE "${DVM_DIR}/user/${DVM_SCRIPT_NAME}" ABSOLUTE)
 endif()
 
 if (NOT EXISTS "${DVM_EXECUTABLE}")
   message(WARNING "Could NOT find DVM executable."
                   " Set DVM_DIR to run DVMH-based tests.")
 else()
-  set(TS_DVM_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sys/dvm)
-  add_custom_command(TARGET tsar-test-resources POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy "${DVM_EXECUTABLE}"
-                                     "${TS_DVM_PATH}"
-    COMMAND ${PERL_EXECUTABLE} "-pi -e\"s/^(?=export DVMH_)/#/\""  "${TS_DVM_PATH}"
-    COMMENT "Copy DVM executable to ${TS_DVM_PATH}"
-  )
+  set(TS_DVM_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sys/${DVM_SCRIPT_NAME})
+
+  if (WIN32)
+    add_custom_command(TARGET tsar-test-resources POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy "${DVM_EXECUTABLE}" "${TS_DVM_PATH}"
+      COMMAND ${PERL_EXECUTABLE} "-pi.orig -e\"s/^(?=\\h+set \\\"DVMH_)/rem/\"" "${TS_DVM_PATH}"
+      COMMAND ${CMAKE_COMMAND} -E rm "${TS_DVM_PATH}.orig"
+      COMMENT "Copy DVM executable to ${TS_DVM_PATH}"
+    )
+  else()
+    add_custom_command(TARGET tsar-test-resources POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy "${DVM_EXECUTABLE}" "${TS_DVM_PATH}"
+      COMMAND ${PERL_EXECUTABLE} "-pi -e\"s/^(?=export DVMH_)/#/\""  "${TS_DVM_PATH}"
+      COMMENT "Copy DVM executable to ${TS_DVM_PATH}"
+    )
+  endif()
 endif()
 
 set(PTS_OPTIONS "--total-time --failed f -s" CACHE STRING "Default PTS options.")
