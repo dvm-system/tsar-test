@@ -1,4 +1,0 @@
-pts=@TS_PTS_PATH@
-options=@TS_PTS_OPTIONS@
-plugin_path=sys
-task_path=sys/tasks

@@ -22,12 +22,13 @@ endif()
 
 set(PTS_EXECUTABLE "" CACHE FILEPATH  "Path to PTS which runs tests.")
 if (NOT EXISTS "${PTS_EXECUTABLE}")
-  message(SEND_ERROR "Could NOT find PTS which is required to run tests."
-                     " Set PTS_EXECUTABLE variable.")
+  message(WARNING "Unable to create targets to run tests (use PTS to run tests manually)."
+                  " Could NOT find PTS which is required to run tests."
+                  " Set PTS_EXECUTABLE variable.")
+  get_filename_component(TS_PTS_PATH "${PTS_EXECUTABLE}" ABSOLUTE)
 else()
   message(STATUS "Perl executable: ${PERL_EXECUTABLE}")
 endif()
-get_filename_component(TS_PTS_PATH "${PTS_EXECUTABLE}" ABSOLUTE)
 
 find_package(TSAR 3.0.0)
 if (TSAR_FOUND)
@@ -242,7 +243,7 @@ string(REPLACE " " ";" TS_PTS_OPTION_LIST "${PTS_OPTIONS}")
 get_filename_component(PTS_PLUGIN_PATH sys ABSOLUTE)
 get_filename_component(PTS_TASK_PATH sys ABSOLUTE)
 
-configure_file(.sapfortest.in ${CMAKE_CURRENT_SOURCE_DIR}/.sapfortest @ONLY)
+configure_file(.ptsconfig.in ${CMAKE_CURRENT_SOURCE_DIR}/.ptsconfig @ONLY)
 
 macro(quote_path P)
   if (${P})

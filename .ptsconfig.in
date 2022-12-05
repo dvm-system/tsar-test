@@ -1,0 +1,1 @@
+pts::options = -I$PTS_CONFIG_DIR/sys -I$PTS_CONFIG_DIR/sys/lib -T$PTS_CONFIG_DIR/sys/tasks @TS_PTS_OPTIONS@
