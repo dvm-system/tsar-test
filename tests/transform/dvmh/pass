@@ -11,6 +11,8 @@ parallel
     no_distr_4/tsar
     no_distr_4/compile
   end_seq_seq
+    no_distr_5/tsar
+  end_seq_seq
     no_array_1/tsar
     no_array_1/compile
   end_seq_seq

@@ -1,0 +1,13 @@
+main.c:8:5: warning: disable distribution of 'X': unknown function call (1037)
+    bar(X);
+    ^
+main.c:7:3: remark: unknown array dependency prevents parallelization of this loop (3006)
+  for (int I = 0; I < 100; ++I)
+  ^
+main.c:7:3: remark: unknown scalar dependency prevents parallelization of this loop (3006)
+main.c:7:3: remark: IO operations prevent parallelization of this loop (3006)
+main.c:7:3: remark: stop operations prevent parallelization of this loop (3006)
+main.c:7:3: remark: unknown array reference for writes prevent parallelization of this loop (3006)
+main.c:7:3: remark: writes to non distributed array prevents parallelization of this loop (3006)
+main.c:7:3: remark: non pure procedures prevent parallelization of this loop (3006)
+1 warning generated.
