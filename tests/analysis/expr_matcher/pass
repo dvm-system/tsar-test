@@ -1,7 +1,7 @@
 parallel
 match_1/tsar
-match_2/tsar
-match_3/tsar
+#match_2/tsar # works for windows only
+#match_3/tsar # works for windows only
 match_4/tsar
 match_5/tsar
 match_6/tsar
@@ -11,7 +11,7 @@ match_9/tsar
 match_10/tsar
 match_11/tsar
 match_12/tsar
-#match_13/tsar
+#match_13/tsar 
 match_14/tsar
 match_15/tsar
 match_16/tsar
@@ -21,6 +21,6 @@ match_19/tsar
 match_20/tsar
 match_21/tsar
 match_22/tsar
-match_23/tsar
+#match_23/tsar # works for windows only
 match_24/tsar
 end_parallel

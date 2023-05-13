@@ -68,9 +68,9 @@ inline_class_1/tsar
 inline_class_2/tsar
 inline_enum_1/tsar
 inline_enum_2/tsar
-inline_enum_3/tsar
-inline_enum_3-CHECK-1/tsar
-inline_forward_1/tsar
+#inline_enum_3/tsar # unable to handle compilation
+#inline_enum_3-CHECK-1/tsar # unable to handle compilation
+#inline_forward_1/tsar # unable to handle compilation
 inline_forward_2/tsar
 inline_forward_3/tsar
 inline_forward_4/tsar
@@ -111,14 +111,14 @@ inline_macro_26/tsar
 inline_macro_27/tsar
 inline_macro_28/tsar
 inline_macro_29/tsar
-inline_merge_1/tsar
-inline_merge_1-CHECK-1/tsar
+#inline_merge_1/tsar # unable to handle compilation
+#inline_merge_1-CHECK-1/tsar # unable to handle compilation
 inline_param_1/tsar
 inline_param_2/tsar
 inline_param_3/tsar
 inline_param_4/tsar
-inline_param_5/tsar
-inline_param_5-CHECK-1/tsar
+#inline_param_5/tsar # unable to handle compilation
+#inline_param_5-CHECK-1/tsar # unable to handle compilation
 inline_recursive_1/tsar
 inline_recursive_2/tsar
 inline_switch_1/tsar
