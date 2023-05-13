@@ -1,0 +1,91 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'f':
+ loop at depth 1 main.c:7:2
+   first private:
+    <A, 400>
+   dynamic private:
+    <A, 400>
+   private:
+    <I:10[10:6], 4> | <I:12[12:3], 4> | <I:8[8:6], 4>
+   induction:
+    <K:7[7:2], 4>:[Int,0,10,1]
+   reduction:
+    <S:4, 4>:add
+   read only:
+    <M:3, 4> | <N:3, 4>
+   lock:
+    <K:7[7:2], 4>
+   header access:
+    <K:7[7:2], 4>
+   explicit access:
+    <I:10[10:6], 4> | <I:12[12:3], 4> | <I:8[8:6], 4> | <K:7[7:2], 4> | <M:3, 4> | <N:3, 4> | <S:4, 4>
+   explicit access (separate):
+    <I:10[10:6], 4> <I:12[12:3], 4> <I:8[8:6], 4> <K:7[7:2], 4> <M:3, 4> <N:3, 4> <S:4, 4>
+   lock (separate):
+    <K:7[7:2], 4>
+   direct access (separate):
+    <A, 400> <I:10[10:6], 4> <I:12[12:3], 4> <I:8[8:6], 4> <K:7[7:2], 4> <M:3, 4> <N:3, 4> <S:4, 4>
+  loop at depth 2 main.c:12:3
+    induction:
+     <I:12[12:3], 4>:[Int,0,,1]
+    reduction:
+     <S:4, 4>:add
+    read only:
+     <A, 400> | <N:3, 4>
+    lock:
+     <I:12[12:3], 4> | <N:3, 4>
+    header access:
+     <I:12[12:3], 4> | <N:3, 4>
+    explicit access:
+     <I:12[12:3], 4> | <N:3, 4> | <S:4, 4>
+    explicit access (separate):
+     <I:12[12:3], 4> <N:3, 4> <S:4, 4>
+    lock (separate):
+     <I:12[12:3], 4> <N:3, 4>
+    direct access (separate):
+     <A, 400> <I:12[12:3], 4> <N:3, 4> <S:4, 4>
+  loop at depth 2 main.c:10:6
+    shared:
+     <A, 400>
+    first private:
+     <A, 400>
+    dynamic private:
+     <A, 400>
+    induction:
+     <I:10[10:6], 4>:[Int,,,1]
+    read only:
+     <N:3, 4>
+    lock:
+     <I:10[10:6], 4> | <N:3, 4>
+    header access:
+     <I:10[10:6], 4> | <N:3, 4>
+    explicit access:
+     <I:10[10:6], 4> | <N:3, 4>
+    explicit access (separate):
+     <I:10[10:6], 4> <N:3, 4>
+    lock (separate):
+     <I:10[10:6], 4> <N:3, 4>
+    direct access (separate):
+     <A, 400> <I:10[10:6], 4> <N:3, 4>
+  loop at depth 2 main.c:8:6
+    shared:
+     <A, 400>
+    first private:
+     <A, 400>
+    dynamic private:
+     <A, 400>
+    induction:
+     <I:8[8:6], 4>:[Int,0,,1]
+    read only:
+     <M:3, 4>
+    lock:
+     <I:8[8:6], 4> | <M:3, 4>
+    header access:
+     <I:8[8:6], 4> | <M:3, 4>
+    explicit access:
+     <I:8[8:6], 4> | <M:3, 4>
+    explicit access (separate):
+     <I:8[8:6], 4> <M:3, 4>
+    lock (separate):
+     <I:8[8:6], 4> <M:3, 4>
+    direct access (separate):
+     <A, 400> <I:8[8:6], 4> <M:3, 4>
