@@ -1,0 +1,68 @@
+Printing analysis 'Dependency Analysis (Metadata)' for function 'f':
+ loop at depth 1 main.c:6:2
+   first private:
+    <A, 400>
+   dynamic private:
+    <A, 400>
+   private:
+    <I:7[7:6], 4> | <I:9[9:3], 4>
+   induction:
+    <K:6[6:2], 4>:[Int,0,10,1]
+   reduction:
+    <S:4, 4>:add
+   read only:
+    <N:3, 4>
+   lock:
+    <K:6[6:2], 4>
+   header access:
+    <K:6[6:2], 4>
+   explicit access:
+    <I:7[7:6], 4> | <I:9[9:3], 4> | <K:6[6:2], 4> | <N:3, 4> | <S:4, 4>
+   explicit access (separate):
+    <I:7[7:6], 4> <I:9[9:3], 4> <K:6[6:2], 4> <N:3, 4> <S:4, 4>
+   lock (separate):
+    <K:6[6:2], 4>
+   direct access (separate):
+    <A, 400> <I:7[7:6], 4> <I:9[9:3], 4> <K:6[6:2], 4> <N:3, 4> <S:4, 4>
+  loop at depth 2 main.c:9:3
+    induction:
+     <I:9[9:3], 4>:[Int,2,,1]
+    reduction:
+     <S:4, 4>:add
+    read only:
+     <A, 400> | <N:3, 4>
+    lock:
+     <I:9[9:3], 4> | <N:3, 4>
+    header access:
+     <I:9[9:3], 4> | <N:3, 4>
+    explicit access:
+     <I:9[9:3], 4> | <N:3, 4> | <S:4, 4>
+    explicit access (separate):
+     <I:9[9:3], 4> <N:3, 4> <S:4, 4>
+    lock (separate):
+     <I:9[9:3], 4> <N:3, 4>
+    direct access (separate):
+     <A, 400> <I:9[9:3], 4> <N:3, 4> <S:4, 4>
+  loop at depth 2 main.c:7:6
+    shared:
+     <A, 400>
+    first private:
+     <A, 400>
+    dynamic private:
+     <A, 400>
+    induction:
+     <I:7[7:6], 4>:[Int,0,,1]
+    read only:
+     <N:3, 4>
+    lock:
+     <I:7[7:6], 4> | <N:3, 4>
+    header access:
+     <I:7[7:6], 4> | <N:3, 4>
+    explicit access:
+     <I:7[7:6], 4> | <N:3, 4>
+    explicit access (separate):
+     <I:7[7:6], 4> <N:3, 4>
+    lock (separate):
+     <I:7[7:6], 4> <N:3, 4>
+    direct access (separate):
+     <A, 400> <I:7[7:6], 4> <N:3, 4>
