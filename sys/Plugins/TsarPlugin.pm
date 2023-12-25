@@ -189,18 +189,25 @@ sub process
 sub clean
 {
   my @files = @_;
-  for (map glob, @files) {
-    file_name_is_absolute($_) and die "Action 'clean' encountered an absolute filename '$_'.\n";
-    -e or next;
-    my $err;
-    dbg1 and dprint("rm '$_'");
-    remove_tree($_, {safe => 1, error => \$err});
-    if ($err && @$err) {
-      my @errors = map {
-        my ($f, $msg) = %$_;
-        Exceptions::Exception->new($f eq '' ? "rm '$f' failed: $msg" : $msg);
-      } @$err;
-      throw List => @errors;
+  for my $pat (@files) {
+    dbg2 and dprint("clean target: $pat");
+    # NOTE: Windows does not support a filename with '.' at the end.
+    #    It may be created somehow, but many commands fail to work with it.
+    #    Perl -X commands and `glob` function does not see that files.
+    for (glob(glob_escape_str($pat))) {
+      dbg2 and dprint("look for '$_' file to remove");
+      file_name_is_absolute($_) and die "Action 'clean' encountered an absolute filename '$_'.\n";
+      -e or next;
+      my $err;
+      dbg1 and dprint(-d ? 'rmdir' : 'rm', " '$_'");
+      remove_tree($_, {safe => 1, error => \$err});
+      if ($err && @$err) {
+        my @errors = map {
+          my ($f, $msg) = %$_;
+          Exceptions::Exception->new($f eq '' ? "rm '$f' failed: $msg" : $msg);
+        } @$err;
+        throw List => @errors;
+      }
     }
   }
   1
@@ -325,6 +332,13 @@ sub m_diff
   binmode $f1, ':crlf';
   binmode $f2, ':crlf';
   diff $f1, $f2
+}
+
+sub glob_escape_str
+{
+  local $_ = shift;
+  s/(['"])|(\s+)/$1 ? '\\'.$1 : "'$2'"/eg;
+  $_
 }
 
 1;
